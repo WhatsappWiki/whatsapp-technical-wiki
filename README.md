@@ -1,10 +1,14 @@
 # WhatsApp Wiki · WhatsApp 技术知识库
 
+<a id="contact"></a>
+
+## Telegram Contact: [@ttjjda](https://t.me/ttjjda)
+
 **WhatsApp 注册、登录、通信协议、消息收发与语音通话技术文档。**
 
 **Technical documentation on WhatsApp registration, authentication, protocols, messaging, and voice calls.**
 
-[中文](#zh) · [English](#en) · [技术目录 / Technical Index](#technical-index) · [参与贡献 / Contributing](#contributing) · [联系 / Contact](#contact)
+[中文](#zh) · [English](#en) · [技术目录 / Technical Index](#technical-index) · [参与贡献 / Contributing](#contributing) · [Contact](#contact)
 
 <a id="zh"></a>
 
@@ -349,14 +353,6 @@ Use Issues for questions, documentation corrections, and topic suggestions. Pull
 中英文内容应保持含义一致；专有字段名、类名、接口名和协议标识保留原文。添加新章节时，请同步更新两种语言的目录。
 
 Keep Chinese and English content aligned. Preserve original field names, class names, interface names, and protocol identifiers. Update both indexes when adding chapters.
-
-<a id="contact"></a>
-
-## 联系方式 / Contact
-
-欢迎通过 Telegram 交流 WhatsApp 注册、协议、消息与通话等技术话题：[@ttjjda](https://t.me/ttjjda)。
-
-For technical discussions about WhatsApp registration, protocols, messaging, and calls, contact [@ttjjda on Telegram](https://t.me/ttjjda).
 
 ## 项目声明 / Project Notice
 
