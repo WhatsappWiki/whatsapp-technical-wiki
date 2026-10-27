@@ -19,11 +19,11 @@
 - 离线队列、冲突、重复事件与恢复流程。
 - Web / Desktop 与移动端之间的行为差异。
 
-### 文档状态与扩展方式
+### 文档组织与扩展方式
 
 本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
 
-单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接并标明状态。
+单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
 <a id="en"></a>
 
@@ -42,11 +42,11 @@ This directory introduces account/device relationships and the synchronization o
 - Offline queues, conflicts, duplicate events, and recovery.
 - Behavioral differences between mobile, Web, and Desktop clients.
 
-### Documentation Status and Expansion
+### Documentation Organization and Expansion
 
 This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
 
-Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and record its status when the article is available.
+Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
 ## 后续文章规划 / Planned Articles
 
