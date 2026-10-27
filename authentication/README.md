@@ -1,6 +1,6 @@
 # Login, Authentication, and Sessions · 登录认证与会话
 
-[Home / 首页](../README.md) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
@@ -25,6 +25,26 @@
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
+<a id="后续文章规划--planned-articles"></a>
+
+### 后续文章规划
+
+| 规划路径 | 内容 |
+| --- | --- |
+| `authentication-flow.md` | 首次注册、账号启动与连接认证的流程区别 |
+| `credentials.md` | 身份材料、认证密钥、设备标识与存储 |
+| `device-linking/` | 二维码与配对码关联、设备确认和授权 |
+| `session-lifecycle.md` | 会话持久化、恢复、失效、退出与重连 |
+| `two-step-verification.md` | 两步验证、PIN 与相关状态 |
+| `passkeys.md` | Passkey 相关流程、平台与版本差异 |
+| `account-switching.md` | 账户切换、设备移除与凭据失效 |
+
+<a id="相关主题--related-topics"></a>
+
+### 相关主题
+
+[账号注册与验证码](../registration/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [多设备与数据同步](../multi-device/#zh)
+
 <a id="en"></a>
 
 ## English
@@ -48,18 +68,18 @@ This page provides the topic overview and navigation entry point. The paths belo
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
-## 后续文章规划 / Planned Articles
+### Planned Articles
 
-| Proposed path | 中文内容 | English scope |
-| --- | --- | --- |
-| `authentication-flow.md` | 首次注册、账号启动与连接认证的流程区别 | Initial registration, account startup, and connection-authentication flows |
-| `credentials.md` | 身份材料、认证密钥、设备标识与存储 | Identity material, authentication keys, device identifiers, and storage |
-| `device-linking/` | 二维码与配对码关联、设备确认和授权 | QR-code and pairing-code linking, device confirmation, and authorization |
-| `session-lifecycle.md` | 会话持久化、恢复、失效、退出与重连 | Session persistence, restoration, expiration, logout, and reconnection |
-| `two-step-verification.md` | 两步验证、PIN 与相关状态 | Two-step verification, PINs, and related states |
-| `passkeys.md` | Passkey 相关流程、平台与版本差异 | Passkey-related flows and platform/version differences |
-| `account-switching.md` | 账户切换、设备移除与凭据失效 | Account switching, device removal, and credential invalidation |
+| Proposed path | Scope |
+| --- | --- |
+| `authentication-flow.md` | Initial registration, account startup, and connection-authentication flows |
+| `credentials.md` | Identity material, authentication keys, device identifiers, and storage |
+| `device-linking/` | QR-code and pairing-code linking, device confirmation, and authorization |
+| `session-lifecycle.md` | Session persistence, restoration, expiration, logout, and reconnection |
+| `two-step-verification.md` | Two-step verification, PINs, and related states |
+| `passkeys.md` | Passkey-related flows and platform/version differences |
+| `account-switching.md` | Account switching, device removal, and credential invalidation |
 
-## 相关主题 / Related Topics
+### Related Topics
 
-[账号注册与验证码 / Account Registration and Verification](../registration/) · [端到端加密与密钥管理 / End-to-End Encryption and Key Management](../encryption/) · [多设备与数据同步 / Multi-Device and Data Synchronization](../multi-device/)
+[Account Registration and Verification](../registration/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Multi-Device and Data Synchronization](../multi-device/#en)

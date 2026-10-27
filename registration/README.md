@@ -1,6 +1,6 @@
 # Account Registration and Verification · 账号注册与验证码
 
-[Home / 首页](../README.md) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
@@ -33,6 +33,48 @@
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
+<a id="主线文章--main-articles"></a>
+
+### 主线文章
+
+| 顺序 | 文档 / 路径 | 内容 |
+| --- | --- | --- |
+| 1 | [exist.md](exist.md#zh) | `exist` 请求的明文参数、取值来源与完整示意 |
+| 2 | `code.md` | `code` 请求的明文参数 |
+| 3 | `register.md` | `register` 请求的明文参数 |
+| 4 | `security-fields/` | 七个安全字段分别详细解释 |
+| 5 | `request-encryption.md` | 参数序列化、明文加密、签名与正文封装 |
+| 6 | `sending-requests.md` | 请求头、发送顺序、HTTP 发出与响应处理 |
+
+<a id="每篇参数文章的结构--structure-of-each-parameter-article"></a>
+
+### 每篇参数文章的结构
+
+每个请求依次介绍：请求用途与触发条件、明文参数总览、逐字段含义与类型、出现条件与空值处理、参数间关联，以及使用同格式随机值的明文示例。安全字段链接到独立专题，完整加密正文和发送代码放到后续文章。
+
+<a id="安全字段专题--security-field-articles"></a>
+
+### 安全字段专题
+
+`security-fields/` 按 `gpia.md`、`gg.md`、`gi.md`、`gp.md`、`gs.md`、`ge.md`、`ga.md` 拆分。每篇解释字段职责、输入、计算步骤、明文或内部结构、编码与加密、缓存与刷新条件，以及在三个请求中的使用差异。
+
+<a id="补充文章--supporting-articles"></a>
+
+### 补充文章
+
+| 文档 / 路径 | 内容 |
+| --- | --- |
+| [android-inputs.md](android-inputs.md#zh) | Android 公开 API、应用状态与字段编码示例 |
+| `phone-number.md` | 国家码、号码处理、输入纠错与设备号码提示 |
+| `identifiers.md` | 设备标识、持久状态与生命周期 |
+| `verification-code.md` | 验证码交互、等待与重试 |
+
+<a id="相关主题--related-topics"></a>
+
+### 相关主题
+
+[登录认证与会话](../authentication/#zh) · [通信协议与数据格式](../protocol/#zh) · [端到端加密与密钥管理](../encryption/#zh)
+
 <a id="en"></a>
 
 ## English
@@ -64,38 +106,34 @@ The main sequence below follows the reading order. Available articles have worki
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
-## 主线文章 / Main Articles
+### Main Articles
 
-| Order | Document / Path | 中文内容 | English scope |
-| --- | --- | --- | --- |
-| 1 | [exist.md](exist.md) | `exist` 请求的明文参数、取值来源与完整示意 | Plaintext parameters, input sources, and the full example for the `exist` request |
-| 2 | `code.md` | `code` 请求的明文参数 | Plaintext parameters of the `code` request |
-| 3 | `register.md` | `register` 请求的明文参数 | Plaintext parameters of the `register` request |
-| 4 | `security-fields/` | 七个安全字段分别详细解释 | Dedicated explanations of the seven security fields |
-| 5 | `request-encryption.md` | 参数序列化、明文加密、签名与正文封装 | Parameter serialization, encryption, signing, and body packaging |
-| 6 | `sending-requests.md` | 请求头、发送顺序、HTTP 发出与响应处理 | Headers, request order, HTTP transmission, and response handling |
+| Order | Document / Path | Scope |
+| --- | --- | --- |
+| 1 | [exist.md](exist.md#en) | Plaintext parameters, input sources, and the full example for the `exist` request |
+| 2 | `code.md` | Plaintext parameters of the `code` request |
+| 3 | `register.md` | Plaintext parameters of the `register` request |
+| 4 | `security-fields/` | Dedicated explanations of the seven security fields |
+| 5 | `request-encryption.md` | Parameter serialization, encryption, signing, and body packaging |
+| 6 | `sending-requests.md` | Headers, request order, HTTP transmission, and response handling |
 
-### 每篇参数文章的结构 / Structure of Each Parameter Article
-
-每个请求依次介绍：请求用途与触发条件、明文参数总览、逐字段含义与类型、出现条件与空值处理、参数间关联，以及使用同格式随机值的明文示例。安全字段链接到独立专题，完整加密正文和发送代码放到后续文章。
+### Structure of Each Parameter Article
 
 For each request, cover its purpose and trigger conditions, plaintext parameter overview, field meanings and types, presence and null handling, parameter relationships, and a plaintext example with random values in the same representation. Link security fields to their dedicated topic; put complete encrypted bodies and transmission code in the later articles.
 
-### 安全字段专题 / Security Field Articles
-
-`security-fields/` 按 `gpia.md`、`gg.md`、`gi.md`、`gp.md`、`gs.md`、`ge.md`、`ga.md` 拆分。每篇解释字段职责、输入、计算步骤、明文或内部结构、编码与加密、缓存与刷新条件，以及在三个请求中的使用差异。
+### Security Field Articles
 
 Organize `security-fields/` into `gpia.md`, `gg.md`, `gi.md`, `gp.md`, `gs.md`, `ge.md`, and `ga.md`. Each article explains the field's role, inputs, computation, plaintext or internal structure, encoding and encryption, caching and refresh conditions, and usage differences between the three requests.
 
-## 补充文章 / Supporting Articles
+### Supporting Articles
 
-| Document / Path | 中文内容 | English scope |
-| --- | --- | --- |
-| [android-inputs.md](android-inputs.md) | Android 公开 API、应用状态与字段编码示例 | Public Android APIs, application state, and field-encoding examples |
-| `phone-number.md` | 国家码、号码处理、输入纠错与设备号码提示 | Calling codes, number processing, typo correction, and device-number hints |
-| `identifiers.md` | 设备标识、持久状态与生命周期 | Device identifiers, persistent state, and lifecycles |
-| `verification-code.md` | 验证码交互、等待与重试 | Verification interactions, waiting, and retries |
+| Document / Path | Scope |
+| --- | --- |
+| [android-inputs.md](android-inputs.md#en) | Public Android APIs, application state, and field-encoding examples |
+| `phone-number.md` | Calling codes, number processing, typo correction, and device-number hints |
+| `identifiers.md` | Device identifiers, persistent state, and lifecycles |
+| `verification-code.md` | Verification interactions, waiting, and retries |
 
-## 相关主题 / Related Topics
+### Related Topics
 
-[登录认证与会话 / Login, Authentication, and Sessions](../authentication/) · [通信协议与数据格式 / Communication Protocols and Data Formats](../protocol/) · [端到端加密与密钥管理 / End-to-End Encryption and Key Management](../encryption/)
+[Login, Authentication, and Sessions](../authentication/#en) · [Communication Protocols and Data Formats](../protocol/#en) · [End-to-End Encryption and Key Management](../encryption/#en)

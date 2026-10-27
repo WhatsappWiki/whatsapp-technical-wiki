@@ -1,6 +1,6 @@
 # Media Transfer and Voice Messages · 图片、文件与语音消息
 
-[Home / 首页](../README.md) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
@@ -27,6 +27,26 @@
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
+<a id="后续文章规划--planned-articles"></a>
+
+### 后续文章规划
+
+| 规划路径 | 内容 |
+| --- | --- |
+| `media-types.md` | 媒体消息结构、类型与文件元数据 |
+| `preprocessing.md` | 缩略图、类型识别与媒体预处理 |
+| `upload.md` | 上传流程、媒体引用与错误处理 |
+| `download.md` | 下载流程、缓存读取与文件恢复 |
+| `media-encryption.md` | 媒体密钥、加解密、摘要与完整性 |
+| `voice-messages.md` | 语音录制、编码、时长、波形与播放 |
+| `cache-and-expiration.md` | 缓存生命周期、链接失效与重新获取 |
+
+<a id="相关主题--related-topics"></a>
+
+### 相关主题
+
+[消息发送与接收](../messaging/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [语音与视频通话](../calls/#zh)
+
 <a id="en"></a>
 
 ## English
@@ -52,18 +72,18 @@ This page provides the topic overview and navigation entry point. The paths belo
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
-## 后续文章规划 / Planned Articles
+### Planned Articles
 
-| Proposed path | 中文内容 | English scope |
-| --- | --- | --- |
-| `media-types.md` | 媒体消息结构、类型与文件元数据 | Media message structures, types, and file metadata |
-| `preprocessing.md` | 缩略图、类型识别与媒体预处理 | Thumbnails, type detection, and media preparation |
-| `upload.md` | 上传流程、媒体引用与错误处理 | Upload flows, media references, and error handling |
-| `download.md` | 下载流程、缓存读取与文件恢复 | Download flows, cached files, and retrieval |
-| `media-encryption.md` | 媒体密钥、加解密、摘要与完整性 | Media keys, encryption, decryption, hashes, and integrity |
-| `voice-messages.md` | 语音录制、编码、时长、波形与播放 | Voice recording, encoding, duration, waveforms, and playback |
-| `cache-and-expiration.md` | 缓存生命周期、链接失效与重新获取 | Cache lifecycles, expired references, and retrieval |
+| Proposed path | Scope |
+| --- | --- |
+| `media-types.md` | Media message structures, types, and file metadata |
+| `preprocessing.md` | Thumbnails, type detection, and media preparation |
+| `upload.md` | Upload flows, media references, and error handling |
+| `download.md` | Download flows, cached files, and retrieval |
+| `media-encryption.md` | Media keys, encryption, decryption, hashes, and integrity |
+| `voice-messages.md` | Voice recording, encoding, duration, waveforms, and playback |
+| `cache-and-expiration.md` | Cache lifecycles, expired references, and retrieval |
 
-## 相关主题 / Related Topics
+### Related Topics
 
-[消息发送与接收 / Sending and Receiving Messages](../messaging/) · [端到端加密与密钥管理 / End-to-End Encryption and Key Management](../encryption/) · [语音与视频通话 / Voice and Video Calls](../calls/)
+[Sending and Receiving Messages](../messaging/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Voice and Video Calls](../calls/#en)

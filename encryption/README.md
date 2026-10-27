@@ -1,6 +1,6 @@
 # End-to-End Encryption and Key Management · 端到端加密与密钥管理
 
-[Home / 首页](../README.md) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
@@ -26,6 +26,25 @@
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
+<a id="后续文章规划--planned-articles"></a>
+
+### 后续文章规划
+
+| 规划路径 | 内容 |
+| --- | --- |
+| `encryption-boundaries.md` | 传输保护、字段加密、请求签名与 E2EE 的区别 |
+| `identity-and-prekeys.md` | 身份密钥、PreKey 与 Signed PreKey |
+| `sessions/` | 会话建立、密钥状态及状态持久化 |
+| `key-lifecycle.md` | 密钥生成、存储、选择、轮换与失效 |
+| `group-and-device-keys.md` | 群聊及关联设备的密钥分发研究 |
+| `verification.md` | 原始输入复算、签名验证与字节比较 |
+
+<a id="相关主题--related-topics"></a>
+
+### 相关主题
+
+[登录认证与会话](../authentication/#zh) · [通信协议与数据格式](../protocol/#zh) · [消息发送与接收](../messaging/#zh) · [多设备与数据同步](../multi-device/#zh)
+
 <a id="en"></a>
 
 ## English
@@ -50,17 +69,17 @@ This page provides the topic overview and navigation entry point. The paths belo
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
-## 后续文章规划 / Planned Articles
+### Planned Articles
 
-| Proposed path | 中文内容 | English scope |
-| --- | --- | --- |
-| `encryption-boundaries.md` | 传输保护、字段加密、请求签名与 E2EE 的区别 | Transport protection, field encryption, request signing, and E2EE |
-| `identity-and-prekeys.md` | 身份密钥、PreKey 与 Signed PreKey | Identity keys, prekeys, and signed prekeys |
-| `sessions/` | 会话建立、密钥状态及状态持久化 | Session establishment, key state, and persistence |
-| `key-lifecycle.md` | 密钥生成、存储、选择、轮换与失效 | Key generation, storage, selection, rotation, and expiration |
-| `group-and-device-keys.md` | 群聊及关联设备的密钥分发研究 | Key-distribution research for groups and companion devices |
-| `verification.md` | 原始输入复算、签名验证与字节比较 | Raw-input recomputation, signature verification, and byte comparisons |
+| Proposed path | Scope |
+| --- | --- |
+| `encryption-boundaries.md` | Transport protection, field encryption, request signing, and E2EE |
+| `identity-and-prekeys.md` | Identity keys, prekeys, and signed prekeys |
+| `sessions/` | Session establishment, key state, and persistence |
+| `key-lifecycle.md` | Key generation, storage, selection, rotation, and expiration |
+| `group-and-device-keys.md` | Key-distribution research for groups and companion devices |
+| `verification.md` | Raw-input recomputation, signature verification, and byte comparisons |
 
-## 相关主题 / Related Topics
+### Related Topics
 
-[登录认证与会话 / Login, Authentication, and Sessions](../authentication/) · [通信协议与数据格式 / Communication Protocols and Data Formats](../protocol/) · [消息发送与接收 / Sending and Receiving Messages](../messaging/) · [多设备与数据同步 / Multi-Device and Data Synchronization](../multi-device/)
+[Login, Authentication, and Sessions](../authentication/#en) · [Communication Protocols and Data Formats](../protocol/#en) · [Sending and Receiving Messages](../messaging/#en) · [Multi-Device and Data Synchronization](../multi-device/#en)

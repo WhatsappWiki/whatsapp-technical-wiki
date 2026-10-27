@@ -2,7 +2,7 @@
 
 **Telegram Contact: [@ttjjda](https://t.me/ttjjda)**
 
-[Registration / 注册目录](README.md) · [中文](#zh) · [English](#en) · [完整示意 / Full Example](#plaintext-example) · [Mock Java](#mock-fields-java) · [Android Code](android-inputs.md)
+[注册目录](README.md#zh) · [中文](#zh) · [English](#en) · [明文示意](#plaintext-example) · [Full Example](#plaintext-example-en)
 
 <a id="zh"></a>
 
@@ -10,7 +10,7 @@
 
 `exist` 用于注册前的号码检查，携带号码、客户端身份、设备环境和流程状态；不提交验证码。
 
-本文列出 71 个已知内层参数，按功能分组；实际请求只包含当前流程所需字段，并非固定发送 71 项。Android API 获取调用应用自己的数据，持久标识、密钥和服务令牌由对应模块提供。[Android 获取代码](android-inputs.md)
+本文列出 71 个已知内层参数，按功能分组；实际请求只包含当前流程所需字段，并非固定发送 71 项。Android API 获取调用应用自己的数据，持久标识、密钥和服务令牌由对应模块提供。[Android 获取代码](android-inputs.md#zh)
 
 示例保留普通状态值；标识、号码、令牌和密码学载荷使用同格式随机值。固定宽度字段保持字节长度，变长字段的示例不定义协议长度。长值在表中节选，完整内容见下方明文示意。随机示例不构成有效令牌、签名或完整密钥记录。
 
@@ -226,11 +226,11 @@
 
 `id`、`backup_token`、`foa_backup_token` 的示例以百分号编码显示随机原始字节，不要再次编码。JSON 型字段仍是紧凑 JSON 字符串，`_gs` 保留 `em` 包装。
 
-#### Mock Fields Java
+<a id="mock-fields-java"></a>
+
+#### Java 模拟示例
 
 下面的 Android Java 类构造与上方一致的 71 字段示例对象。随机示例值固定写入，便于重复查看和调试，不执行真实身份初始化、令牌获取或安全字段算法。
-
-This Android Java class builds the same 71-field example object. The randomly generated example values are fixed literals for repeatable inspection. It performs no real identity initialization, token acquisition, or security-field computation.
 
 ```java
 // File: ExistMockFields.java
@@ -330,7 +330,16 @@ public final class ExistMockFields {
 
 在应用代码中调用 `ExistMockFields.create()` 获取 `JSONObject`，或调用 `ExistMockFields.printExample()` 逐行输出到 Logcat；调用方处理 `JSONException`。这个类不读取手机状态、不保存数据，也不发送请求。
 
-Call `ExistMockFields.create()` for the `JSONObject`, or `printExample()` for line-by-line Logcat output, handling `JSONException` in the caller. The class reads no device state, persists nothing, and sends no requests.
+<a id="相关内容--related-reading"></a>
+
+### 相关内容
+
+- [Android 获取代码](android-inputs.md#zh)：公开 API、应用持久状态与字节编码。
+- `security-fields/`：七个安全字段的详细结构与算法。
+- `request-encryption.md`：参数序列化、ENC 与 H。
+- `sending-requests.md`：Authorization、请求头、HTTP 发送与响应。
+
+[返回注册目录](README.md#zh)
 
 <a id="en"></a>
 
@@ -338,11 +347,11 @@ Call `ExistMockFields.create()` for the `JSONObject`, or `printExample()` for li
 
 `exist` checks a number before registration. It carries the number, client identity, device environment, and flow state, not a verification code.
 
-This reference groups 71 known inner parameters by function. An actual request includes only the fields required by its flow, not a fixed set of 71. Android APIs read the calling app's data; identifiers, keys, and service tokens come from their respective modules. [Android code](android-inputs.md)
+This reference groups 71 known inner parameters by function. An actual request includes only the fields required by its flow, not a fixed set of 71. Android APIs read the calling app's data; identifiers, keys, and service tokens come from their respective modules. [Android code](android-inputs.md#en)
 
 Ordinary state values are retained; identifiers, numbers, tokens, and cryptographic payloads use random values in the same representation. Fixed-width fields retain their byte lengths; variable-length examples do not define protocol sizes. Tables abbreviate long values, while the full illustration preserves them. Random examples are not valid tokens, signatures, or complete key records.
 
-Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` contain JSON text inside those strings. “Plaintext” means before outer ENC encryption; individual fields can still be encoded or encrypted. See the [full example](#plaintext-example) for the binary recovery-material display convention.
+Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` contain JSON text inside those strings. “Plaintext” means before outer ENC encryption; individual fields can still be encoded or encrypted. See the [full example](#plaintext-example-en) for the binary recovery-material display convention.
 
 ### 1. Number, locale, and entry point
 
@@ -350,8 +359,8 @@ Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` co
 | --- | --- | --- | --- | --- |
 | `cc` | Calling code of the number being checked, distinct from an ISO region code. | The user-selected calling code, captured together with in. | Digit string without +; do not substitute the SIM country. | `"86"` |
 | `in` | National number, excluding the calling code; not a verification code. | The number input field or user-confirmed number state. | Preserve the string; update number-dependent material after a change. | `"14933330256"` |
-| `lg` | Current application language. | The app Context resources configuration; see [App locale](android-inputs.md#app-locale). | Usually a lowercase language code; zz is the invalid-language fallback. | `"zh"` |
-| `lc` | Region component of the application locale. | The app locale; see [App locale](android-inputs.md#app-locale). | Two uppercase letters or three digits; ZZ for an invalid region; distinct from cc. | `"CN"` |
+| `lg` | Current application language. | The app Context resources configuration; see [App locale](android-inputs.md#en-app-locale). | Usually a lowercase language code; zz is the invalid-language fallback. | `"zh"` |
+| `lc` | Region component of the application locale. | The app locale; see [App locale](android-inputs.md#en-app-locale). | Two uppercase letters or three digits; ZZ for an invalid region; distinct from cc. | `"CN"` |
 | `rc` | Application release-channel number. | Application release configuration. | Decimal text; 0 denotes the production channel, not an Android API level. | `"0"` |
 | `entrypoint` | Entry category for registration or account addition. | Current entry flow and existing/inactive account state. | Conditional; examples include create_paa and suma; ordinary flows may omit it. | `"suma"` |
 
@@ -359,11 +368,11 @@ Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` co
 
 | Field | Meaning | Input source | Representation and presence | Example |
 | --- | --- | --- | --- | --- |
-| `fdid` | Persistent client phone-id. | Application-owned identifier storage; reuse according to its lifecycle; see [Persistent IDs](android-inputs.md#persistent-identifiers). | Hyphenated UUID text. | `"5df7a98e-0a78-4c73-9a59-6bbda564a423"` |
-| `expid` | Performance/installation device identifier, not simply an experiment number. | The stored performance-device UUID; initialize from Android ID UTF-8 bytes using a name-based UUID, or persist a random UUID when the ID is null/blank. [Performance UUID](android-inputs.md#performance-identifier) | UUID as 16 big-endian bytes, then unpadded Base64url; see [UUID encoding](android-inputs.md#uuid-encoding). | `"_TFQzU9PO86vUedM9qsUGg"` |
-| `access_session_id` | Correlates requests in an access session. | The current UUID retained by the session manager; changed at a session reset. [Access session](android-inputs.md#access-session) | 16 big-endian UUID bytes encoded as unpadded Base64url; do not regenerate during every serialization. | `"MhTn3z5-TNyq7hm6aFuSzQ"` |
-| `advertising_id` | Resettable identifier supplied by the advertising service. | Google Play services AdvertisingIdClient; see [Advertising ID](android-inputs.md#advertising-id). | String; availability, tracking preference, and flow configuration govern inclusion; do not substitute a random UUID. | `"00cc4a0e-77ee-4333-b0c9-3667fe33dd77"` |
-| `aid` | Digest representation of Android ID. | Settings.Secure.ANDROID_ID followed by SHA-256; see [Android ID](android-inputs.md#android-id) and [aid encoding](android-inputs.md#aid-encoding). | For a present ID: UTF-8, SHA-256, standard Base64. Read failures require separate handling; null is not an empty string. | `"XyeDoz1twFMRk4lDPD67kynrPOlrba4VHNDM1XDsgbI="` |
+| `fdid` | Persistent client phone-id. | Application-owned identifier storage; reuse according to its lifecycle; see [Persistent IDs](android-inputs.md#en-persistent-identifiers). | Hyphenated UUID text. | `"5df7a98e-0a78-4c73-9a59-6bbda564a423"` |
+| `expid` | Performance/installation device identifier, not simply an experiment number. | The stored performance-device UUID; initialize from Android ID UTF-8 bytes using a name-based UUID, or persist a random UUID when the ID is null/blank. [Performance UUID](android-inputs.md#en-performance-identifier) | UUID as 16 big-endian bytes, then unpadded Base64url; see [UUID encoding](android-inputs.md#en-uuid-encoding). | `"_TFQzU9PO86vUedM9qsUGg"` |
+| `access_session_id` | Correlates requests in an access session. | The current UUID retained by the session manager; changed at a session reset. [Access session](android-inputs.md#en-access-session) | 16 big-endian UUID bytes encoded as unpadded Base64url; do not regenerate during every serialization. | `"MhTn3z5-TNyq7hm6aFuSzQ"` |
+| `advertising_id` | Resettable identifier supplied by the advertising service. | Google Play services AdvertisingIdClient; see [Advertising ID](android-inputs.md#en-advertising-id). | String; availability, tracking preference, and flow configuration govern inclusion; do not substitute a random UUID. | `"00cc4a0e-77ee-4333-b0c9-3667fe33dd77"` |
+| `aid` | Digest representation of Android ID. | Settings.Secure.ANDROID_ID followed by SHA-256; see [Android ID](android-inputs.md#en-android-id) and [aid encoding](android-inputs.md#en-aid-encoding). | For a present ID: UTF-8, SHA-256, standard Base64. Read failures require separate handling; null is not an empty string. | `"XyeDoz1twFMRk4lDPD67kynrPOlrba4VHNDM1XDsgbI="` |
 
 ### 3. Recovery and reinstall material
 
@@ -373,7 +382,7 @@ Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` co
 | `backup_token` | Auxiliary material for backup/reinstall flows. | Local backup or migration state, or material created by that flow, selected with the relevant number. | Binary data percent-encoded at the form layer. | `"%ED%F5%94%8AT%97B%D8%ABO%D1a%FA%85%F8%A8%EA%BFr%3E"` |
 | `backup_token_source` | Source category of the selected backup_token. | The same selection result that supplies backup_token. | Decimal text; 1 for random fallback, 2 for existing material. Capture both together. | `"2"` |
 | `backup_token_error` | Stored processing status or diagnostic from the backup-token flow. | Diagnostics persisted by the actual backup-fetch callback. | Examples: success, null_token, or exception text; at most 256 UTF-16 units. Not an exist response status. | `"success"` |
-| `hasinrc` | Whether the local recovery record exists. | Existence of rc2 under the application files directory; see [Recovery record](android-inputs.md#recovery-record). | 1/0 text; file presence does not prove successful decryption or valid material. | `"1"` |
+| `hasinrc` | Whether the local recovery record exists. | Existence of rc2 under the application files directory; see [Recovery record](android-inputs.md#en-recovery-record). | 1/0 text; file presence does not prove successful decryption or valid material. | `"1"` |
 
 ### 4. Connection and end-to-end public identity
 
@@ -382,7 +391,7 @@ Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` co
 | `authkey` | Curve25519 public key used for connection authentication. | The current public key in the application connection-key store. | Raw 32-byte public key → unpadded Base64url; distinct from e_ident and the request-signing key. | `"4yaaizFmaV08e-VH5faVV5wCF-PoUalZ0O6yRZX9VyM"` |
 | `e_keytype` | End-to-end public-key type tag. | Protocol key-type configuration. | Single byte 0x05 → unpadded Base64url, producing BQ; not decimal text 5. | `"BQ"` |
 | `e_ident` | Signal identity public key. | The existing Signal identity record. | Raw 32 bytes without the storage type prefix → unpadded Base64url. Do not create a new identity for each request. | `"Phq_oqMtBwkFmmq86GHQeSeStOZ9q6exfcVD6REAqMo"` |
-| `e_regid` | Local Signal registration identifier, distinct from the phone number. | Signal registration state associated with the current identity. | 4-byte big-endian integer → unpadded Base64url; see [ID encoding](android-inputs.md#signal-id-encoding). | `"AAAdLQ"` |
+| `e_regid` | Local Signal registration identifier, distinct from the phone number. | Signal registration state associated with the current identity. | 4-byte big-endian integer → unpadded Base64url; see [ID encoding](android-inputs.md#en-signal-id-encoding). | `"AAAdLQ"` |
 | `e_skey_id` | Identifier of the selected signed prekey. | The selected signed-prekey record. | 3-byte big-endian integer → unpadded Base64url; use the same record as the next two fields. | `"KerV"` |
 | `e_skey_val` | Public key of that signed prekey. | The public key from the same record as e_skey_id. | Raw 32 bytes without the type prefix → unpadded Base64url. | `"CMCBNzF6M6QpNfObtJHTzh6Z9PysGCX5YOzOncgK570"` |
 | `e_skey_sig` | Identity-key signature over that prekey. | The signature stored in the same record as e_skey_id/e_skey_val. | Signature bytes → unpadded Base64url; distinct from the request signature H. | `"vQCjaftbuFsIGt7cXx_nzSc3wq7nGMj79prnxbK6eerqqnBpT66_OHqwHGnq-TGEs4NRdgmT9oYI1FTzCyl55A"` |
@@ -392,10 +401,10 @@ Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` co
 | Field | Meaning | Input source | Representation and presence | Example |
 | --- | --- | --- | --- | --- |
 | `token` | Validation value bound to client application material and the number being checked. | Derived using package name, application resources, signing certificate, DEX content, and the national number. | Standard Base64; distinct from Google, push, and backup tokens. | `"H05HI8Fb1Yo1aFldguetNlIafyg="` |
-| `gpia` | Combined Play Integrity result and application integrity information. | A real asynchronous Play Integrity result plus application information; see [Play Integrity](android-inputs.md#play-integrity). | Internal JSON with field-level encryption and Base64 packaging; may describe a token, error, or timeout. | `"pTAApqGZasLEwfdRwW2HOypCqTvgGFSB9FbdAR6HZqhj…nr/s9cG0nij7ENLhy"` (example excerpt) |
+| `gpia` | Combined Play Integrity result and application integrity information. | A real asynchronous Play Integrity result plus application information; see [Play Integrity](android-inputs.md#en-play-integrity). | Internal JSON with field-level encryption and Base64 packaging; may describe a token, error, or timeout. | `"pTAApqGZasLEwfdRwW2HOypCqTvgGFSB9FbdAR6HZqhj…nr/s9cG0nij7ENLhy"` (example excerpt) |
 | `_gg` | Compact packaging of the Play Integrity outcome. | The result code and optional token from the same invocation used by gpia. | Field-encrypted JSON packaged with Base64; do not mix outcomes from separate calls. | `"mYVMzuhLj8lb5pky1X0EMj/4CwfIoZltinkTWYaouqrW…y+OgTTqA6BxXgAeGz"` (example excerpt) |
-| `_gi` | Integrity information about installed application content, signatures, and directories. | Installation paths, package/DEX streams, signing certificates, and installation environment; raw APIs in [Package material](android-inputs.md#package-material). | A composite structure with field-level encryption and Base64 packaging. | `"eHnqtzWQgW9e2IcFRCxh4H3C3dfC7ZvU5RvHbHtWTDVw…CZjT9GJmkEWByrQ=="` (example excerpt) |
-| `_gp` | Digest of the declared permission set. | PackageInfo.requestedPermissions; see [Declared permissions](android-inputs.md#declared-permissions). | Sort names by UTF-8 bytes, concatenate without separators, SHA-256, then standard Base64; not the granted-permission set. | `"q19gmaQaITVtyoBCdLsD7CiZKryGA9zltE8yTd30NdI="` |
+| `_gi` | Integrity information about installed application content, signatures, and directories. | Installation paths, package/DEX streams, signing certificates, and installation environment; raw APIs in [Package material](android-inputs.md#en-package-material). | A composite structure with field-level encryption and Base64 packaging. | `"eHnqtzWQgW9e2IcFRCxh4H3C3dfC7ZvU5RvHbHtWTDVw…CZjT9GJmkEWByrQ=="` (example excerpt) |
+| `_gp` | Digest of the declared permission set. | PackageInfo.requestedPermissions; see [Declared permissions](android-inputs.md#en-declared-permissions). | Sort names by UTF-8 bytes, concatenate without separators, SHA-256, then standard Base64; not the granted-permission set. | `"q19gmaQaITVtyoBCdLsD7CiZKryGA9zltE8yTd30NdI="` |
 | `_gs` | Security signal combining path checks, execution state, time, and randomness. | Filesystem stat results, time, randomness, and security-component preparation state. | Outer JSON contains em, which packages an ephemeral public key and AES-GCM ciphertext/tag using Base64url; not one boolean. | `{"em":"f8_clCHf9eCJ5CRfvd_bTug_ZagXp2NjeF0Dht…VIvwpJI2Z-YC8GIo"}` (example excerpt) |
 | `_ge` | Virtualization-related module checks and conditional su-path checks. | Module and path checks visible to the current process. | JSON text; distinguish detection from a failed check; not an entirely CBC-encrypted field. | `{"sb":false,"sv":false}` |
 | `_ga` | Environment information including path ages, automation state, and a boot identifier. | Directory metadata, ActivityManager.isUserAMonkey(), and the readable boot identifier, among other inputs. | Outer JSON; ap/ai/ae are seconds, mp/mu booleans, and bi has its own encryption wrapper. Access failures are not normal empty contents. | `{"mp":false,"mu":false}` (example excerpt) |
@@ -404,27 +413,27 @@ Values are represented as strings; JSON-valued fields such as `_ge` and `_ga` co
 
 | Field | Meaning | Input source | Representation and presence | Example |
 | --- | --- | --- | --- | --- |
-| `device_name` | Device build codename, not a user nickname or marketing model name. | Build.DEVICE; see [Device codename](android-inputs.md#device-name). | String; do not substitute Build.MODEL. | `"coral"` |
-| `device_ram` | Total device RAM. | ActivityManager.MemoryInfo.totalMem; see [Total RAM](android-inputs.md#device-ram). | Bytes divided by 1024³, formatted as GiB text with up to two decimal places; not availMem. | `"5.34"` |
-| `pid` | PID of the application process performing the flow. | android.os.Process.myPid(); see [Process ID](android-inputs.md#process-id). | Decimal text. | `"10751"` |
-| `db` | ADB setting state. | Settings.Global.ADB_ENABLED; see [ADB setting](android-inputs.md#adb-setting). | Decimal text; collection configuration may omit it; not Debug.isDebuggerConnected(). | `"1"` |
-| `read_phone_permission_granted` | Whether all phone permissions needed by the flow are granted. | READ_PHONE_STATE and, where required, READ_PHONE_NUMBERS; see [Phone permissions](android-inputs.md#phone-permissions). | 1/0 text; declaring a permission is different from having runtime approval. | `"0"` |
-| `simnum` | Whether a device-number string meets the length threshold. | A number returned by the selected subscription/telephony service; see [Device number](android-inputs.md#device-number). | 1 for a non-null string of length at least 6, otherwise 0; not a SIM count or ownership proof. | `"0"` |
-| `sim_state` | Detailed SIM-state number. | TelephonyManager.getSimState() for the default SIM, or getSimState(slotIndex) for a logical slot; see [SIM state](android-inputs.md#sim-state). | Decimal text for states such as absent, locked, or ready; distinct from sim_type. | `"1"` |
-| `sim_operator_name` | SIM home-operator name. | TelephonyManager.getSimOperatorName(); see [Operator names](android-inputs.md#operator-names). | String; select the subscription on multi-SIM devices. Empty results and read failures are different. | `""` |
-| `network_operator_name` | Current telephony-network operator name. | TelephonyManager.getNetworkOperatorName(); see [Operator names](android-inputs.md#operator-names). | String; may differ from the SIM operator while roaming. | `""` |
-| `network_radio_type` | Application classification of transport and cellular radio technology. | ConnectivityManager/NetworkCapabilities and the selected subscription data-network type; see [Network classification](android-inputs.md#network-type). | Protocol enum, not a raw NETWORK_TYPE value; examples: Wi-Fi/Ethernet class 1, LTE 111, NR 113. | `"1"` |
-| `is_foa_fdid_app_installed` | Whether visible related applications match the required signing rules. | PackageManager results plus application-defined certificate rules; raw certificate APIs in [Related-app signatures](android-inputs.md#related-app-signatures). | true/false text; package names alone are insufficient, and package visibility limits results. | `"false"` |
+| `device_name` | Device build codename, not a user nickname or marketing model name. | Build.DEVICE; see [Device codename](android-inputs.md#en-device-name). | String; do not substitute Build.MODEL. | `"coral"` |
+| `device_ram` | Total device RAM. | ActivityManager.MemoryInfo.totalMem; see [Total RAM](android-inputs.md#en-device-ram). | Bytes divided by 1024³, formatted as GiB text with up to two decimal places; not availMem. | `"5.34"` |
+| `pid` | PID of the application process performing the flow. | android.os.Process.myPid(); see [Process ID](android-inputs.md#en-process-id). | Decimal text. | `"10751"` |
+| `db` | ADB setting state. | Settings.Global.ADB_ENABLED; see [ADB setting](android-inputs.md#en-adb-setting). | Decimal text; collection configuration may omit it; not Debug.isDebuggerConnected(). | `"1"` |
+| `read_phone_permission_granted` | Whether all phone permissions needed by the flow are granted. | READ_PHONE_STATE and, where required, READ_PHONE_NUMBERS; see [Phone permissions](android-inputs.md#en-phone-permissions). | 1/0 text; declaring a permission is different from having runtime approval. | `"0"` |
+| `simnum` | Whether a device-number string meets the length threshold. | A number returned by the selected subscription/telephony service; see [Device number](android-inputs.md#en-device-number). | 1 for a non-null string of length at least 6, otherwise 0; not a SIM count or ownership proof. | `"0"` |
+| `sim_state` | Detailed SIM-state number. | TelephonyManager.getSimState() for the default SIM, or getSimState(slotIndex) for a logical slot; see [SIM state](android-inputs.md#en-sim-state). | Decimal text for states such as absent, locked, or ready; distinct from sim_type. | `"1"` |
+| `sim_operator_name` | SIM home-operator name. | TelephonyManager.getSimOperatorName(); see [Operator names](android-inputs.md#en-operator-names). | String; select the subscription on multi-SIM devices. Empty results and read failures are different. | `""` |
+| `network_operator_name` | Current telephony-network operator name. | TelephonyManager.getNetworkOperatorName(); see [Operator names](android-inputs.md#en-operator-names). | String; may differ from the SIM operator while roaming. | `""` |
+| `network_radio_type` | Application classification of transport and cellular radio technology. | ConnectivityManager/NetworkCapabilities and the selected subscription data-network type; see [Network classification](android-inputs.md#en-network-type). | Protocol enum, not a raw NETWORK_TYPE value; examples: Wi-Fi/Ethernet class 1, LTE 111, NR 113. | `"1"` |
+| `is_foa_fdid_app_installed` | Whether visible related applications match the required signing rules. | PackageManager results plus application-defined certificate rules; raw certificate APIs in [Related-app signatures](android-inputs.md#en-related-app-signatures). | true/false text; package names alone are insufficient, and package visibility limits results. | `"false"` |
 
 ### 7. Push and optional telephony-environment fields
 
 | Field | Meaning | Input source | Representation and presence | Example |
 | --- | --- | --- | --- | --- |
-| `push_token` | Push-provider token for the application instance. | The current token from a push SDK callback and local storage; FCM entry in [Push token](android-inputs.md#push-token). | Include when available and required by the flow; unavailable/empty values may be omitted, not replaced by a UUID. | `"ZNMneWyXD336HaogDvqthjeHW6lvJfbH3pHuN7vnuszUbrQpmu1M1ECtfYr7ZIs1DP8eL-MROsjyzEPEOcGu9g"` |
-| `sim_type` | Application-level SIM-availability category. | SIM-service availability and getSimState(). [Raw SIM state](android-inputs.md#sim-state) | Conditional; 0 for absent, 1 for other readable SIM states, 2 for unavailable service; not sim_state. | `"0"` |
-| `airplane_mode_type` | Airplane-mode setting. | Settings.Global.AIRPLANE_MODE_ON; see [Airplane mode](android-inputs.md#airplane-mode). | Conditional; normalized 0/1 text. | `"0"` |
-| `cellular_strength` | Cellular signal-strength level. | TelephonyManager.getSignalStrength().getLevel(); see [Signal level](android-inputs.md#signal-strength). | Conditional; 0..4 are signal levels, while 5 is an unavailable fallback, not maximum strength. | `"5"` |
-| `roaming_type` | Telephony roaming classification. | Network presence, selected telephony service, and isNetworkRoaming(). [Raw roaming state](android-inputs.md#roaming-state) | Conditional; 0 for not roaming, 1 for roaming, and 2 when the telephony service object is absent. Omit without a network snapshot; do not automatically map read exceptions to 0 or 2. | `"0"` |
+| `push_token` | Push-provider token for the application instance. | The current token from a push SDK callback and local storage; FCM entry in [Push token](android-inputs.md#en-push-token). | Include when available and required by the flow; unavailable/empty values may be omitted, not replaced by a UUID. | `"ZNMneWyXD336HaogDvqthjeHW6lvJfbH3pHuN7vnuszUbrQpmu1M1ECtfYr7ZIs1DP8eL-MROsjyzEPEOcGu9g"` |
+| `sim_type` | Application-level SIM-availability category. | SIM-service availability and getSimState(). [Raw SIM state](android-inputs.md#en-sim-state) | Conditional; 0 for absent, 1 for other readable SIM states, 2 for unavailable service; not sim_state. | `"0"` |
+| `airplane_mode_type` | Airplane-mode setting. | Settings.Global.AIRPLANE_MODE_ON; see [Airplane mode](android-inputs.md#en-airplane-mode). | Conditional; normalized 0/1 text. | `"0"` |
+| `cellular_strength` | Cellular signal-strength level. | TelephonyManager.getSignalStrength().getLevel(); see [Signal level](android-inputs.md#en-signal-strength). | Conditional; 0..4 are signal levels, while 5 is an unavailable fallback, not maximum strength. | `"5"` |
+| `roaming_type` | Telephony roaming classification. | Network presence, selected telephony service, and isNetworkRoaming(). [Raw roaming state](android-inputs.md#en-roaming-state) | Conditional; 0 for not roaming, 1 for roaming, and 2 when the telephony service object is absent. Omit without a network snapshot; do not automatically map read exceptions to 0 or 2. | `"0"` |
 
 ### 8. Flow metrics, interaction, and diagnostics
 
@@ -466,13 +475,201 @@ The random `e_pq_last_resort_*` examples illustrate Base64url representation onl
 
 Use one `cc/in` pair and keep number-dependent material aligned. Capture backup material/source, signed-prekey components, and Play results consistently. Accumulate or consume metrics at business events rather than during serialization retries. The four optional telephony-environment fields share a collection gate; push-token inclusion is separate.
 
-Omission, null, zero, and false differ. Apply each encoding once, preserving its Base64 alphabet and padding. The [full example](#plaintext-example) and [mock Java builder](#mock-fields-java) list all 71 parameters for reference, including fields from different flows; choose fields and real values for the current flow. JSON-valued fields contain compact JSON strings. Recovery-byte examples are already percent-encoded and must not be encoded twice.
+Omission, null, zero, and false differ. Apply each encoding once, preserving its Base64 alphabet and padding. The [full example](#plaintext-example-en) and [mock Java builder](#mock-fields-java-en) list all 71 parameters for reference, including fields from different flows; choose fields and real values for the current flow. JSON-valued fields contain compact JSON strings. Recovery-byte examples are already percent-encoded and must not be encoded twice.
 
-## 相关内容 / Related Reading
+<a id="plaintext-example-en"></a>
 
-- [Android 获取代码 / Android input examples](android-inputs.md)：公开 API、应用持久状态与字节编码。 / Public APIs, persistent state, and byte encoding.
-- `security-fields/`：七个安全字段的详细结构与算法。 / Security-field structures and algorithms.
-- `request-encryption.md`：参数序列化、ENC 与 H。 / Serialization, ENC, and H.
-- `sending-requests.md`：Authorization、请求头、HTTP 发送与响应。 / Authorization, headers, transmission, and responses.
+### Full Plaintext Example
 
-[返回注册目录 / Back to registration](README.md)
+This reference example lists all 71 parameters in table order, including conditional fields from different flows; do not send the entire catalog as a request. All values are strings. Identifiers and payloads use random examples in the same representation; the `_ga` age numbers are synthetic. This JSON is not the final HTTP body.
+
+```json
+{
+  "cc": "86",
+  "in": "14933330256",
+  "lg": "zh",
+  "lc": "CN",
+  "rc": "0",
+  "entrypoint": "suma",
+  "fdid": "5df7a98e-0a78-4c73-9a59-6bbda564a423",
+  "expid": "_TFQzU9PO86vUedM9qsUGg",
+  "access_session_id": "MhTn3z5-TNyq7hm6aFuSzQ",
+  "advertising_id": "00cc4a0e-77ee-4333-b0c9-3667fe33dd77",
+  "aid": "XyeDoz1twFMRk4lDPD67kynrPOlrba4VHNDM1XDsgbI=",
+  "id": "%B1%9Fw%05%03%88%A9%97T%8C%40%C1%D0%2F%F64%A6%21%FD%B6",
+  "backup_token": "%ED%F5%94%8AT%97B%D8%ABO%D1a%FA%85%F8%A8%EA%BFr%3E",
+  "backup_token_source": "2",
+  "backup_token_error": "success",
+  "hasinrc": "1",
+  "authkey": "4yaaizFmaV08e-VH5faVV5wCF-PoUalZ0O6yRZX9VyM",
+  "e_keytype": "BQ",
+  "e_ident": "Phq_oqMtBwkFmmq86GHQeSeStOZ9q6exfcVD6REAqMo",
+  "e_regid": "AAAdLQ",
+  "e_skey_id": "KerV",
+  "e_skey_val": "CMCBNzF6M6QpNfObtJHTzh6Z9PysGCX5YOzOncgK570",
+  "e_skey_sig": "vQCjaftbuFsIGt7cXx_nzSc3wq7nGMj79prnxbK6eerqqnBpT66_OHqwHGnq-TGEs4NRdgmT9oYI1FTzCyl55A",
+  "token": "H05HI8Fb1Yo1aFldguetNlIafyg=",
+  "gpia": "pTAApqGZasLEwfdRwW2HOypCqTvgGFSB9FbdAR6HZqhj4kuw8hOx6eFIqNd29R9DYjF4r40AG7iGExzO16+Ix7HH/q0WUyOOViTsU4POH//l1bIV4wGj7jywfNgJMJVa7BIPyWMTkILFHfN57LP6b/frGHqk7O9bigHMfkOkxYq9On34sZTdwfOwZ9JX7Y6zWvfdTZGb8+WYQNtgVnlwsEM1/4yXweLTd8I9HDtyfHMzt3W6vr3fMInm+iR6QstBkUtdhaYDmtk5n9IwDS3zJNRuHzLqGPyBN0m0Bdxo1Wwuglb1DVP2cuAKnzcd+I5j892knETbW59oqTZui4JWPNZTY29UL2n1luGeYBWN4BEQsfEfWwd6BVcnmRCmMinPDCEmfi/aFn3HR9JwOHh0lNpPYzu/gzAB4mrsiCOll5aNyK4Y+Ned9WxBojJW8BZV1zl5crsv4b656TN7rTrBV6RH7VZSxKU/qwJ0h/3I6VveJGDOft29Pc0Sze9EcLDysgH1jA/lwMKs+pf/iy0o/m//r9BsQOe5g898Wj6wWw7xm23PQ9qfkBMm3WR5Dm1yaUI21caHbDrz831+GzZgcwZCOxpmtRbg69x2fvxLX3rMPFuCM6BMGM+NpVnhv9+MeGkbtYKxDO3JFYdp3LmLEz9nrtk5BJLMEZ1u1d/zT8ehcqctmoUT8d8Uc7kedvLoUDhfq+jIT6nM+TZaanbaEI4DPXLTc6QS/q8CquxLShdY87TMfnp7HZytlBRNu3x37jJoUi/YCFiPGNRMK8KZLvbINugIisXC+N4D1s7B9efPh+EVg82ylD4tLS4e8EnAI5+fp6paIcZOx3mYhodoJxwR3ECBjC81b1bEDt7+zpeAlhA26dTyw8WLVrkKZIunBoKg7z1gBACeSpiWo3jdQQ4c3/ue6eN+p42sYX81RXDaxQLQxIzRlQaXSGyZmcoA+FRRNVBPdIzfAtbMYfzKQ79QOuYP5WW62mAohCID6nTu0mNafwl5ko5iwKNoSJJmwdpBEcG0Y5FIEoChml+urBpxHH+f32caE0zRIlymePG5XoRN89RjqSKwsPNh5e3qPYw0QdVcaNrM0le1Y2hJtSplZPutwsvMzjTaeigNqYxw8/MO1kh1LmW3PbkkP8N/EQIaPUocVb0NRK/ub6VCnPZ1OVE+MbCai395wTWC2pKnxXRweEI891trg1gqr5Zh02IF1W0tqodAlDWt8cKr8s1d5ffSuTWem0lLU6sbxdoabOFv1+PfnX15XbV7Uq5hgfD8ENipTeib51aBYeGmp9LQ8787ASYDR7zEGDB1kdvnihAbT7Ccro9Kexx3BNunMoIYgkRitjE2x8nJAa4ZiGqKH2PNXV0YN9S+aJUDpLQwpBy+qRlIKv2bR2FagvFD/2tUi9BgK6tiCdUCmxPD0d4itAEDueC65qmF/e3JAoKuXJ1nr/s9cG0nij7ENLhy",
+  "_gg": "mYVMzuhLj8lb5pky1X0EMj/4CwfIoZltinkTWYaouqrWNxEYUUpjYrWbqy+AND1feAdrLVCMAivg3BRu7bL5rNk6MUCuhW+s2JLfxaBVV1Pk6BhEz3csl12D7UpFlkxv7ThlDUhSzxcjxM5aCa87pjM/HDG2LXJuNxU7LSIoYhUISowQGJmD6a6ihFhigwNOtzCeAxBY2qjUP+0/N7mpvHcBa+MKAOPvjddqc3rd82Qj+O/d9Tv1/3hAZ+E9ZgsWzRMewuPdUUMOsslL74jP7Fy4PW6HO8mLY8rJN1dPdn52t+UystCGuWQXuQsuRnXr3hN0wBVhtGGxLFPhg7PArpWwQZE5liBNoEz9HKuEL5wd+5YiF9ZGSFPKAKMrzhU/ZR2gk0vx58yxPC4GYuCDWNcj/mm0oY8B/Lw+Ypp2OB5j7vMBtPAKtA4nHL4ZlloQWQeNPfYXZhiXtWrpEWQ7bkTVoPs2jfdq3Di+qwcOm70ykjGi48Kb0yPD9ONxmP54vhX/OQgTa5JYxQy1inc7fOL0qAX46E0FSMnTvh6zfCWYe5O0C8ERz95R54hN0l7FP2swpB36lvdagfv+tMDR+k0x+qaqTh5McEkCr4zhp4a/ggmd77j9rbJbbw09qX0D1rb5qlyvceLaVScKWF1BRMyBi8hmfzhRg3NOEXExKnfsJoAnBPbPPdp+wxntvGcjaXkiAhtC4+WX9rwxEnAf0uY8aG08m3Ku8HepFQ4dqmDZ9Vabbjf3EFCbyhaUCn/zcW+M68fFDFowCYcqgnUCvb9v3YTxVi3Yjoln9SPEPASd4CEIZK4cIhQSJJcYLgwjhNC6nKror8d1CwvNldfxP+F3k41JwEzs90lLSi+JombKpcVjs2XGk8vky/f15zq3I1uKQzgiM+8s4WKG0bHIL2QznHn/8CaymkVXxXMTGpAdpjOHQGla5zQD4Sad6jd5Gzl82E4LD/muENBte7baJm8FXX7ms+oIlU2LEzOkRp/pd6Y3ZY+nqCJkKi8hNgJcCDqAn24uR9fmZMHyVZHpoStxH2A24ybuQVMFubiPhsg7FIcy+OgTTqA6BxXgAeGz",
+  "_gi": "eHnqtzWQgW9e2IcFRCxh4H3C3dfC7ZvU5RvHbHtWTDVwGfPEdU2h1IcVbI0ZQQdrbyhj1pn6y45qmGBJIbKkAOxLxcXjxuMA3fz7DpM3aA9WOtd+L/yipvT15Zw3uKcNEmnQlffArEtjnN6QB9961m82Y3ryVOPE9MzKFDjVRKChAaxlMksZeOzlsAwXpe6azB72gPwGtfdCDCW9nGNU6AVem3wqmXYs/KbTwfj48YP5xEOp6XIz8sjDp+qqivvTY4NE+SqIBM/hbCj3CmBSBuigimtBoRYgaWlZInPTPV1LiqzuDk8JnxcvEdBe0uFBgEPckaROw9n7FuJ11CJVl8JJtpJSHkAAoXrRAhtHxhhj3Cn33wGHiN4omr8nc3GOAa5aTY36/yeYkTznOe3aGDQOA91xg4jZ8zdYSM6uERyvPAmLoEI6vjbHoiPaMws4Uh4Q9GwBG0HyZWeFr6DBICUnH/7mhobTPqhW+6HP9JJTOZF5dioMXv2a9REnh71Mfp1ldsKIlYBNB6r5b/7ZvZuDpdt0xbO5goDkxn2tTMyJk2b98JdSdET9E4Gq3BBKxoKH2kTlD8gR6ksJFvyz/uZcqmKbrgqR8s8rXCSB+SX6Rdy9WrCdK0XIGkqPu0QF4y2KMH3CZjT9GJmkEWByrQ==",
+  "_gp": "q19gmaQaITVtyoBCdLsD7CiZKryGA9zltE8yTd30NdI=",
+  "_gs": "{\"em\":\"f8_clCHf9eCJ5CRfvd_bTug_ZagXp2NjeF0DhtLhn3_PAT4NSrz-STLaf3s4VEPC1-_zSDwgzDQNiTZRdU0X22VFTcva8Ad3UPzj3tbOcX4dfrYC3O-O5oNEYdT7cAqvWaWnpFWG-1qwE7maKpWp3gBZgDfEzT4NQhb3amiT30JZfY8Xo9TRPt_keA9D24J8IVw3oTTQNImP5uBVIvwpJI2Z-YC8GIo\"}",
+  "_ge": "{\"sb\":false,\"sv\":false}",
+  "_ga": "{\"bi\":\"+xz3ADFpfArSWkkdMEnSxQWznNbsipNDN28ymoTBikhQRHSpvkWcJS0yVsSid+kHo/43H7Ui4seU9df8ziUI6A==\",\"ap\":120,\"ai\":60,\"mp\":false,\"ae\":30,\"mu\":false}",
+  "device_name": "coral",
+  "device_ram": "5.34",
+  "pid": "10751",
+  "db": "1",
+  "read_phone_permission_granted": "0",
+  "simnum": "0",
+  "sim_state": "1",
+  "sim_operator_name": "",
+  "network_operator_name": "",
+  "network_radio_type": "1",
+  "is_foa_fdid_app_installed": "false",
+  "push_token": "ZNMneWyXD336HaogDvqthjeHW6lvJfbH3pHuN7vnuszUbrQpmu1M1ECtfYr7ZIs1DP8eL-MROsjyzEPEOcGu9g",
+  "sim_type": "0",
+  "airplane_mode_type": "0",
+  "cellular_strength": "5",
+  "roaming_type": "0",
+  "client_metrics": "{\"attempts\":4,\"app_campaign_download_source\":\"svsemm-utuw|mhuyndi\",\"was_activated_from_stub\":false}",
+  "offline_ab": "{\"exposure\":[\"xwztmb_bru_okc_uk_zsctjhpg_hspgzpe|irrtuz_ubj_yhm_ti_zugilvm_plv|qmf_9\"],\"exp_hash\":[\"860|yzvwgr_uyg_dhw_nv_mqbqflws_bftogha\"]}",
+  "feo2_query_status": "did_not_query",
+  "language_selector_clicked_count": "0",
+  "language_selector_time_spent": "0",
+  "mistyped": "7",
+  "foa_backup_token": "%F3%FD%FC%F3s%AEFmj%14t%CE%0A%F3%DE%B8%D0%15n%3C",
+  "client_capabilities": "AQID",
+  "login": "0-SEEbMgJz6xguYAzxzpseDm1h5V7rSs0C7N573bxps",
+  "type": "0",
+  "context": "invite_registration",
+  "tmobile_exp": "0",
+  "sim_status": "1",
+  "first_api_level": "28",
+  "old_phone_number": "8618056485253",
+  "recaptcha": "zaKSWs-lzA9ZKKKT9VK69pbeQZS8Nznz_-1FkrhTK1ucL08ygXmcX8M7k1ROHGFNlnpEG5kELAfYHVtOEbJyTwokEPoi4B0s47pUQIV_NthuNE1tHYpKaHv2hdCh-mcr",
+  "fid": "286de756-0103-40f5-bcc0-90814fae25e8|1510401559",
+  "preloads_app_manager_id": "795a8dcfcdb6f05267577d725efe3817",
+  "preloads_attribution": "5f273ecb4cb1f99a266b0d083762a76a24cfb37ff7a2fc5f",
+  "tos_version": "5",
+  "cred_token": "tdIDs03R_b_aOnk8yxs75qsGVPA4ab3O2pDLsMm6nCpJzt5WNh3xK2MNaVjWpYmJ",
+  "e_pq_last_resort_id": "NHlsOg",
+  "e_pq_last_resort_val": "2jffqARfLr6C1HEDDgF5mJaT7dwIX_1PHyVEru5rCdENG14gbNlQvVRQw3w7fO6DIPl38OaJAog4VliJL3_bk2hDgOz2ERDWLPocv-mI-tWcWNg8sf0HyQKM4Z_FFcfG",
+  "e_pq_last_resort_sig": "L8RmFk-XvjIMzBBSPPwttNuzwdGZxOiNedZEpSWZP_QgGBKIzF75Dm26G5E1aj3cQX9bfOvek4vjqcGEk0VDdg"
+}
+```
+
+The `id`, `backup_token`, and `foa_backup_token` examples show random raw bytes using percent encoding; do not encode them again. JSON-valued fields contain compact JSON strings; `_gs` retains its `em` wrapper.
+
+<a id="mock-fields-java-en"></a>
+
+#### Java Mock Builder
+
+This Android Java class builds the same 71-field example object. The randomly generated example values are fixed literals for repeatable inspection. It performs no real identity initialization, token acquisition, or security-field computation.
+
+```java
+// File: ExistMockFields.java
+package wiki.examples;
+
+import android.util.Log;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public final class ExistMockFields {
+    private ExistMockFields() {}
+
+    // Fixed random examples for local inspection, not valid credentials.
+    public static JSONObject create() throws JSONException {
+        JSONObject fields = new JSONObject();
+        fields.put("cc", "86");
+        fields.put("in", "14933330256");
+        fields.put("lg", "zh");
+        fields.put("lc", "CN");
+        fields.put("rc", "0");
+        fields.put("entrypoint", "suma");
+        fields.put("fdid", "5df7a98e-0a78-4c73-9a59-6bbda564a423");
+        fields.put("expid", "_TFQzU9PO86vUedM9qsUGg");
+        fields.put("access_session_id", "MhTn3z5-TNyq7hm6aFuSzQ");
+        fields.put("advertising_id", "00cc4a0e-77ee-4333-b0c9-3667fe33dd77");
+        fields.put("aid", "XyeDoz1twFMRk4lDPD67kynrPOlrba4VHNDM1XDsgbI=");
+        fields.put("id", "%B1%9Fw%05%03%88%A9%97T%8C%40%C1%D0%2F%F64%A6%21%FD%B6");
+        fields.put("backup_token", "%ED%F5%94%8AT%97B%D8%ABO%D1a%FA%85%F8%A8%EA%BFr%3E");
+        fields.put("backup_token_source", "2");
+        fields.put("backup_token_error", "success");
+        fields.put("hasinrc", "1");
+        fields.put("authkey", "4yaaizFmaV08e-VH5faVV5wCF-PoUalZ0O6yRZX9VyM");
+        fields.put("e_keytype", "BQ");
+        fields.put("e_ident", "Phq_oqMtBwkFmmq86GHQeSeStOZ9q6exfcVD6REAqMo");
+        fields.put("e_regid", "AAAdLQ");
+        fields.put("e_skey_id", "KerV");
+        fields.put("e_skey_val", "CMCBNzF6M6QpNfObtJHTzh6Z9PysGCX5YOzOncgK570");
+        fields.put("e_skey_sig", "vQCjaftbuFsIGt7cXx_nzSc3wq7nGMj79prnxbK6eerqqnBpT66_OHqwHGnq-TGEs4NRdgmT9oYI1FTzCyl55A");
+        fields.put("token", "H05HI8Fb1Yo1aFldguetNlIafyg=");
+        fields.put("gpia", "pTAApqGZasLEwfdRwW2HOypCqTvgGFSB9FbdAR6HZqhj4kuw8hOx6eFIqNd29R9DYjF4r40AG7iGExzO16+Ix7HH/q0WUyOOViTsU4POH//l1bIV4wGj7jywfNgJMJVa7BIPyWMTkILFHfN57LP6b/frGHqk7O9bigHMfkOkxYq9On34sZTdwfOwZ9JX7Y6zWvfdTZGb8+WYQNtgVnlwsEM1/4yXweLTd8I9HDtyfHMzt3W6vr3fMInm+iR6QstBkUtdhaYDmtk5n9IwDS3zJNRuHzLqGPyBN0m0Bdxo1Wwuglb1DVP2cuAKnzcd+I5j892knETbW59oqTZui4JWPNZTY29UL2n1luGeYBWN4BEQsfEfWwd6BVcnmRCmMinPDCEmfi/aFn3HR9JwOHh0lNpPYzu/gzAB4mrsiCOll5aNyK4Y+Ned9WxBojJW8BZV1zl5crsv4b656TN7rTrBV6RH7VZSxKU/qwJ0h/3I6VveJGDOft29Pc0Sze9EcLDysgH1jA/lwMKs+pf/iy0o/m//r9BsQOe5g898Wj6wWw7xm23PQ9qfkBMm3WR5Dm1yaUI21caHbDrz831+GzZgcwZCOxpmtRbg69x2fvxLX3rMPFuCM6BMGM+NpVnhv9+MeGkbtYKxDO3JFYdp3LmLEz9nrtk5BJLMEZ1u1d/zT8ehcqctmoUT8d8Uc7kedvLoUDhfq+jIT6nM+TZaanbaEI4DPXLTc6QS/q8CquxLShdY87TMfnp7HZytlBRNu3x37jJoUi/YCFiPGNRMK8KZLvbINugIisXC+N4D1s7B9efPh+EVg82ylD4tLS4e8EnAI5+fp6paIcZOx3mYhodoJxwR3ECBjC81b1bEDt7+zpeAlhA26dTyw8WLVrkKZIunBoKg7z1gBACeSpiWo3jdQQ4c3/ue6eN+p42sYX81RXDaxQLQxIzRlQaXSGyZmcoA+FRRNVBPdIzfAtbMYfzKQ79QOuYP5WW62mAohCID6nTu0mNafwl5ko5iwKNoSJJmwdpBEcG0Y5FIEoChml+urBpxHH+f32caE0zRIlymePG5XoRN89RjqSKwsPNh5e3qPYw0QdVcaNrM0le1Y2hJtSplZPutwsvMzjTaeigNqYxw8/MO1kh1LmW3PbkkP8N/EQIaPUocVb0NRK/ub6VCnPZ1OVE+MbCai395wTWC2pKnxXRweEI891trg1gqr5Zh02IF1W0tqodAlDWt8cKr8s1d5ffSuTWem0lLU6sbxdoabOFv1+PfnX15XbV7Uq5hgfD8ENipTeib51aBYeGmp9LQ8787ASYDR7zEGDB1kdvnihAbT7Ccro9Kexx3BNunMoIYgkRitjE2x8nJAa4ZiGqKH2PNXV0YN9S+aJUDpLQwpBy+qRlIKv2bR2FagvFD/2tUi9BgK6tiCdUCmxPD0d4itAEDueC65qmF/e3JAoKuXJ1nr/s9cG0nij7ENLhy");
+        fields.put("_gg", "mYVMzuhLj8lb5pky1X0EMj/4CwfIoZltinkTWYaouqrWNxEYUUpjYrWbqy+AND1feAdrLVCMAivg3BRu7bL5rNk6MUCuhW+s2JLfxaBVV1Pk6BhEz3csl12D7UpFlkxv7ThlDUhSzxcjxM5aCa87pjM/HDG2LXJuNxU7LSIoYhUISowQGJmD6a6ihFhigwNOtzCeAxBY2qjUP+0/N7mpvHcBa+MKAOPvjddqc3rd82Qj+O/d9Tv1/3hAZ+E9ZgsWzRMewuPdUUMOsslL74jP7Fy4PW6HO8mLY8rJN1dPdn52t+UystCGuWQXuQsuRnXr3hN0wBVhtGGxLFPhg7PArpWwQZE5liBNoEz9HKuEL5wd+5YiF9ZGSFPKAKMrzhU/ZR2gk0vx58yxPC4GYuCDWNcj/mm0oY8B/Lw+Ypp2OB5j7vMBtPAKtA4nHL4ZlloQWQeNPfYXZhiXtWrpEWQ7bkTVoPs2jfdq3Di+qwcOm70ykjGi48Kb0yPD9ONxmP54vhX/OQgTa5JYxQy1inc7fOL0qAX46E0FSMnTvh6zfCWYe5O0C8ERz95R54hN0l7FP2swpB36lvdagfv+tMDR+k0x+qaqTh5McEkCr4zhp4a/ggmd77j9rbJbbw09qX0D1rb5qlyvceLaVScKWF1BRMyBi8hmfzhRg3NOEXExKnfsJoAnBPbPPdp+wxntvGcjaXkiAhtC4+WX9rwxEnAf0uY8aG08m3Ku8HepFQ4dqmDZ9Vabbjf3EFCbyhaUCn/zcW+M68fFDFowCYcqgnUCvb9v3YTxVi3Yjoln9SPEPASd4CEIZK4cIhQSJJcYLgwjhNC6nKror8d1CwvNldfxP+F3k41JwEzs90lLSi+JombKpcVjs2XGk8vky/f15zq3I1uKQzgiM+8s4WKG0bHIL2QznHn/8CaymkVXxXMTGpAdpjOHQGla5zQD4Sad6jd5Gzl82E4LD/muENBte7baJm8FXX7ms+oIlU2LEzOkRp/pd6Y3ZY+nqCJkKi8hNgJcCDqAn24uR9fmZMHyVZHpoStxH2A24ybuQVMFubiPhsg7FIcy+OgTTqA6BxXgAeGz");
+        fields.put("_gi", "eHnqtzWQgW9e2IcFRCxh4H3C3dfC7ZvU5RvHbHtWTDVwGfPEdU2h1IcVbI0ZQQdrbyhj1pn6y45qmGBJIbKkAOxLxcXjxuMA3fz7DpM3aA9WOtd+L/yipvT15Zw3uKcNEmnQlffArEtjnN6QB9961m82Y3ryVOPE9MzKFDjVRKChAaxlMksZeOzlsAwXpe6azB72gPwGtfdCDCW9nGNU6AVem3wqmXYs/KbTwfj48YP5xEOp6XIz8sjDp+qqivvTY4NE+SqIBM/hbCj3CmBSBuigimtBoRYgaWlZInPTPV1LiqzuDk8JnxcvEdBe0uFBgEPckaROw9n7FuJ11CJVl8JJtpJSHkAAoXrRAhtHxhhj3Cn33wGHiN4omr8nc3GOAa5aTY36/yeYkTznOe3aGDQOA91xg4jZ8zdYSM6uERyvPAmLoEI6vjbHoiPaMws4Uh4Q9GwBG0HyZWeFr6DBICUnH/7mhobTPqhW+6HP9JJTOZF5dioMXv2a9REnh71Mfp1ldsKIlYBNB6r5b/7ZvZuDpdt0xbO5goDkxn2tTMyJk2b98JdSdET9E4Gq3BBKxoKH2kTlD8gR6ksJFvyz/uZcqmKbrgqR8s8rXCSB+SX6Rdy9WrCdK0XIGkqPu0QF4y2KMH3CZjT9GJmkEWByrQ==");
+        fields.put("_gp", "q19gmaQaITVtyoBCdLsD7CiZKryGA9zltE8yTd30NdI=");
+        fields.put("_gs", "{\"em\":\"f8_clCHf9eCJ5CRfvd_bTug_ZagXp2NjeF0DhtLhn3_PAT4NSrz-STLaf3s4VEPC1-_zSDwgzDQNiTZRdU0X22VFTcva8Ad3UPzj3tbOcX4dfrYC3O-O5oNEYdT7cAqvWaWnpFWG-1qwE7maKpWp3gBZgDfEzT4NQhb3amiT30JZfY8Xo9TRPt_keA9D24J8IVw3oTTQNImP5uBVIvwpJI2Z-YC8GIo\"}");
+        fields.put("_ge", "{\"sb\":false,\"sv\":false}");
+        fields.put("_ga", "{\"bi\":\"+xz3ADFpfArSWkkdMEnSxQWznNbsipNDN28ymoTBikhQRHSpvkWcJS0yVsSid+kHo/43H7Ui4seU9df8ziUI6A==\",\"ap\":120,\"ai\":60,\"mp\":false,\"ae\":30,\"mu\":false}");
+        fields.put("device_name", "coral");
+        fields.put("device_ram", "5.34");
+        fields.put("pid", "10751");
+        fields.put("db", "1");
+        fields.put("read_phone_permission_granted", "0");
+        fields.put("simnum", "0");
+        fields.put("sim_state", "1");
+        fields.put("sim_operator_name", "");
+        fields.put("network_operator_name", "");
+        fields.put("network_radio_type", "1");
+        fields.put("is_foa_fdid_app_installed", "false");
+        fields.put("push_token", "ZNMneWyXD336HaogDvqthjeHW6lvJfbH3pHuN7vnuszUbrQpmu1M1ECtfYr7ZIs1DP8eL-MROsjyzEPEOcGu9g");
+        fields.put("sim_type", "0");
+        fields.put("airplane_mode_type", "0");
+        fields.put("cellular_strength", "5");
+        fields.put("roaming_type", "0");
+        fields.put("client_metrics", "{\"attempts\":4,\"app_campaign_download_source\":\"svsemm-utuw|mhuyndi\",\"was_activated_from_stub\":false}");
+        fields.put("offline_ab", "{\"exposure\":[\"xwztmb_bru_okc_uk_zsctjhpg_hspgzpe|irrtuz_ubj_yhm_ti_zugilvm_plv|qmf_9\"],\"exp_hash\":[\"860|yzvwgr_uyg_dhw_nv_mqbqflws_bftogha\"]}");
+        fields.put("feo2_query_status", "did_not_query");
+        fields.put("language_selector_clicked_count", "0");
+        fields.put("language_selector_time_spent", "0");
+        fields.put("mistyped", "7");
+        fields.put("foa_backup_token", "%F3%FD%FC%F3s%AEFmj%14t%CE%0A%F3%DE%B8%D0%15n%3C");
+        fields.put("client_capabilities", "AQID");
+        fields.put("login", "0-SEEbMgJz6xguYAzxzpseDm1h5V7rSs0C7N573bxps");
+        fields.put("type", "0");
+        fields.put("context", "invite_registration");
+        fields.put("tmobile_exp", "0");
+        fields.put("sim_status", "1");
+        fields.put("first_api_level", "28");
+        fields.put("old_phone_number", "8618056485253");
+        fields.put("recaptcha", "zaKSWs-lzA9ZKKKT9VK69pbeQZS8Nznz_-1FkrhTK1ucL08ygXmcX8M7k1ROHGFNlnpEG5kELAfYHVtOEbJyTwokEPoi4B0s47pUQIV_NthuNE1tHYpKaHv2hdCh-mcr");
+        fields.put("fid", "286de756-0103-40f5-bcc0-90814fae25e8|1510401559");
+        fields.put("preloads_app_manager_id", "795a8dcfcdb6f05267577d725efe3817");
+        fields.put("preloads_attribution", "5f273ecb4cb1f99a266b0d083762a76a24cfb37ff7a2fc5f");
+        fields.put("tos_version", "5");
+        fields.put("cred_token", "tdIDs03R_b_aOnk8yxs75qsGVPA4ab3O2pDLsMm6nCpJzt5WNh3xK2MNaVjWpYmJ");
+        fields.put("e_pq_last_resort_id", "NHlsOg");
+        fields.put("e_pq_last_resort_val", "2jffqARfLr6C1HEDDgF5mJaT7dwIX_1PHyVEru5rCdENG14gbNlQvVRQw3w7fO6DIPl38OaJAog4VliJL3_bk2hDgOz2ERDWLPocv-mI-tWcWNg8sf0HyQKM4Z_FFcfG");
+        fields.put("e_pq_last_resort_sig", "L8RmFk-XvjIMzBBSPPwttNuzwdGZxOiNedZEpSWZP_QgGBKIzF75Dm26G5E1aj3cQX9bfOvek4vjqcGEk0VDdg");
+        return fields;
+    }
+
+    public static void printExample() throws JSONException {
+        for (String line : create().toString(2).split("\n")) {
+            Log.d("ExistMock", line);
+        }
+    }
+}
+```
+
+Call `ExistMockFields.create()` for the `JSONObject`, or `printExample()` for line-by-line Logcat output, handling `JSONException` in the caller. The class reads no device state, persists nothing, and sends no requests.
+
+### Related Reading
+
+- [Android input examples](android-inputs.md#en): Public APIs, persistent state, and byte encoding.
+- `security-fields/`: Security-field structures and algorithms.
+- `request-encryption.md`: Serialization, ENC, and H.
+- `sending-requests.md`: Authorization, headers, transmission, and responses.
+
+[Back to registration](README.md#en)
