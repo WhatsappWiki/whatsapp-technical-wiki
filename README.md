@@ -35,7 +35,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 | 章节 | 内容范围 | English keywords |
 | --- | --- | --- |
-| <a id="zh-registration"></a>[01 · 账号注册与验证码](registration/) | 号码检查、验证码申请与提交、注册状态及请求字段 | Registration, Verification, OTP |
+| <a id="zh-registration"></a>[01 · 账号注册与验证码](registration/) | exist/code/register 明文参数、安全字段、加密封装与请求发送 | Registration, Verification, Request Parameters, Encryption |
 | <a id="zh-authentication"></a>[02 · 登录认证与会话](authentication/) | 身份材料、会话持久化、设备关联与重新登录 | Login, Authentication, Session, Device Linking |
 | <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/) | 连接建立、握手、帧结构、编码和请求封装 | Protocol, Handshake, Serialization, Protobuf |
 | <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/) | 身份密钥、会话密钥、预密钥与加密边界 | E2EE, Signal Protocol, Key Management |
@@ -94,7 +94,7 @@ The repository is organized into English-named topic directories. Each directory
 
 | Chapter | Scope | Navigation |
 | --- | --- | --- |
-| <a id="en-registration"></a>01 · Registration and Verification | Phone-number checks, OTP requests, verification, and request fields | [Open topic](registration/) |
+| <a id="en-registration"></a>01 · Registration and Verification | exist/code/register parameters, security fields, encryption, and transmission | [Open topic](registration/) |
 | <a id="en-authentication"></a>02 · Login and Authentication | Credentials, sessions, device linking, logout, and recovery | [Open topic](authentication/) |
 | <a id="en-protocol"></a>03 · Protocols and Data Formats | Connections, handshakes, framing, serialization, and encoding | [Open topic](protocol/) |
 | <a id="en-encryption"></a>04 · Encryption and Keys | E2EE, Signal Protocol concepts, key storage, and rotation | [Open topic](encryption/) |

@@ -8,23 +8,30 @@
 
 ### 功能简介
 
-本目录介绍 WhatsApp 从输入手机号码到完成账号注册的流程，重点整理号码检查、验证码申请与提交、注册请求字段及状态变化，作为注册相关详细文章的入口。
+本目录按 `exist → code → register` 介绍注册请求，再集中讲解安全字段、明文数据加密与请求发送。阅读时先理解每个请求传什么、字段有什么含义，再理解安全字段如何构造、参数如何封装以及请求如何发出。
 
 ### 介绍范围
 
-- 注册流程：国家码与号码输入、号码检查、验证码申请、验证码提交及注册结果。
-- 号码规范化、输入纠错、设备号码提示与注册 UI 状态。
-- `/exist` 等已观察请求的用途、参数来源、条件字段和版本差异。
-- SMS 与语音验证码的申请路径、等待时间、重试和错误处理研究。
-- 设备标识、持久状态、客户端配置与安全信号的生命周期。
-- 请求正文、表单编码、加密封装、签名和证书链的职责。
-- 成功与失败样本的对照方法，以及客户端结果与服务端决策之间的证据边界。
+1. **`exist` 明文参数**：号码检查请求的用途、参数表、条件字段和字段之间的关系。
+2. **`code` 明文参数**：申请短信或语音验证码时的参数、发送方式选择和请求间需要延续的状态。
+3. **`register` 明文参数**：提交验证码并完成注册时的参数，以及与前两个请求的关联。
+4. **安全字段详解**：集中说明 `gpia`、`_gg`、`_gi`、`_gp`、`_gs`、`_ge`、`_ga` 的内容、输入、计算、编码和生命周期。
+5. **明文数据加密与请求封装**：从内层参数到序列化数据、加密内容、签名和外层正文。
+6. **请求发出与响应处理**：HTTP 方法与路径、请求头、正文写入、调用顺序、响应解析和重试条件。
 
-### 文档状态与扩展方式
+### 明文参数与加密正文
 
-本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
+这里的“明文参数”指进入外层加密之前的参数集合。安全字段的值本身仍可能包含编码或加密内容；在参数表里出现，不代表它的内部内容可以直接阅读。
 
-单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接并标明状态。
+三个请求分别列出各自的参数，区分必选、条件出现、空值和省略。安全字段先在参数表中说明用途，再由独立文章详细展开，避免在三个请求里重复算法。`token`、`aid` 等其他派生材料也应按各自职责说明，不能与七个安全字段或外层签名混为一类。
+
+加密、签名与发送分层介绍：`ENC` 属于加密封装，`H` 属于请求签名，`Authorization` 等属于请求头。各请求的字段和封装方式应分别说明，不预设三者具有完全相同的正文与头部。
+
+### 文档组织与扩展方式
+
+下方主线按阅读顺序排列。已有文章提供可点击链接，尚未建立的文章使用路径文本列出。号码输入、设备标识、验证码交互等补充内容放在对应专题中，由主线文章按需引用。
+
+单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
 <a id="en"></a>
 
@@ -32,36 +39,61 @@
 
 ### Overview
 
-This directory covers the path from phone-number input to account registration. It organizes number checks, verification-code requests and submission, registration request fields, and state transitions as an entry point to detailed registration articles.
+This directory introduces registration requests in the order `exist → code → register`, followed by dedicated explanations of security fields, plaintext encryption, and request transmission. Start with what each request contains, then learn how security fields are constructed, how parameters are packaged, and how requests are sent.
 
 ### Scope
 
-- Country codes, phone-number input, number checks, code requests, verification, and registration outcomes.
-- Number normalization, typo correction, device-number suggestions, and registration UI state.
-- Observed requests such as `/exist`: purpose, input sources, conditional fields, and version differences.
-- SMS and voice verification paths, waiting periods, retries, and error handling.
-- Device identifiers, persistent state, client configuration, and security-signal lifecycles.
-- Request bodies, form encoding, encrypted envelopes, signatures, and certificate chains.
-- Comparing successful and failed samples while separating client observations from server-side decision rules.
+1. **`exist` plaintext parameters**: purpose, parameter tables, conditional fields, and relationships for the number-check request.
+2. **`code` plaintext parameters**: parameters for requesting an SMS or voice verification code, delivery-method selection, and state carried between requests.
+3. **`register` plaintext parameters**: parameters for submitting the verification code and completing registration, including relationships to earlier requests.
+4. **Security fields**: contents, inputs, computation, encoding, and lifecycles of `gpia`, `_gg`, `_gi`, `_gp`, `_gs`, `_ge`, and `_ga`.
+5. **Plaintext encryption and request packaging**: inner parameters, serialization, encryption, signatures, and outer bodies.
+6. **Transmission and response handling**: HTTP methods and paths, headers, body writes, call order, response parsing, and retry conditions.
 
-### Documentation Status and Expansion
+### Plaintext Parameters and Encrypted Bodies
 
-This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
+“Plaintext parameters” means the parameter collection before outer encryption. A security field can itself contain encoded or encrypted content; appearing in a plaintext parameter table does not make its internal content directly readable.
 
-Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and record its status when the article is available.
+Document each request's parameters separately, distinguishing required fields, conditional presence, null values, and omission. Introduce security fields in the request tables and explain their algorithms in dedicated articles. Describe other derived material such as `token` and `aid` according to its own role, separately from the seven security fields and outer signatures.
 
-## 后续文章规划 / Planned Articles
+Explain encryption, signing, and transmission as separate layers: `ENC` is an encrypted envelope, `H` is a request signature, and values such as `Authorization` belong to the headers. Describe each request's fields and packaging individually rather than assuming identical bodies and headers across all three.
 
-| Proposed path | 中文内容 | English scope |
+### Documentation Organization and Expansion
+
+The main sequence below follows the reading order. Available articles have working links; articles not yet created are listed as plain paths. Supporting topics such as number input, device identifiers, and verification interactions can be linked from the relevant main article.
+
+Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
+
+## 主线文章 / Main Articles
+
+| Order | Document / Path | 中文内容 | English scope |
+| --- | --- | --- | --- |
+| 1 | `exist.md` | `exist` 请求的明文参数 | Plaintext parameters of the `exist` request |
+| 2 | `code.md` | `code` 请求的明文参数 | Plaintext parameters of the `code` request |
+| 3 | `register.md` | `register` 请求的明文参数 | Plaintext parameters of the `register` request |
+| 4 | `security-fields/` | 七个安全字段分别详细解释 | Dedicated explanations of the seven security fields |
+| 5 | `request-encryption.md` | 参数序列化、明文加密、签名与正文封装 | Parameter serialization, encryption, signing, and body packaging |
+| 6 | `sending-requests.md` | 请求头、发送顺序、HTTP 发出与响应处理 | Headers, request order, HTTP transmission, and response handling |
+
+### 每篇参数文章的结构 / Structure of Each Parameter Article
+
+每个请求依次介绍：请求用途与触发条件、明文参数总览、逐字段含义与类型、出现条件与空值处理、参数间关联，以及使用占位值的明文示例。安全字段链接到独立专题，完整加密正文和发送代码放到后续文章。
+
+For each request, cover its purpose and trigger conditions, plaintext parameter overview, field meanings and types, presence and null handling, parameter relationships, and a plaintext example with placeholder values. Link security fields to their dedicated topic; put complete encrypted bodies and transmission code in the later articles.
+
+### 安全字段专题 / Security Field Articles
+
+`security-fields/` 按 `gpia.md`、`gg.md`、`gi.md`、`gp.md`、`gs.md`、`ge.md`、`ga.md` 拆分。每篇解释字段职责、输入、计算步骤、明文或内部结构、编码与加密、缓存与刷新条件，以及在三个请求中的使用差异。
+
+Organize `security-fields/` into `gpia.md`, `gg.md`, `gi.md`, `gp.md`, `gs.md`, `ge.md`, and `ga.md`. Each article explains the field's role, inputs, computation, plaintext or internal structure, encoding and encryption, caching and refresh conditions, and usage differences between the three requests.
+
+## 补充文章 / Supporting Articles
+
+| Document / Path | 中文内容 | English scope |
 | --- | --- | --- |
-| `phone-number.md` | 国家码、号码规范化、输入纠错与设备号码提示 | Country codes, number normalization, typo correction, and device-number suggestions |
-| `exist/` | 号码检查请求、参数目录、来源与响应分析 | Number-check requests, field inventories, input sources, and responses |
-| `verification-code.md` | 短信与语音验证码申请、提交及等待状态 | SMS and voice verification requests, code submission, and waiting states |
-| `registration-flow.md` | 注册状态机、业务回调与结果核对 | Registration state machine, business callbacks, and outcome checks |
-| `identifiers.md` | 设备标识、持久状态和生命周期 | Device identifiers, persistent state, and lifecycles |
-| `security-signals/` | 客户端配置、安全字段与原始输入验证 | Client configuration, security fields, and raw-input validation |
-| `request-envelope.md` | 表单编码、加密封装、签名与证书链 | Form encoding, encrypted envelopes, signatures, and certificate chains |
-| `errors-and-comparisons.md` | 错误分类、重试与成功失败样本对照 | Errors, retries, and comparisons of successful and failed samples |
+| `phone-number.md` | 国家码、号码处理、输入纠错与设备号码提示 | Calling codes, number processing, typo correction, and device-number hints |
+| `identifiers.md` | 设备标识、持久状态与生命周期 | Device identifiers, persistent state, and lifecycles |
+| `verification-code.md` | 验证码交互、等待与重试 | Verification interactions, waiting, and retries |
 
 ## 相关主题 / Related Topics
 
