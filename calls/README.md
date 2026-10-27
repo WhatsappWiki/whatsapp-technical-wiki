@@ -1,6 +1,6 @@
 # Voice and Video Calls · 语音与视频通话
 
-[Home / 首页](../README.md) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
@@ -31,6 +31,28 @@
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
+<a id="后续文章规划--planned-articles"></a>
+
+### 后续文章规划
+
+| 规划路径 | 内容 |
+| --- | --- |
+| `outgoing-calls.md` | 呼出、响铃、接受、拒绝、取消与挂断 |
+| `incoming-calls.md` | 来电通知、设备选择、接听与拒接 |
+| `signaling/` | 通话标识、参与者、状态机与结束原因 |
+| `connectivity.md` | 链路协商、直连或中继与 NAT 穿透研究 |
+| `audio-pipeline.md` | 音频采集、编码、发送、接收、解码与播放 |
+| `video-pipeline.md` | 视频采集、编解码、分辨率与音视频同步 |
+| `audio-routing.md` | 静音、扬声器、蓝牙与设备切换 |
+| `quality-and-recovery.md` | 丢包、延迟、抖动、弱网、超时与重连 |
+| `group-calls.md` | 群组通话、多设备来电与通话记录 |
+
+<a id="相关主题--related-topics"></a>
+
+### 相关主题
+
+[通信协议与数据格式](../protocol/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [图片、文件与语音消息](../media/#zh) · [多设备与数据同步](../multi-device/#zh)
+
 <a id="en"></a>
 
 ## English
@@ -60,20 +82,20 @@ This page provides the topic overview and navigation entry point. The paths belo
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
-## 后续文章规划 / Planned Articles
+### Planned Articles
 
-| Proposed path | 中文内容 | English scope |
-| --- | --- | --- |
-| `outgoing-calls.md` | 呼出、响铃、接受、拒绝、取消与挂断 | Outgoing calls, ringing, acceptance, rejection, cancellation, and hangup |
-| `incoming-calls.md` | 来电通知、设备选择、接听与拒接 | Incoming notifications, device selection, answering, and rejection |
-| `signaling/` | 通话标识、参与者、状态机与结束原因 | Call IDs, participants, state machines, and termination reasons |
-| `connectivity.md` | 链路协商、直连或中继与 NAT 穿透研究 | Path negotiation, direct/relayed connections, and NAT-traversal research |
-| `audio-pipeline.md` | 音频采集、编码、发送、接收、解码与播放 | Audio capture, encoding, transmission, reception, decoding, and playback |
-| `video-pipeline.md` | 视频采集、编解码、分辨率与音视频同步 | Video capture, codecs, resolution, and audio/video synchronization |
-| `audio-routing.md` | 静音、扬声器、蓝牙与设备切换 | Mute, speakerphone, Bluetooth, and device switching |
-| `quality-and-recovery.md` | 丢包、延迟、抖动、弱网、超时与重连 | Packet loss, latency, jitter, weak networks, timeouts, and reconnection |
-| `group-calls.md` | 群组通话、多设备来电与通话记录 | Group calls, multi-device ringing, and call history |
+| Proposed path | Scope |
+| --- | --- |
+| `outgoing-calls.md` | Outgoing calls, ringing, acceptance, rejection, cancellation, and hangup |
+| `incoming-calls.md` | Incoming notifications, device selection, answering, and rejection |
+| `signaling/` | Call IDs, participants, state machines, and termination reasons |
+| `connectivity.md` | Path negotiation, direct/relayed connections, and NAT-traversal research |
+| `audio-pipeline.md` | Audio capture, encoding, transmission, reception, decoding, and playback |
+| `video-pipeline.md` | Video capture, codecs, resolution, and audio/video synchronization |
+| `audio-routing.md` | Mute, speakerphone, Bluetooth, and device switching |
+| `quality-and-recovery.md` | Packet loss, latency, jitter, weak networks, timeouts, and reconnection |
+| `group-calls.md` | Group calls, multi-device ringing, and call history |
 
-## 相关主题 / Related Topics
+### Related Topics
 
-[通信协议与数据格式 / Communication Protocols and Data Formats](../protocol/) · [端到端加密与密钥管理 / End-to-End Encryption and Key Management](../encryption/) · [图片、文件与语音消息 / Media Transfer and Voice Messages](../media/) · [多设备与数据同步 / Multi-Device and Data Synchronization](../multi-device/)
+[Communication Protocols and Data Formats](../protocol/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Media Transfer and Voice Messages](../media/#en) · [Multi-Device and Data Synchronization](../multi-device/#en)

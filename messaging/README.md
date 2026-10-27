@@ -1,6 +1,6 @@
 # Sending and Receiving Messages · 消息发送与接收
 
-[Home / 首页](../README.md) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
@@ -26,6 +26,27 @@
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
+<a id="后续文章规划--planned-articles"></a>
+
+### 后续文章规划
+
+| 规划路径 | 内容 |
+| --- | --- |
+| `sending.md` | 消息创建、标识、序列化、加密与发送 |
+| `receiving.md` | 消息接收、解析、解密、存储与通知 |
+| `message-types/` | 文本、引用、回复、转发及表情回应 |
+| `receipts.md` | 服务端确认、送达回执与已读回执 |
+| `reliability.md` | 超时、重试、顺序、去重与离线恢复 |
+| `groups/` | 群聊消息、成员变化与相关事件 |
+| `edits-and-deletion.md` | 消息编辑、撤回及状态更新 |
+| `local-storage.md` | 本地数据库、发送队列与 UI 一致性 |
+
+<a id="相关主题--related-topics"></a>
+
+### 相关主题
+
+[通信协议与数据格式](../protocol/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [图片、文件与语音消息](../media/#zh) · [多设备与数据同步](../multi-device/#zh)
+
 <a id="en"></a>
 
 ## English
@@ -50,19 +71,19 @@ This page provides the topic overview and navigation entry point. The paths belo
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
-## 后续文章规划 / Planned Articles
+### Planned Articles
 
-| Proposed path | 中文内容 | English scope |
-| --- | --- | --- |
-| `sending.md` | 消息创建、标识、序列化、加密与发送 | Message creation, identifiers, serialization, encryption, and sending |
-| `receiving.md` | 消息接收、解析、解密、存储与通知 | Reception, parsing, decryption, storage, and notifications |
-| `message-types/` | 文本、引用、回复、转发及表情回应 | Text, quotes, replies, forwarding, and reactions |
-| `receipts.md` | 服务端确认、送达回执与已读回执 | Server acknowledgments, delivery receipts, and read receipts |
-| `reliability.md` | 超时、重试、顺序、去重与离线恢复 | Timeouts, retries, ordering, deduplication, and offline recovery |
-| `groups/` | 群聊消息、成员变化与相关事件 | Group messages, membership changes, and related events |
-| `edits-and-deletion.md` | 消息编辑、撤回及状态更新 | Message edits, deletion events, and state updates |
-| `local-storage.md` | 本地数据库、发送队列与 UI 一致性 | Local databases, outbound queues, and UI consistency |
+| Proposed path | Scope |
+| --- | --- |
+| `sending.md` | Message creation, identifiers, serialization, encryption, and sending |
+| `receiving.md` | Reception, parsing, decryption, storage, and notifications |
+| `message-types/` | Text, quotes, replies, forwarding, and reactions |
+| `receipts.md` | Server acknowledgments, delivery receipts, and read receipts |
+| `reliability.md` | Timeouts, retries, ordering, deduplication, and offline recovery |
+| `groups/` | Group messages, membership changes, and related events |
+| `edits-and-deletion.md` | Message edits, deletion events, and state updates |
+| `local-storage.md` | Local databases, outbound queues, and UI consistency |
 
-## 相关主题 / Related Topics
+### Related Topics
 
-[通信协议与数据格式 / Communication Protocols and Data Formats](../protocol/) · [端到端加密与密钥管理 / End-to-End Encryption and Key Management](../encryption/) · [图片、文件与语音消息 / Media Transfer and Voice Messages](../media/) · [多设备与数据同步 / Multi-Device and Data Synchronization](../multi-device/)
+[Communication Protocols and Data Formats](../protocol/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Media Transfer and Voice Messages](../media/#en) · [Multi-Device and Data Synchronization](../multi-device/#en)
