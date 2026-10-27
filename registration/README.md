@@ -68,7 +68,7 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 | Order | Document / Path | 中文内容 | English scope |
 | --- | --- | --- | --- |
-| 1 | `exist.md` | `exist` 请求的明文参数 | Plaintext parameters of the `exist` request |
+| 1 | [exist.md](exist.md) | `exist` 请求的明文参数、取值来源与完整示意 | Plaintext parameters, input sources, and the full example for the `exist` request |
 | 2 | `code.md` | `code` 请求的明文参数 | Plaintext parameters of the `code` request |
 | 3 | `register.md` | `register` 请求的明文参数 | Plaintext parameters of the `register` request |
 | 4 | `security-fields/` | 七个安全字段分别详细解释 | Dedicated explanations of the seven security fields |
@@ -77,9 +77,9 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 ### 每篇参数文章的结构 / Structure of Each Parameter Article
 
-每个请求依次介绍：请求用途与触发条件、明文参数总览、逐字段含义与类型、出现条件与空值处理、参数间关联，以及使用占位值的明文示例。安全字段链接到独立专题，完整加密正文和发送代码放到后续文章。
+每个请求依次介绍：请求用途与触发条件、明文参数总览、逐字段含义与类型、出现条件与空值处理、参数间关联，以及使用同格式随机值的明文示例。安全字段链接到独立专题，完整加密正文和发送代码放到后续文章。
 
-For each request, cover its purpose and trigger conditions, plaintext parameter overview, field meanings and types, presence and null handling, parameter relationships, and a plaintext example with placeholder values. Link security fields to their dedicated topic; put complete encrypted bodies and transmission code in the later articles.
+For each request, cover its purpose and trigger conditions, plaintext parameter overview, field meanings and types, presence and null handling, parameter relationships, and a plaintext example with random values in the same representation. Link security fields to their dedicated topic; put complete encrypted bodies and transmission code in the later articles.
 
 ### 安全字段专题 / Security Field Articles
 
@@ -91,6 +91,7 @@ Organize `security-fields/` into `gpia.md`, `gg.md`, `gi.md`, `gp.md`, `gs.md`, 
 
 | Document / Path | 中文内容 | English scope |
 | --- | --- | --- |
+| [android-inputs.md](android-inputs.md) | Android 公开 API、应用状态与字段编码示例 | Public Android APIs, application state, and field-encoding examples |
 | `phone-number.md` | 国家码、号码处理、输入纠错与设备号码提示 | Calling codes, number processing, typo correction, and device-number hints |
 | `identifiers.md` | 设备标识、持久状态与生命周期 | Device identifiers, persistent state, and lifecycles |
 | `verification-code.md` | 验证码交互、等待与重试 | Verification interactions, waiting, and retries |

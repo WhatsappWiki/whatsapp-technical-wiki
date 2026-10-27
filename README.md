@@ -67,9 +67,9 @@ Directory names use lowercase English words and hyphens. Each topic README intro
 
 建议按“注册与登录 → 通信协议与加密 → 消息与媒体 → 通话与多设备”的顺序阅读。首页负责导航，各主题目录负责功能简介，具体流程、字段或实验放在该目录下的文章与子目录中。
 
-每篇技术文章应尽量注明：目标平台与版本、问题背景、流程或调用链、字段及编码、证据来源、验证方法、结果和仍未确认的部分。静态分析、运行时观测、离线复算和服务端实际接受应分别说明。
+技术文章直接介绍用途、触发条件、流程、字段含义、取值方式、编码与加密、状态变化和错误处理。涉及平台 API 时注明必要的调用条件；字段来源说明获取方式及所属模块。
 
-示例统一使用合成或脱敏数据。公开文档不包含真实验证码、访问令牌、私钥、完整认证材料或可识别个人身份的原始记录。
+标识、号码、令牌和密码学载荷使用同格式随机示例；普通状态提供具体示例值。公开文档不包含真实验证码、访问令牌、私钥、完整认证材料或可识别个人身份的原始记录。
 
 <a id="en"></a>
 
@@ -107,9 +107,9 @@ The repository is organized into English-named topic directories. Each directory
 
 A suggested reading order is registration and authentication → protocols and encryption → messaging and media → calls and multi-device systems. This homepage provides navigation, topic READMEs introduce their scope, and detailed workflows, fields, or experiments belong in articles and subdirectories within the relevant topic.
 
-Technical articles should identify the target platform and version, problem, workflow or call chain, fields and encodings, evidence, verification method, results, and unresolved questions. Static analysis, runtime observation, offline recomputation, and actual server acceptance should be described separately.
+Technical articles directly explain purpose, triggers, workflows, field meanings and acquisition, encodings and encryption, state changes, and error handling. State the necessary conditions for platform API calls; describe field sources by their acquisition method and owning module.
 
-Examples use synthetic or redacted data. Public documentation excludes real verification codes, access tokens, private keys, complete authentication material, and identifiable personal records.
+Identifiers, numbers, tokens, and cryptographic payloads use random examples in the same representation; ordinary state fields have concrete example values. Public documentation excludes real verification codes, access tokens, private keys, complete authentication material, and identifiable personal records.
 
 <a id="contributing"></a>
 
