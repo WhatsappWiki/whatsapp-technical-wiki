@@ -4,7 +4,7 @@
 
 **Technical documentation on WhatsApp registration, authentication, protocols, messaging, and voice calls.**
 
-[中文](#zh) · [English](#en) · [技术目录 / Technical Index](#technical-index) · [参与贡献 / Contributing](#contributing)
+[中文](#zh) · [English](#en) · [技术目录 / Technical Index](#technical-index) · [参与贡献 / Contributing](#contributing) · [联系 / Contact](#contact)
 
 <a id="zh"></a>
 
@@ -31,31 +31,20 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 | 章节 | 内容范围 | English keywords |
 | --- | --- | --- |
-| [01 · 客户端与整体架构](#zh-architecture) | 客户端组件、连接层、业务层与平台差异 | Architecture, Android, iOS, Web, Desktop |
-| [02 · 账号注册与验证码](#zh-registration) | 号码检查、验证码申请与提交、注册状态及请求字段 | Registration, Verification, OTP |
-| [03 · 登录认证与会话](#zh-authentication) | 身份材料、会话持久化、设备关联与重新登录 | Login, Authentication, Session, Device Linking |
-| [04 · 通信协议与数据格式](#zh-protocol) | 连接建立、握手、帧结构、编码和请求封装 | Protocol, Handshake, Serialization, Protobuf |
-| [05 · 加密与密钥管理](#zh-encryption) | 身份密钥、会话密钥、预密钥与加密边界 | E2EE, Signal Protocol, Key Management |
-| [06 · 消息发送与接收](#zh-messaging) | 消息构建、接收、回执、重试、去重与群聊 | Send / Receive Messages, ACK, Receipts |
-| [07 · 图片、文件与语音消息](#zh-media) | 媒体上传下载、加解密、文件元数据与语音消息 | Media, Upload, Download, Voice Messages |
-| [08 · 语音与视频通话](#zh-calls) | 呼入呼出、通话信令、媒体传输与网络质量 | Voice Calls, Video Calls, VoIP, Signaling |
-| [09 · 多设备与数据同步](#zh-multi-device) | 设备关联、消息分发、历史同步与离线恢复 | Multi-Device, Companion Devices, Sync |
-| [10 · 客户端分析与验证](#zh-analysis) | 静态分析、运行时观测、字段追踪与参考实现 | Reverse Engineering, JNI, Native, Validation |
-| [11 · 错误排查与术语](#zh-troubleshooting) | 错误分类、诊断流程、术语与常见问题 | Troubleshooting, Error Codes, FAQ |
-
-<a id="zh-architecture"></a>
-
-### 01 · 客户端与整体架构
-
-- Android、iOS、WhatsApp Web 与 Desktop 的研究范围和版本记录。
-- UI、业务逻辑、持久化、连接管理和加密组件之间的职责划分。
-- Java / Kotlin、JNI 与 Native 调用链及异步任务生命周期。
-- 账号、设备、联系人、会话与消息等核心数据模型。
-- 个人客户端、非官方参考实现与 WhatsApp Business Platform / Cloud API 的范围区分。
+| [01 · 账号注册与验证码](#zh-registration) | 号码检查、验证码申请与提交、注册状态及请求字段 | Registration, Verification, OTP |
+| [02 · 登录认证与会话](#zh-authentication) | 身份材料、会话持久化、设备关联与重新登录 | Login, Authentication, Session, Device Linking |
+| [03 · 通信协议与数据格式](#zh-protocol) | 连接建立、握手、帧结构、编码和请求封装 | Protocol, Handshake, Serialization, Protobuf |
+| [04 · 加密与密钥管理](#zh-encryption) | 身份密钥、会话密钥、预密钥与加密边界 | E2EE, Signal Protocol, Key Management |
+| [05 · 消息发送与接收](#zh-messaging) | 消息构建、接收、回执、重试、去重与群聊 | Send / Receive Messages, ACK, Receipts |
+| [06 · 图片、文件与语音消息](#zh-media) | 媒体上传下载、加解密、文件元数据与语音消息 | Media, Upload, Download, Voice Messages |
+| [07 · 语音与视频通话](#zh-calls) | 呼入呼出、通话信令、媒体传输与网络质量 | Voice Calls, Video Calls, VoIP, Signaling |
+| [08 · 多设备与数据同步](#zh-multi-device) | 设备关联、消息分发、历史同步与离线恢复 | Multi-Device, Companion Devices, Sync |
+| [09 · 客户端分析与验证](#zh-analysis) | 静态分析、运行时观测、字段追踪与参考实现 | Reverse Engineering, JNI, Native, Validation |
+| [10 · 错误排查与术语](#zh-troubleshooting) | 错误分类、诊断流程、术语与常见问题 | Troubleshooting, Error Codes, FAQ |
 
 <a id="zh-registration"></a>
 
-### 02 · 账号注册与验证码
+### 01 · 账号注册与验证码
 
 - 注册流程：国家码与号码输入、号码检查、验证码申请、验证码提交及注册结果。
 - 号码规范化、输入纠错、设备号码提示与注册 UI 状态。
@@ -67,7 +56,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-authentication"></a>
 
-### 03 · 登录认证与会话
+### 02 · 登录认证与会话
 
 - 首次注册、已注册账号启动、连接认证与关联设备登录的流程区别。
 - 身份材料、设备标识、认证密钥和会话状态的读取与存储。
@@ -78,7 +67,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-protocol"></a>
 
-### 04 · 通信协议与数据格式
+### 03 · 通信协议与数据格式
 
 - 注册请求、长连接消息协议和通话信令的边界。
 - 连接建立、握手、身份认证、心跳及断线重连。
@@ -90,7 +79,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-encryption"></a>
 
-### 05 · 端到端加密与密钥管理
+### 04 · 端到端加密与密钥管理
 
 - 端到端加密（E2EE）与传输层保护的职责和边界。
 - Signal Protocol 相关概念：Identity Key、PreKey、Signed PreKey 和会话状态。
@@ -102,7 +91,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-messaging"></a>
 
-### 06 · 消息发送与接收
+### 05 · 消息发送与接收
 
 - 发送路径：创建消息、生成标识、序列化、加密、发送和状态更新。
 - 接收路径：收到数据、解析、解密、存储、通知与回执。
@@ -114,7 +103,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-media"></a>
 
-### 07 · 图片、文件与语音消息
+### 06 · 图片、文件与语音消息
 
 - 图片、视频、音频、文档、贴纸与语音消息的数据结构。
 - 媒体预处理、缩略图、类型识别和文件元数据。
@@ -127,7 +116,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-calls"></a>
 
-### 08 · 语音与视频通话
+### 07 · 语音与视频通话
 
 - 呼出与呼入流程：发起、来电、响铃、接受、拒绝、取消及挂断。
 - 通话标识、参与者、设备选择和信令状态机。
@@ -144,7 +133,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-multi-device"></a>
 
-### 09 · 多设备与数据同步
+### 08 · 多设备与数据同步
 
 - 主设备、关联设备和设备列表的关系。
 - 设备关联、身份确认、会话建立与解除关联。
@@ -155,7 +144,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-analysis"></a>
 
-### 10 · 客户端分析与验证
+### 09 · 客户端分析与验证
 
 - APK / DEX、资源文件、Native 库和符号的静态分析。
 - 运行时观测、调用链追踪、JNI 边界与网络发送边界定位。
@@ -167,7 +156,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 <a id="zh-troubleshooting"></a>
 
-### 11 · 错误排查、术语与 FAQ
+### 10 · 错误排查、术语与 FAQ
 
 - 注册失败、验证码未到达、认证失效与连接中断。
 - 消息发送失败、接收延迟、解密错误和媒体下载失败。
@@ -178,7 +167,7 @@ WhatsApp Wiki 是一个面向开发者、协议研究者和移动端工程师的
 
 ### 阅读方式与文档约定
 
-建议按“整体架构 → 注册与登录 → 通信协议与加密 → 消息与媒体 → 通话与多设备”的顺序阅读，也可以通过目录直接定位主题。
+建议按“注册与登录 → 通信协议与加密 → 消息与媒体 → 通话与多设备”的顺序阅读，也可以通过目录直接定位主题。
 
 每篇技术文章应尽量注明：目标平台与版本、问题背景、流程或调用链、字段及编码、证据来源、验证方法、结果和仍未确认的部分。静态分析、运行时观测、离线复算和服务端实际接受应分别说明。
 
@@ -207,31 +196,20 @@ This repository starts with this project overview and technical index. Articles 
 
 | Chapter | Scope | Navigation |
 | --- | --- | --- |
-| 01 · Client Architecture | Components, layers, data models, and platform differences | [Read scope](#en-architecture) |
-| 02 · Registration and Verification | Phone-number checks, OTP requests, verification, and request fields | [Read scope](#en-registration) |
-| 03 · Login and Authentication | Credentials, sessions, device linking, logout, and recovery | [Read scope](#en-authentication) |
-| 04 · Protocols and Data Formats | Connections, handshakes, framing, serialization, and encoding | [Read scope](#en-protocol) |
-| 05 · Encryption and Keys | E2EE, Signal Protocol concepts, key storage, and rotation | [Read scope](#en-encryption) |
-| 06 · Sending and Receiving Messages | Message pipelines, acknowledgments, receipts, and retries | [Read scope](#en-messaging) |
-| 07 · Media and Voice Messages | Uploads, downloads, media encryption, and audio messages | [Read scope](#en-media) |
-| 08 · Voice and Video Calls | Incoming / outgoing calls, signaling, media, and call quality | [Read scope](#en-calls) |
-| 09 · Multi-Device and Synchronization | Companion devices, message distribution, and history sync | [Read scope](#en-multi-device) |
-| 10 · Client Analysis and Validation | Reverse engineering, runtime observation, and reference code | [Read scope](#en-analysis) |
-| 11 · Troubleshooting and Glossary | Diagnostics, errors, terminology, and FAQs | [Read scope](#en-troubleshooting) |
-
-<a id="en-architecture"></a>
-
-### 01 · Client Architecture
-
-- Research scope and version records for Android, iOS, WhatsApp Web, and Desktop.
-- Responsibilities of UI, business logic, persistence, connection management, and cryptographic components.
-- Java / Kotlin, JNI, Native call chains, and asynchronous task lifecycles.
-- Core account, device, contact, session, and message models.
-- Scope distinctions between consumer clients, unofficial reference implementations, and the WhatsApp Business Platform / Cloud API.
+| 01 · Registration and Verification | Phone-number checks, OTP requests, verification, and request fields | [Read scope](#en-registration) |
+| 02 · Login and Authentication | Credentials, sessions, device linking, logout, and recovery | [Read scope](#en-authentication) |
+| 03 · Protocols and Data Formats | Connections, handshakes, framing, serialization, and encoding | [Read scope](#en-protocol) |
+| 04 · Encryption and Keys | E2EE, Signal Protocol concepts, key storage, and rotation | [Read scope](#en-encryption) |
+| 05 · Sending and Receiving Messages | Message pipelines, acknowledgments, receipts, and retries | [Read scope](#en-messaging) |
+| 06 · Media and Voice Messages | Uploads, downloads, media encryption, and audio messages | [Read scope](#en-media) |
+| 07 · Voice and Video Calls | Incoming / outgoing calls, signaling, media, and call quality | [Read scope](#en-calls) |
+| 08 · Multi-Device and Synchronization | Companion devices, message distribution, and history sync | [Read scope](#en-multi-device) |
+| 09 · Client Analysis and Validation | Reverse engineering, runtime observation, and reference code | [Read scope](#en-analysis) |
+| 10 · Troubleshooting and Glossary | Diagnostics, errors, terminology, and FAQs | [Read scope](#en-troubleshooting) |
 
 <a id="en-registration"></a>
 
-### 02 · Account Registration and Verification
+### 01 · Account Registration and Verification
 
 - Country codes, phone-number input, number checks, code requests, verification, and registration outcomes.
 - Number normalization, typo correction, device-number suggestions, and registration UI state.
@@ -243,7 +221,7 @@ This repository starts with this project overview and technical index. Articles 
 
 <a id="en-authentication"></a>
 
-### 03 · Login, Authentication, and Sessions
+### 02 · Login, Authentication, and Sessions
 
 - Differences between initial registration, registered-account startup, connection authentication, and companion-device login.
 - Reading and storing identity material, device identifiers, authentication keys, and session state.
@@ -254,7 +232,7 @@ This repository starts with this project overview and technical index. Articles 
 
 <a id="en-protocol"></a>
 
-### 04 · Communication Protocols and Data Formats
+### 03 · Communication Protocols and Data Formats
 
 - Boundaries between registration requests, persistent messaging connections, and call signaling.
 - Connection establishment, handshakes, authentication, heartbeats, and reconnection.
@@ -266,7 +244,7 @@ This repository starts with this project overview and technical index. Articles 
 
 <a id="en-encryption"></a>
 
-### 05 · End-to-End Encryption and Key Management
+### 04 · End-to-End Encryption and Key Management
 
 - Responsibilities and boundaries of end-to-end encryption (E2EE) and transport protection.
 - Signal Protocol concepts: identity keys, prekeys, signed prekeys, and session state.
@@ -278,7 +256,7 @@ This repository starts with this project overview and technical index. Articles 
 
 <a id="en-messaging"></a>
 
-### 06 · Sending and Receiving Messages
+### 05 · Sending and Receiving Messages
 
 - Outbound pipeline: creation, identifiers, serialization, encryption, transmission, and state updates.
 - Inbound pipeline: reception, parsing, decryption, storage, notifications, and receipts.
@@ -290,7 +268,7 @@ This repository starts with this project overview and technical index. Articles 
 
 <a id="en-media"></a>
 
-### 07 · Media Transfer and Voice Messages
+### 06 · Media Transfer and Voice Messages
 
 - Data structures for images, videos, audio, documents, stickers, and voice messages.
 - Media preparation, thumbnails, type detection, and file metadata.
@@ -303,7 +281,7 @@ Voice messages are audio messages that can be sent and downloaded. Real-time voi
 
 <a id="en-calls"></a>
 
-### 08 · Voice and Video Calls
+### 07 · Voice and Video Calls
 
 - Outgoing and incoming flows: initiation, incoming notification, ringing, acceptance, rejection, cancellation, and hangup.
 - Call identifiers, participants, device selection, and signaling state machines.
@@ -320,7 +298,7 @@ These standards and technology names identify research topics to verify. Their a
 
 <a id="en-multi-device"></a>
 
-### 09 · Multi-Device and Data Synchronization
+### 08 · Multi-Device and Data Synchronization
 
 - Relationships between primary devices, companion devices, and device lists.
 - Device linking, identity confirmation, session establishment, and unlinking.
@@ -331,7 +309,7 @@ These standards and technology names identify research topics to verify. Their a
 
 <a id="en-analysis"></a>
 
-### 10 · Client Analysis and Validation
+### 09 · Client Analysis and Validation
 
 - Static analysis of APK / DEX files, resources, Native libraries, and symbols.
 - Runtime observation, call-chain tracing, JNI boundaries, and application send boundaries.
@@ -343,7 +321,7 @@ These standards and technology names identify research topics to verify. Their a
 
 <a id="en-troubleshooting"></a>
 
-### 11 · Troubleshooting, Glossary, and FAQ
+### 10 · Troubleshooting, Glossary, and FAQ
 
 - Registration failures, missing verification codes, expired authentication, and disconnections.
 - Failed sends, delayed reception, decryption errors, and media download failures.
@@ -354,7 +332,7 @@ These standards and technology names identify research topics to verify. Their a
 
 ### Reading Guide and Documentation Conventions
 
-A suggested reading order is architecture → registration and authentication → protocols and encryption → messaging and media → calls and multi-device systems. The index also provides direct access to individual topics.
+A suggested reading order is registration and authentication → protocols and encryption → messaging and media → calls and multi-device systems. The index also provides direct access to individual topics.
 
 Technical articles should identify the target platform and version, problem, workflow or call chain, fields and encodings, evidence, verification method, results, and unresolved questions. Static analysis, runtime observation, offline recomputation, and actual server acceptance should be described separately.
 
@@ -371,6 +349,14 @@ Use Issues for questions, documentation corrections, and topic suggestions. Pull
 中英文内容应保持含义一致；专有字段名、类名、接口名和协议标识保留原文。添加新章节时，请同步更新两种语言的目录。
 
 Keep Chinese and English content aligned. Preserve original field names, class names, interface names, and protocol identifiers. Update both indexes when adding chapters.
+
+<a id="contact"></a>
+
+## 联系方式 / Contact
+
+欢迎通过 Telegram 交流 WhatsApp 注册、协议、消息与通话等技术话题：[@ttjjda](https://t.me/ttjjda)。
+
+For technical discussions about WhatsApp registration, protocols, messaging, and calls, contact [@ttjjda on Telegram](https://t.me/ttjjda).
 
 ## 项目声明 / Project Notice
 
