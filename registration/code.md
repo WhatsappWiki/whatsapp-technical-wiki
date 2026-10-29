@@ -1,6 +1,6 @@
 # code · 明文参数与取值来源
 
-[注册目录](README.md#zh) · [中文](#zh) · [English](#en) · [明文示意](#plaintext-example) · [Full Example](#plaintext-example-en)
+[注册目录](README.md#zh) · [中文](#zh) · [English](#en) · [明文示意](#plaintext-example) · [Full Example](#plaintext-example-en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 

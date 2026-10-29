@@ -1,6 +1,6 @@
 # Sending Requests · 发送流程与响应处理
 
-[注册目录](README.md#zh) · [中文](#zh) · [English](#en)
+[注册目录](README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 

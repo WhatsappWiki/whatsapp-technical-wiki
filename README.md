@@ -26,6 +26,7 @@
 - **查阅字段与代码**：进入[Android 字段获取代码](registration/android-inputs.md#zh)或[安全字段总览](registration/security-fields/README.md#zh)。
 - **理解请求如何发出**：接着读[参数序列化与加密封装](registration/request-encryption.md#zh)和[发送流程与响应处理](registration/sending-requests.md#zh)。
 - **理解连接与握手**：阅读 [Noise 握手与加密传输](protocol/noise.md#zh)，了解 XX、IK、fallback、后量子分支与登录结果。
+- **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
 - **浏览其他主题**：下方技术目录链接各主题简介与文章规划。
 
 <a id="搜索主题--search-topics"></a>
@@ -38,7 +39,7 @@
 | --- | --- |
 | <a id="zh-registration"></a>[01 · 账号注册与验证码](registration/README.md#zh) | exist/code参数、Android输入、安全字段、封装和发送 |
 | <a id="zh-authentication"></a>[02 · 登录认证与会话](authentication/README.md#zh) | 身份材料、会话持久化、设备关联与重新登录 |
-| <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/README.md#zh) | 连接建立、[Noise 握手](protocol/noise.md#zh)、帧结构、编码和请求封装 |
+| <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/README.md#zh) | 连接建立、[Noise 握手](protocol/noise.md#zh)、帧结构、[二进制节点](protocol/protocol-tree-node.md#zh)和请求封装 |
 | <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | 身份密钥、会话密钥、预密钥与加密边界 |
 | <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | 消息构建、接收、回执、重试、去重与群聊 |
 | <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | 媒体上传下载、加解密、文件元数据与语音消息 |
@@ -73,7 +74,9 @@
 
 | 文章 | 内容 |
 | --- | --- |
+| [TCP 帧协议](protocol/tcp-framing.md#zh) | 三字节长度、握手与密文帧、标志与压缩、Protocol Tree Node 解析及 TCP 拆包。 |
 | [Noise 握手与加密传输](protocol/noise.md#zh) | 经典 XX/IK、同连接 fallback、X25519/ML-KEM-512、Protobuf 与帧结构、服务器认证及登录状态。 |
+| [Protocol Tree Node · 二进制节点与编解码](protocol/protocol-tree-node.md#zh) | 树结构、token 字典、长度与字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
 
 <a id="目录结构--directory-structure"></a>
 
@@ -101,7 +104,9 @@ whatsapp-technical-wiki/
 ├── authentication/README.md
 ├── protocol/
 │   ├── README.md
-│   └── noise.md
+│   ├── noise.md
+│   ├── tcp-framing.md
+│   └── protocol-tree-node.md
 ├── encryption/README.md
 ├── messaging/README.md
 ├── media/README.md
@@ -109,7 +114,7 @@ whatsapp-technical-wiki/
 └── multi-device/README.md
 ```
 
-顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章和 Noise 协议文章的直接入口。
+顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章和通信协议文章的直接入口。
 
 ### 阅读方式与文档约定
 
@@ -153,6 +158,7 @@ For developers and protocol researchers, with topics organized around registrati
 - **Look up fields and code**: Open [Android input examples](registration/android-inputs.md#en) or the [Security-field overview](registration/security-fields/README.md#en).
 - **Follow a request to transmission**: Continue with [Serialization and request encryption](registration/request-encryption.md#en) and [Sending and response handling](registration/sending-requests.md#en).
 - **Understand connections and handshakes**: Read [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) for XX, IK, fallback, post-quantum branches, and login outcomes.
+- **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
 - **Explore other topics**: The index below links to topic introductions and planned articles.
 
 <a id="search-topics"></a>
@@ -164,7 +170,7 @@ For developers and protocol researchers, with topics organized around registrati
 | --- | --- |
 | <a id="en-registration"></a>[01 · Registration and Verification](registration/README.md#en) | exist/code parameters, Android inputs, security fields, packaging, and sending |
 | <a id="en-authentication"></a>[02 · Login, Authentication, and Sessions](authentication/README.md#en) | Identity material, session persistence, device linking, and login recovery |
-| <a id="en-protocol"></a>[03 · Communication Protocols and Data Formats](protocol/README.md#en) | Connections, [Noise handshakes](protocol/noise.md#en), framing, encoding, and request packaging |
+| <a id="en-protocol"></a>[03 · Communication Protocols and Data Formats](protocol/README.md#en) | Connections, [Noise handshakes](protocol/noise.md#en), framing, [binary nodes](protocol/protocol-tree-node.md#en), and request packaging |
 | <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | Identity keys, session keys, prekeys, and encryption boundaries |
 | <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | Message construction, reception, receipts, retries, deduplication, and groups |
 | <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | Media upload/download, encryption, file metadata, and voice messages |
@@ -199,7 +205,9 @@ See the [registration directory](registration/README.md#en) for reading order, r
 
 | Article | Scope |
 | --- | --- |
+| [TCP Framing](protocol/tcp-framing.md#en) | Three-byte lengths, handshake and encrypted frames, flags and compression, Protocol Tree Node parsing, and TCP stream handling. |
 | [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) | Classical XX/IK, fallback on the same connection, X25519/ML-KEM-512, Protobuf and framing, server authentication, and login states. |
+| [Protocol Tree Node and Binary Encoding](protocol/protocol-tree-node.md#en) | Tree structure, token dictionaries, lengths and packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
 
 ### Directory Structure
 
@@ -225,7 +233,9 @@ whatsapp-technical-wiki/
 ├── authentication/README.md
 ├── protocol/
 │   ├── README.md
-│   └── noise.md
+│   ├── noise.md
+│   ├── tcp-framing.md
+│   └── protocol-tree-node.md
 ├── encryption/README.md
 ├── messaging/README.md
 ├── media/README.md
@@ -233,7 +243,7 @@ whatsapp-technical-wiki/
 └── multi-device/README.md
 ```
 
-Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles and the Noise protocol article.
+Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles and the communication protocol articles.
 
 ### Reading Guide and Documentation Conventions
 

@@ -30,7 +30,11 @@
 
 | 文章 | 内容 |
 | --- | --- |
+| [TCP 帧协议](tcp-framing.md#zh) | 三字节大端长度、连接前导、握手与传输帧、解密、压缩及节点解析顺序。 |
 | [Noise 握手与加密传输](noise.md#zh) | XX、IK、同连接 fallback、ML-KEM-512 混合握手、帧结构、服务器认证与登录结果。 |
+| [Protocol Tree Node · 二进制节点与编解码](protocol-tree-node.md#zh) | 节点模型、列表与 token 字典、长度头、字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
+
+理解完整接收链路时，可依次阅读 TCP 帧协议、Noise 握手与加密传输、Protocol Tree Node：先确定帧边界，再认证解密，最后处理明文封装并恢复节点。
 
 <a id="后续文章规划--planned-articles"></a>
 
@@ -41,7 +45,7 @@
 | `protocol-boundaries.md` | 注册请求、消息连接与通话信令的范围 |
 | `connection-lifecycle.md` | 建立连接、心跳、断开与重连 |
 | `handshake.md` | 握手、连接认证及状态变化 |
-| `binary-format/` | 二进制帧、节点、属性和消息封装 |
+| `binary-format/` | 复合消息封装与其他二进制格式专题 |
 | `protobuf/` | 结构化消息、schema 与字段版本 |
 | `encoding.md` | UTF-8、字节序、URL 编码及 Base64 系列 |
 | `identifiers-and-errors.md` | 请求标识、序列号、时间戳、回执与错误 |
@@ -80,7 +84,11 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 | Article | Scope |
 | --- | --- |
+| [TCP Framing](tcp-framing.md#en) | Three-byte big-endian lengths, connection prefixes, handshake and transport frames, decryption, compression, and node parsing. |
 | [Noise Handshakes and Encrypted Transport](noise.md#en) | XX, IK, fallback on the same connection, ML-KEM-512 hybrid handshakes, framing, server authentication, and login outcomes. |
+| [Protocol Tree Node and Binary Encoding](protocol-tree-node.md#en) | Node model, lists and token dictionaries, length headers, packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
+
+To follow the receiving pipeline, read TCP Framing, Noise Handshakes and Encrypted Transport, then Protocol Tree Node: establish frame boundaries, authenticate and decrypt, then process the plaintext envelope and reconstruct nodes.
 
 ### Planned Articles
 
@@ -89,7 +97,7 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | `protocol-boundaries.md` | Boundaries between registration, messaging connections, and call signaling |
 | `connection-lifecycle.md` | Connection establishment, heartbeats, disconnection, and reconnection |
 | `handshake.md` | Handshakes, connection authentication, and state transitions |
-| `binary-format/` | Binary frames, nodes, attributes, and message envelopes |
+| `binary-format/` | Compound message envelopes and other binary formats |
 | `protobuf/` | Structured messages, schemas, and field versions |
 | `encoding.md` | UTF-8, byte order, URL encoding, Base64, and Base64url |
 | `identifiers-and-errors.md` | Request IDs, sequence numbers, timestamps, receipts, and errors |

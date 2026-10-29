@@ -1,6 +1,6 @@
 # _gp · 声明权限摘要
 
-[注册目录](../README.md#zh) · [中文](#zh) · [English](#en)
+[注册目录](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 

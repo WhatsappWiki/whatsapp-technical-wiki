@@ -1,6 +1,6 @@
 # _ga · 路径年龄与运行环境
 
-[注册目录](../README.md#zh) · [中文](#zh) · [English](#en)
+[注册目录](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 

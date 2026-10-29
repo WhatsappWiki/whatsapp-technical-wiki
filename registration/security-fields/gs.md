@@ -1,6 +1,6 @@
 # _gs · 系统信号与临时加密包络
 
-[注册目录](../README.md#zh) · [中文](#zh) · [English](#en)
+[注册目录](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
 
 <a id="zh"></a>
 
