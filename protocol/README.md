@@ -22,9 +22,15 @@
 
 ### 文档组织与扩展方式
 
-本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
+本页提供主题简介与文章导航；后续文章规划列出可继续展开的连接、格式与编码主题。
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
+
+### 文章导航
+
+| 文章 | 内容 |
+| --- | --- |
+| [Noise 握手与加密传输](noise.md#zh) | XX、IK、同连接 fallback、ML-KEM-512 混合握手、帧结构、服务器认证与登录结果。 |
 
 <a id="后续文章规划--planned-articles"></a>
 
@@ -66,9 +72,15 @@ This directory introduces the organization of WhatsApp requests and connection d
 
 ### Documentation Organization and Expansion
 
-This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
+This page provides the topic overview and article navigation. Planned articles identify further connection, format, and encoding topics.
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
+
+### Articles
+
+| Article | Scope |
+| --- | --- |
+| [Noise Handshakes and Encrypted Transport](noise.md#en) | XX, IK, fallback on the same connection, ML-KEM-512 hybrid handshakes, framing, server authentication, and login outcomes. |
 
 ### Planned Articles
 
