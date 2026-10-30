@@ -77,8 +77,8 @@
 | --- | --- |
 | [TCP 帧协议](protocol/tcp-framing.md#zh) | 三字节长度、握手与密文帧、标志与压缩、Protocol Tree Node 解析及 TCP 拆包。 |
 | [Noise 握手与加密传输](protocol/noise.md#zh) | 经典 XX/IK、同连接 fallback、X25519/ML-KEM-512、Protobuf 与帧结构、服务器认证及登录状态。 |
-| [Protocol Tree Node · 二进制节点与编解码](protocol/protocol-tree-node.md#zh) | 树结构、token 字典、长度与字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
-| [Argo · 二进制格式与编解码](protocol/argo.md#zh) | 节点业务载荷、schema 与 doc ID、Header、类型与错误、Python 读写和精确回写。 |
+| [Protocol Tree Node · 二进制节点与编解码](protocol/protocol-tree-node.md#zh) · [Python 代码](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node) | 树结构、token 字典、长度与字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
+| [Argo · 二进制格式与编解码](protocol/argo.md#zh) · [Python 代码](https://github.com/WhatsappWiki/whatsapp-argo) | 节点业务载荷、schema 与 doc ID、Header、类型与错误、Python 读写和精确回写。 |
 
 <a id="目录结构--directory-structure"></a>
 
@@ -211,8 +211,8 @@ See the [registration directory](registration/README.md#en) for reading order, r
 | --- | --- |
 | [TCP Framing](protocol/tcp-framing.md#en) | Three-byte lengths, handshake and encrypted frames, flags and compression, Protocol Tree Node parsing, and TCP stream handling. |
 | [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) | Classical XX/IK, fallback on the same connection, X25519/ML-KEM-512, Protobuf and framing, server authentication, and login states. |
-| [Protocol Tree Node and Binary Encoding](protocol/protocol-tree-node.md#en) | Tree structure, token dictionaries, lengths and packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
-| [Argo · Binary Format and Encoding](protocol/argo.md#en) | Node business payloads, schemas and doc IDs, headers, types/errors, Python read/write and exact rewriting. |
+| [Protocol Tree Node and Binary Encoding](protocol/protocol-tree-node.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node) | Tree structure, token dictionaries, lengths and packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
+| [Argo · Binary Format and Encoding](protocol/argo.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-argo) | Node business payloads, schemas and doc IDs, headers, types/errors, Python read/write and exact rewriting. |
 
 ### Directory Structure
 

@@ -8,6 +8,8 @@
 
 Argo 是用于表示结构化业务值的二进制格式。读取时由 Header 模式与 Wire Schema 决定类型、字段顺序和块布局；写入时从对象生成标量块与 Core。本文覆盖 Argo 1.2 的载荷边界、模式、schema、类型、Python 读写、精确回写及资源限制。
 
+Python 代码仓库：[whatsapp-argo](https://github.com/WhatsappWiki/whatsapp-argo)。
+
 阅读顺序：[载荷边界](#zh-boundaries) → [Header、块与 Core](#zh-header) → [schema 选择](#zh-schema) → [类型与错误](#zh-types) → [Python API](#zh-python) → [业务接入](#zh-business) → [逐字节回写](#zh-rewrite) → [资源限制](#zh-limits)。
 
 <a id="zh-boundaries"></a>
@@ -147,6 +149,8 @@ typed PATH 的整数是 schema 中的字段序号或数组下标，API 返回可
 
 ### 5. Python read/write API
 
+安装与快速上手见 [`whatsapp-argo` README](https://github.com/WhatsappWiki/whatsapp-argo#zh)，本节使用导入名 `whatsapp_argo`。
+
 ```python
 from whatsapp_argo import Codec, Header, read, write
 
@@ -255,6 +259,8 @@ changed = write(document, preserve_layout=True)
 ## English
 
 Argo is a binary format for structured business values. Header modes and the Wire Schema determine types, field order and block layout when reading; writing generates scalar blocks and Core from objects. This article covers Argo 1.2 payload boundaries, modes, schemas, types, Python read/write, exact rewriting and resource limits.
+
+Python code repository: [whatsapp-argo](https://github.com/WhatsappWiki/whatsapp-argo).
 
 Read in order: [payload boundaries](#en-boundaries) → [header, blocks and Core](#en-header) → [schema selection](#en-schema) → [types and errors](#en-types) → [Python API](#en-python) → [business integration](#en-business) → [exact rewriting](#en-rewrite) → [resource limits](#en-limits).
 
@@ -392,6 +398,8 @@ The default `error_encoding="omittable"` uses omittable typed ERROR fields: loca
 <a id="en-python"></a>
 
 ### 5. Python read/write API
+
+For installation and a quick start, see the [`whatsapp-argo` README](https://github.com/WhatsappWiki/whatsapp-argo#en). The examples use the `whatsapp_argo` import name.
 
 ```python
 from whatsapp_argo import Codec, Header, read, write

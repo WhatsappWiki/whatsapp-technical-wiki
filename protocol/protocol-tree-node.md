@@ -8,6 +8,8 @@
 
 Protocol Tree Node 是 WhatsApp 长连接中承载 stanza 的二进制树格式，也常称为 WABinary。它用标签、属性和子节点或字节内容组织数据，通过 token 字典、列表计数、半字节打包和 JID 专用编码减少体积。XML 可以展示树的结构；实际编码直接从节点对象生成字节。
 
+Python 代码仓库：[whatsapp-protocol-tree-node](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node)。
+
 本文依次介绍[协议分层](#zh-layers)、[节点模型](#zh-model)、[列表语法](#zh-lists)、[标记与字典](#zh-tokens)、[字节长度](#zh-binary)、[字符串打包](#zh-packed)、[JID](#zh-jid)、[压缩封装](#zh-envelope)、[读写流程](#zh-algorithms)、[字节示例](#zh-example)、[Python API](#zh-python)、[外部字典](#zh-dictionary)、[精确回写](#zh-preservation)、[错误处理](#zh-errors)和[业务分发](#zh-dispatch)。
 
 <a id="zh-layers"></a>
@@ -331,6 +333,8 @@ Python 将其表示为 `STREAM_END`，与空节点、无 content 和空字节内
 
 `protocol_tree_node` 提供 `Codec`、`Node`、`Attribute`、`JID`、`TokenDictionary`、`Limits`、`ProtocolError` 和 `STREAM_END`。Python 3.10 及以上运行时只需标准库。
 
+安装与快速上手见 [`whatsapp-protocol-tree-node` README](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node#zh)。
+
 ```python
 from protocol_tree_node import Attribute, Codec, JID, Node, TokenDictionary
 
@@ -520,6 +524,8 @@ zlib 以有输出上限的方式展开，并检查结束标记、未消耗数据
 ## English
 
 Protocol Tree Node is the binary tree format that carries stanzas over WhatsApp's persistent connection, also commonly called WABinary. Tags, attributes, and either child nodes or byte content organize the data. Token dictionaries, list counts, nibble packing, and dedicated JID encodings reduce its size. XML can display the tree; the encoder produces bytes directly from node objects.
+
+Python code repository: [whatsapp-protocol-tree-node](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node).
 
 This article covers [protocol layers](#en-layers), the [node model](#en-model), [list grammar](#en-lists), [markers and tokens](#en-tokens), [binary lengths](#en-binary), [packed strings](#en-packed), [JIDs](#en-jid), the [compressed envelope](#en-envelope), [read/write steps](#en-algorithms), a [byte example](#en-example), the [Python API](#en-python), [external dictionaries](#en-dictionary), [exact rewriting](#en-preservation), [error handling](#en-errors), and [business dispatch](#en-dispatch).
 
@@ -843,6 +849,8 @@ There are no XML angle brackets, attribute quotes, or closing tags in these byte
 ### 11. Python read/write API
 
 protocol_tree_node exports Codec, Node, Attribute, JID, TokenDictionary, Limits, ProtocolError, and STREAM_END. It requires Python 3.10 or later and only the standard library at runtime.
+
+For installation and a quick start, see the [`whatsapp-protocol-tree-node` README](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node#en).
 
 ```python
 from protocol_tree_node import Attribute, Codec, JID, Node, TokenDictionary
