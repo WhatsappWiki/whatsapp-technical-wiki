@@ -15,6 +15,7 @@
 - 注册请求、长连接消息协议和通话信令的边界。
 - 连接建立、握手、身份认证、心跳及断线重连。
 - 二进制帧、节点与属性、消息封装和序列化格式研究。
+- Argo 业务载荷、Header、Wire Schema、类型与精确回写。
 - Protobuf 等结构化数据的 schema、字段类型和版本变化。
 - 请求标识、序列号、时间戳、回执和错误表示。
 - UTF-8、字节序、URL 编码、Base64 与 Base64url 的具体使用位置。
@@ -33,8 +34,9 @@
 | [TCP 帧协议](tcp-framing.md#zh) | 三字节大端长度、连接前导、握手与传输帧、解密、压缩及节点解析顺序。 |
 | [Noise 握手与加密传输](noise.md#zh) | XX、IK、同连接 fallback、ML-KEM-512 混合握手、帧结构、服务器认证与登录结果。 |
 | [Protocol Tree Node · 二进制节点与编解码](protocol-tree-node.md#zh) | 节点模型、列表与 token 字典、长度头、字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
+| [Argo · 二进制格式与编解码](argo.md#zh) | 节点业务载荷、Header、标量块与 Core、schema 选择、类型与错误、Python 读写和精确回写。 |
 
-理解完整接收链路时，可依次阅读 TCP 帧协议、Noise 握手与加密传输、Protocol Tree Node：先确定帧边界，再认证解密，最后处理明文封装并恢复节点。
+理解完整接收链路时，可依次阅读 TCP 帧协议、Noise 握手与加密传输、Protocol Tree Node：先确定帧边界，再认证解密，最后处理明文封装并恢复节点。业务结果声明 Argo 时，再阅读 [Argo](argo.md#zh) 解析节点内的字节载荷。
 
 <a id="后续文章规划--planned-articles"></a>
 
@@ -69,6 +71,7 @@ This directory introduces the organization of WhatsApp requests and connection d
 - Boundaries between registration requests, persistent messaging connections, and call signaling.
 - Connection establishment, handshakes, authentication, heartbeats, and reconnection.
 - Binary frames, nodes and attributes, message envelopes, and serialization formats.
+- Argo business payloads, headers, Wire Schemas, types and exact rewriting.
 - Structured formats such as Protobuf: schemas, field types, and version changes.
 - Request identifiers, sequence numbers, timestamps, acknowledgments, and errors.
 - Specific uses of UTF-8, byte order, URL encoding, Base64, and Base64url.
@@ -87,8 +90,9 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | [TCP Framing](tcp-framing.md#en) | Three-byte big-endian lengths, connection prefixes, handshake and transport frames, decryption, compression, and node parsing. |
 | [Noise Handshakes and Encrypted Transport](noise.md#en) | XX, IK, fallback on the same connection, ML-KEM-512 hybrid handshakes, framing, server authentication, and login outcomes. |
 | [Protocol Tree Node and Binary Encoding](protocol-tree-node.md#en) | Node model, lists and token dictionaries, length headers, packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
+| [Argo · Binary Format and Encoding](argo.md#en) | Node business payloads, headers, scalar blocks and Core, schema selection, types/errors, Python read/write and exact rewriting. |
 
-To follow the receiving pipeline, read TCP Framing, Noise Handshakes and Encrypted Transport, then Protocol Tree Node: establish frame boundaries, authenticate and decrypt, then process the plaintext envelope and reconstruct nodes.
+To follow the receiving pipeline, read TCP Framing, Noise Handshakes and Encrypted Transport, then Protocol Tree Node: establish frame boundaries, authenticate and decrypt, then process the plaintext envelope and reconstruct nodes. When the business result declares Argo, continue with [Argo](argo.md#en) to parse its node payload.
 
 ### Planned Articles
 

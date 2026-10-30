@@ -36,6 +36,8 @@ flowchart LR
 
 握手阶段的帧体是 Protobuf `HandshakeMessage`；握手完成后的传输帧解密后才进入这里的节点流程。节点的 `data` 也可能承载 Protobuf，但其具体解释由业务标签决定。注册 HTTP 的 ENC、H 和表单封装有独立流程。
 
+业务结果声明 `format="argo"` 时，节点层保留其原始 `data: bytes`，业务处理器再按原请求关联的 Wire Schema 解码。载荷、Header、schema 选择与精确回写见 [Argo · 二进制格式与编解码](argo.md#zh)。
+
 帧读取见 [TCP 帧协议](tcp-framing.md#zh)，密钥、nonce、AAD 和握手状态见 [Noise 握手与加密传输](noise.md#zh)。
 
 <a id="zh-model"></a>
@@ -511,7 +513,7 @@ zlib 以有输出上限的方式展开，并检查结束标记、未消耗数据
 
 ### 相关主题
 
-[TCP 帧协议](tcp-framing.md#zh) · [Noise 握手与加密传输](noise.md#zh) · [消息发送与接收](../messaging/README.md#zh) · [端到端加密与密钥管理](../encryption/README.md#zh)
+[TCP 帧协议](tcp-framing.md#zh) · [Noise 握手与加密传输](noise.md#zh) · [Argo · 二进制格式与编解码](argo.md#zh) · [消息发送与接收](../messaging/README.md#zh) · [端到端加密与密钥管理](../encryption/README.md#zh)
 
 <a id="en"></a>
 
@@ -546,6 +548,8 @@ Receiving reverses this order: read the complete frame, authenticate and decrypt
 | Business content | Payloads such as `enc` may still require Signal end-to-end decryption |
 
 Handshake frames carry a Protobuf `HandshakeMessage`. The node pipeline applies to decrypted transport frames after the handshake. A node's data can also carry Protobuf, with interpretation determined by its business tag. Registration HTTP ENC, H, and form packaging follow a separate process.
+
+When a business result declares `format="argo"`, the node layer retains its raw `data: bytes`; the business handler decodes it with the Wire Schema associated with the original request. See [Argo · Binary Format and Encoding](argo.md#en) for payloads, headers, schema selection and exact rewriting.
 
 See [TCP Framing](tcp-framing.md#en) for frame reading and [Noise Handshakes and Encrypted Transport](noise.md#en) for keys, nonces, AAD, and handshake state.
 
@@ -1022,4 +1026,4 @@ Successful decoding establishes that the structure can be recovered. It does not
 
 ### Related Topics
 
-[TCP Framing](tcp-framing.md#en) · [Noise Handshakes and Encrypted Transport](noise.md#en) · [Sending and Receiving Messages](../messaging/README.md#en) · [End-to-End Encryption and Key Management](../encryption/README.md#en)
+[TCP Framing](tcp-framing.md#en) · [Noise Handshakes and Encrypted Transport](noise.md#en) · [Argo · Binary Format and Encoding](argo.md#en) · [Sending and Receiving Messages](../messaging/README.md#en) · [End-to-End Encryption and Key Management](../encryption/README.md#en)
