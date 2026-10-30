@@ -33,8 +33,8 @@
 | --- | --- |
 | [TCP 帧协议](tcp-framing.md#zh) | 三字节大端长度、连接前导、握手与传输帧、解密、压缩及节点解析顺序。 |
 | [Noise 握手与加密传输](noise.md#zh) | XX、IK、同连接 fallback、ML-KEM-512 混合握手、帧结构、服务器认证与登录结果。 |
-| [Protocol Tree Node · 二进制节点与编解码](protocol-tree-node.md#zh) | 节点模型、列表与 token 字典、长度头、字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
-| [Argo · 二进制格式与编解码](argo.md#zh) | 节点业务载荷、Header、标量块与 Core、schema 选择、类型与错误、Python 读写和精确回写。 |
+| [Protocol Tree Node · 二进制节点与编解码](protocol-tree-node.md#zh) · [Python 代码](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node) | 节点模型、列表与 token 字典、长度头、字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
+| [Argo · 二进制格式与编解码](argo.md#zh) · [Python 代码](https://github.com/WhatsappWiki/whatsapp-argo) | 节点业务载荷、Header、标量块与 Core、schema 选择、类型与错误、Python 读写和精确回写。 |
 
 理解完整接收链路时，可依次阅读 TCP 帧协议、Noise 握手与加密传输、Protocol Tree Node：先确定帧边界，再认证解密，最后处理明文封装并恢复节点。业务结果声明 Argo 时，再阅读 [Argo](argo.md#zh) 解析节点内的字节载荷。
 
@@ -89,8 +89,8 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | --- | --- |
 | [TCP Framing](tcp-framing.md#en) | Three-byte big-endian lengths, connection prefixes, handshake and transport frames, decryption, compression, and node parsing. |
 | [Noise Handshakes and Encrypted Transport](noise.md#en) | XX, IK, fallback on the same connection, ML-KEM-512 hybrid handshakes, framing, server authentication, and login outcomes. |
-| [Protocol Tree Node and Binary Encoding](protocol-tree-node.md#en) | Node model, lists and token dictionaries, length headers, packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
-| [Argo · Binary Format and Encoding](argo.md#en) | Node business payloads, headers, scalar blocks and Core, schema selection, types/errors, Python read/write and exact rewriting. |
+| [Protocol Tree Node and Binary Encoding](protocol-tree-node.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node) | Node model, lists and token dictionaries, length headers, packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
+| [Argo · Binary Format and Encoding](argo.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-argo) | Node business payloads, headers, scalar blocks and Core, schema selection, types/errors, Python read/write and exact rewriting. |
 
 To follow the receiving pipeline, read TCP Framing, Noise Handshakes and Encrypted Transport, then Protocol Tree Node: establish frame boundaries, authenticate and decrypt, then process the plaintext envelope and reconstruct nodes. When the business result declares Argo, continue with [Argo](argo.md#en) to parse its node payload.
 
