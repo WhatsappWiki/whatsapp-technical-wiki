@@ -8,28 +8,28 @@
 
 ### 功能简介
 
-注册业务按 `exist → code → register` 衔接：exist检查号码，code申请所选验证路线，后续验证请求提交材料。code返回sent不等于已收码或完成注册。本目录围绕exist/code参数、安全字段、Android输入、请求封装与发送提供13篇文章。
+注册业务按 `exist → code → register` 衔接：[exist](exist.md#zh)检查号码，[code](code.md#zh)申请所选验证路线，后续验证请求提交材料。[code](code.md#zh)返回sent不等于已收码或完成注册。本目录围绕[exist](exist.md#zh)/[code参数](code.md#zh)、[安全字段](security-fields/README.md#zh)、[Android输入](android-inputs.md#zh)、[请求封装](request-encryption.md#zh)与[发送](sending-requests.md#zh)提供13篇文章。
 
 ### 介绍范围
 
-1. **exist参数**：号码检查的字段目录、取值来源、条件、省略与材料选择。
-2. **code参数**：短信、语音或其它验证路线的字段、方式快照与延续状态。
-3. **Android输入**：系统和包信息、存储示例、证书选择、编码及其与实际缓存的衔接。
-4. **安全字段**：gpia、_gg、_gi、_gp、_gs、_ge、_ga的结构、算法、输入与生命周期。
-5. **加密封装**：序列化、ENC、H、证书链及不同通道/失败分支。
-6. **发送与响应**：最终合并、应用头、HTTP/解析/业务分层和重试条件。
+1. **[exist参数](exist.md#zh)**：号码检查的字段目录、取值来源、条件、省略与材料选择。
+2. **[code参数](code.md#zh)**：短信、语音或其它验证路线的字段、方式快照与延续状态。
+3. **[Android输入](android-inputs.md#zh)**：系统和包信息、存储示例、证书选择、编码及其与实际缓存的衔接。
+4. **[安全字段](security-fields/README.md#zh)**：[gpia](security-fields/gpia.md#zh)、[_gg](security-fields/gg.md#zh)、[_gi](security-fields/gi.md#zh)、[_gp](security-fields/gp.md#zh)、[_gs](security-fields/gs.md#zh)、[_ge](security-fields/ge.md#zh)、[_ga](security-fields/ga.md#zh)的结构、算法、输入与生命周期。
+5. **[加密封装](request-encryption.md#zh)**：序列化、[ENC](request-encryption.md#zh)、[H](request-encryption.md#zh)、[证书链](request-encryption.md#zh)及不同通道/失败分支。
+6. **[发送与响应](sending-requests.md#zh)**：最终合并、应用头、HTTP/解析/业务分层和重试条件。
 
 ### 明文参数与加密正文
 
-“明文参数”指外层ENC之前的字段集合；部分字段内部仍有编码或加密。exist的71项、code的70项都是已知字段目录，实际按流程选择，条件字段不要求每次出现。JSON和Java合成示意用于展示字段表示，最终HTTP正文还要经过通道合并、序列化和封装。
+“明文参数”指[外层ENC](request-encryption.md#zh)之前的字段集合；部分字段内部仍有编码或加密。[exist](exist.md#zh)的71项、[code](code.md#zh)的70项都是已知字段目录，实际按流程选择，条件字段不要求每次出现。JSON和Java合成示意用于展示字段表示，最终HTTP正文还要经过通道合并、序列化和[封装](request-encryption.md#zh)。
 
-字段级CBC、外层ENC、签名H与Authorization分别使用自己的输入和生命周期。普通文本与预编码字节也走不同处理路径；Kotlin与WAMsys的头部、降级和重试规则按各自分支说明。
+[字段级CBC](security-fields/README.md#cbc)、[外层ENC](request-encryption.md#zh)、[签名H](request-encryption.md#zh)与[Authorization](request-encryption.md#zh)分别使用自己的输入和生命周期。[普通文本与预编码字节](request-encryption.md#zh)也走不同处理路径；Kotlin与WAMsys的头部、降级和重试规则按各自分支说明。
 
 <a id="文档组织与扩展方式"></a>
 
 ### 阅读顺序
 
-先读对应请求的字段表，再结合Android输入与安全字段专题理解来源、编码和缓存，最后阅读封装与发送。exist按号码选择的备份材料可在发送前保存；code随后直接解码偏好。两种请求的计数、纠错字段和状态快照也分别处理。
+先读对应请求的字段表，再结合[Android输入](android-inputs.md#zh)与[安全字段](security-fields/README.md#zh)专题理解来源、编码和缓存，最后阅读[封装](request-encryption.md#zh)与[发送](sending-requests.md#zh)。[exist](exist.md#zh)按号码选择的备份材料可在[发送](sending-requests.md#zh)前保存；[code](code.md#zh)随后直接解码偏好。两种请求的计数、纠错字段和状态快照也分别处理。
 
 <a id="主线文章--main-articles"></a>
 
@@ -39,25 +39,25 @@
 | --- | --- | --- |
 | 1 | [exist 参数](exist.md#zh) | 71项已知内层字段、条件省略、号码备份选择与缓存，附JSON/Java合成示意。 |
 | 2 | [code 参数](code.md#zh) | 70项已知内层字段、验证路线、已保存备份与交互状态，附JSON/Java合成示意。 |
-| 3 | [安全字段总览](security-fields/README.md#zh) | 七字段的职责与表示，gpia回调、对象结果槽、context字典及库级状态的生命周期。 |
-| 4 | [参数序列化与加密封装](request-encryption.md#zh) | 普通文本/预编码字节、Kotlin/原生序列化、ENC、H、证书链及失败分支。 |
+| 3 | [安全字段总览](security-fields/README.md#zh) | 七字段的职责与表示，[gpia](security-fields/gpia.md#zh)回调、对象结果槽、context字典及库级状态的生命周期。 |
+| 4 | [参数序列化与加密封装](request-encryption.md#zh) | 普通文本/预编码字节、Kotlin/原生序列化、[ENC](request-encryption.md#zh)、[H](request-encryption.md#zh)、[证书链](request-encryption.md#zh)及失败分支。 |
 | 5 | [发送流程与响应处理](sending-requests.md#zh) | 最终合并、Kotlin/WAMsys通道、应用头、响应分层、等待与重试分支。 |
 
 <a id="每篇参数文章的结构--structure-of-each-parameter-article"></a>
 
 ### 每篇参数文章的结构
 
-参数文章按主题列出含义、取值来源、表示与出现条件、示例值，随后介绍组装、缓存和通道差异，并提供中英文一致的JSON/Java合成展示对象。七个安全字段各有同语言详解入口；最终加密与响应行为由封装和发送文章展开。
+参数文章按主题列出含义、取值来源、表示与出现条件、示例值，随后介绍组装、缓存和通道差异，并提供中英文一致的JSON/Java合成展示对象。七个[安全字段](security-fields/README.md#zh)各有同语言详解入口；最终加密与响应行为由[封装](request-encryption.md#zh)和[发送](sending-requests.md#zh)文章展开。
 
 <a id="安全字段专题--security-field-articles"></a>
 
 ### 安全字段专题
 
-gpia/_gg承载Play结果，_gi/_gp描述应用材料，_gs/_ge/_ga描述环境或执行状态。gpia独立回调与其它结果槽分别发布；字段存在、加密完成、Google结果及注册业务成功是不同事件。
+[gpia](security-fields/gpia.md#zh)/[_gg](security-fields/gg.md#zh)承载[Play结果](security-fields/gpia.md#zh)，[_gi](security-fields/gi.md#zh)/[_gp](security-fields/gp.md#zh)描述应用材料，[_gs](security-fields/gs.md#zh)/[_ge](security-fields/ge.md#zh)/[_ga](security-fields/ga.md#zh)描述环境或执行状态。[gpia](security-fields/gpia.md#zh)独立回调与其它结果槽分别发布；字段存在、加密完成、Google结果及注册业务成功是不同事件。
 
 | 文章 | 内容 |
 | --- | --- |
-| [gpia · Play结果与应用信息](security-fields/gpia.md#zh) | Play结果码、requestHash、provider准备与限流、超时范围和CBC包装。 |
+| [gpia · Play结果与应用信息](security-fields/gpia.md#zh) | [Play结果码](security-fields/gpia.md#zh)、requestHash、provider准备与限流、超时范围和CBC包装。 |
 | [_gg · Play结果精简包装](security-fields/gg.md#zh) | `_ic/_it`内部结构、独立IV与发布，以及公共Map保留旧槽的条件。 |
 | [_gi · 应用完整性信息](security-fields/gi.md#zh) | 主安装文件、DEX、签名与目录摘要，CBC包装及源槽/context/结果缓存。 |
 | [_gp · 声明权限摘要](security-fields/gp.md#zh) | 声明权限名称的modified UTF-8、排序与摘要，空值/失败材料及缓存。 |
@@ -85,28 +85,28 @@ gpia/_gg承载Play结果，_gi/_gp描述应用材料，_gs/_ge/_ga描述环境�
 
 ### Overview
 
-The business flow is `exist → code → register`: exist checks a number, code requests the selected verification route, and later verification submits material. A code sent result does not establish receipt or completed registration. This directory contains 13 articles on exist/code parameters, security fields, Android inputs, packaging, and sending.
+The business flow is `exist → code → register`: [exist](exist.md#en) checks a number, [code](code.md#en) requests the selected verification route, and later verification submits material. A [code](code.md#en) sent result does not establish receipt or completed registration. This directory contains 13 articles on [exist](exist.md#en)/[code parameters](code.md#en), [security fields](security-fields/README.md#en), [Android inputs](android-inputs.md#en), [packaging](request-encryption.md#en), and [sending](sending-requests.md#en).
 
 ### Scope
 
-1. **exist parameters**: number-check field catalog, sources, conditions, omission, and material selection.
-2. **code parameters**: SMS, voice, or other verification routes, captured method, and retained state.
-3. **Android inputs**: system/package information, example storage, certificate selection, encoding, and actual cache boundaries.
-4. **Security fields**: structure, algorithms, inputs, and lifetimes of gpia, _gg, _gi, _gp, _gs, _ge, and _ga.
-5. **Packaging**: serialization, ENC, H, certificate chains, and transport/failure branches.
-6. **Sending and responses**: final merging, application headers, HTTP/parsing/business layers, and retry conditions.
+1. **[exist parameters](exist.md#en)**: number-check field catalog, sources, conditions, omission, and material selection.
+2. **[code parameters](code.md#en)**: SMS, voice, or other verification routes, captured method, and retained state.
+3. **[Android inputs](android-inputs.md#en)**: system/package information, example storage, certificate selection, encoding, and actual cache boundaries.
+4. **[Security fields](security-fields/README.md#en)**: structure, algorithms, inputs, and lifetimes of [gpia](security-fields/gpia.md#en), [_gg](security-fields/gg.md#en), [_gi](security-fields/gi.md#en), [_gp](security-fields/gp.md#en), [_gs](security-fields/gs.md#en), [_ge](security-fields/ge.md#en), and [_ga](security-fields/ga.md#en).
+5. **[Packaging](request-encryption.md#en)**: serialization, [ENC](request-encryption.md#en), [H](request-encryption.md#en), [certificate chains](request-encryption.md#en), and transport/failure branches.
+6. **[Sending and responses](sending-requests.md#en)**: final merging, application headers, HTTP/parsing/business layers, and retry conditions.
 
 ### Plaintext Parameters and Encrypted Bodies
 
-“Plaintext parameters” means the fields before outer ENC; individual fields can still contain encoding or encryption. The 71 exist fields and 70 code fields are known catalogs. Select fields for the actual flow rather than requiring every conditional field on each request. Synthetic JSON/Java objects illustrate representations; the final HTTP body also requires transport merging, serialization, and packaging.
+“Plaintext parameters” means the fields before [outer ENC](request-encryption.md#en); individual fields can still contain encoding or encryption. The 71 [exist](exist.md#en) fields and 70 [code](code.md#en) fields are known catalogs. Select fields for the actual flow rather than requiring every conditional field on each request. Synthetic JSON/Java objects illustrate representations; the final HTTP body also requires transport merging, serialization, and [packaging](request-encryption.md#en).
 
-Field CBC, outer ENC, signature H, and Authorization have separate inputs and lifetimes. Ordinary text and preencoded bytes also follow different handling. Kotlin and WAMsys headers, fallbacks, and retry rules follow their respective branches.
+[Field CBC](security-fields/README.md#cbc-en), [outer ENC](request-encryption.md#en), [signature H](request-encryption.md#en), and [Authorization](request-encryption.md#en) have separate inputs and lifetimes. [Ordinary text and preencoded bytes](request-encryption.md#en) also follow different handling. Kotlin and WAMsys headers, fallbacks, and retry rules follow their respective branches.
 
 <a id="documentation-organization-and-expansion"></a>
 
 ### Reading Order
 
-Start with the relevant request’s field table, use Android inputs and security topics for sources/encoding/caches, then read packaging and sending. exist can save number-selected backup material before sending; code later directly decodes the preference. Their counters, correction fields, and captured state remain request-specific.
+Start with the relevant request’s field table, use [Android inputs](android-inputs.md#en) and [security topics](security-fields/README.md#en) for sources/encoding/caches, then read [packaging](request-encryption.md#en) and [sending](sending-requests.md#en). [exist](exist.md#en) can save number-selected backup material before [sending](sending-requests.md#en); [code](code.md#en) later directly decodes the preference. Their counters, correction fields, and captured state remain request-specific.
 
 ### Main Articles
 
@@ -114,21 +114,21 @@ Start with the relevant request’s field table, use Android inputs and security
 | --- | --- | --- |
 | 1 | [exist parameters](exist.md#en) | 71 known inner fields, conditional omission, number-bound backup selection, and caches, with synthetic JSON/Java illustrations. |
 | 2 | [code parameters](code.md#en) | 70 known inner fields, verification routes, retained backup and interaction state, with synthetic JSON/Java illustrations. |
-| 3 | [Security-field overview](security-fields/README.md#en) | Roles and representations of seven fields; lifetimes of the gpia callback, owner slots, context dictionaries, and library state. |
-| 4 | [Serialization and request encryption](request-encryption.md#en) | Ordinary text/preencoded bytes, Kotlin/native serialization, ENC, H, certificate chains, and failure branches. |
+| 3 | [Security-field overview](security-fields/README.md#en) | Roles and representations of seven fields; lifetimes of the [gpia](security-fields/gpia.md#en) callback, owner slots, context dictionaries, and library state. |
+| 4 | [Serialization and request encryption](request-encryption.md#en) | Ordinary text/preencoded bytes, Kotlin/native serialization, [ENC](request-encryption.md#en), [H](request-encryption.md#en), [certificate chains](request-encryption.md#en), and failure branches. |
 | 5 | [Sending and response handling](sending-requests.md#en) | Final merging, Kotlin/WAMsys paths, application headers, response layers, waits, and retry branches. |
 
 ### Structure of Each Parameter Article
 
-Parameter articles group meanings, sources, representation/presence conditions, and examples, followed by assembly, cache, and transport differences. Both languages share synthetic JSON/Java display objects. Each security field links to a same-language explanation; packaging and sending articles explain final encryption and response behavior.
+Parameter articles group meanings, sources, representation/presence conditions, and examples, followed by assembly, cache, and transport differences. Both languages share synthetic JSON/Java display objects. Each [security field](security-fields/README.md#en) links to a same-language explanation; [packaging](request-encryption.md#en) and [sending](sending-requests.md#en) articles explain final encryption and response behavior.
 
 ### Security Field Articles
 
-gpia/_gg carry Play outcomes, _gi/_gp describe application material, and _gs/_ge/_ga describe environment or execution state. The separate gpia callback and other result slots publish independently. Field presence, completed encryption, Google outcomes, and registration-business success are different events.
+[gpia](security-fields/gpia.md#en)/[_gg](security-fields/gg.md#en) carry [Play outcomes](security-fields/gpia.md#en), [_gi](security-fields/gi.md#en)/[_gp](security-fields/gp.md#en) describe application material, and [_gs](security-fields/gs.md#en)/[_ge](security-fields/ge.md#en)/[_ga](security-fields/ga.md#en) describe environment or execution state. The separate [gpia](security-fields/gpia.md#en) callback and other result slots publish independently. Field presence, completed encryption, Google outcomes, and registration-business success are different events.
 
 | Article | Scope |
 | --- | --- |
-| [gpia · Play outcome and application metadata](security-fields/gpia.md#en) | Play outcome codes, requestHash, provider preparation/rate limits, timeout scope, and CBC wrapping. |
+| [gpia · Play outcome and application metadata](security-fields/gpia.md#en) | [Play outcome codes](security-fields/gpia.md#en), requestHash, provider preparation/rate limits, timeout scope, and CBC wrapping. |
 | [_gg · Compact Play outcome](security-fields/gg.md#en) | Internal `_ic/_it` structure, independent IV/publication, and retained older slots in the public Map. |
 | [_gi · Application integrity](security-fields/gi.md#en) | Primary installation file, DEX, certificate and directory digests; CBC and source-slot/context/result caches. |
 | [_gp · Declared-permission digest](security-fields/gp.md#en) | Modified UTF-8, sorting, and hashing of declared permission names; empty/failure material and caching. |
