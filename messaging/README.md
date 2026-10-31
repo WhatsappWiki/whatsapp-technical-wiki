@@ -8,24 +8,24 @@
 
 ### 功能简介
 
-本目录介绍 WhatsApp 消息从创建到发送、从接收到展示的处理链路，整理消息结构、状态、回执、可靠性、群聊事件与本地数据一致性。
+本目录介绍 WhatsApp 消息从创建到发送、从接收到展示的处理链路，整理消息结构、状态、[回执](storage/msgstore.md#receipts-zh)、可靠性、群聊事件与本地数据一致性。
 
 ### 介绍范围
 
-- 发送路径：创建消息、生成标识、序列化、加密、发送和状态更新。
-- 接收路径：收到数据、解析、解密、存储、通知与回执。
+- 发送路径：创建消息、生成标识、序列化、加密、发送和[状态更新](storage/msgstore.md#messages-zh)。
+- 接收路径：收到数据、解析、解密、[存储](local-storage.md#zh)、通知与[回执](storage/msgstore.md#receipts-zh)。
 - 文本、引用、回复、转发、表情回应及消息编辑或撤回的结构研究。
-- 服务端确认、送达回执、已读回执与它们各自代表的状态。
+- [服务端确认](storage/msgstore.md#messages-zh)、[送达回执](storage/msgstore.md#receipts-zh)、[已读回执](storage/msgstore.md#receipts-zh)与它们各自代表的状态。
 - 超时、重试、重复消息、顺序处理和离线消息恢复。
 - 群聊消息的发送、接收、成员变化与相关事件。
-- 本地数据库、发送队列和 UI 显示之间的一致性。
+- [本地数据库](local-storage.md#zh)、发送队列和 [UI 显示](storage/msgstore.md#zh)之间的一致性。
 
 ### 已有文章
 
 | 文章 | 内容 |
 | --- | --- |
-| [本地数据库与存储](local-storage.md#zh) | 数据库职责、WAL、一致快照与连接密钥 |
-| [数据库专题](storage/README.md#zh) | axolotl.db 密钥与会话；msgstore.db 消息、回执及媒体 |
+| [本地数据库与存储](local-storage.md#zh) | [数据库职责](local-storage.md#zh)、[WAL](local-storage.md#zh)、[一致快照](local-storage.md#zh)与[连接密钥](local-storage.md#keystore-zh) |
+| [数据库专题](storage/README.md#zh) | [axolotl.db](storage/axolotl.md#zh) [密钥与会话](storage/axolotl.md#zh)；[msgstore.db](storage/msgstore.md#zh) [消息、回执及媒体](storage/msgstore.md#zh) |
 
 ### 文档组织与扩展方式
 
@@ -40,12 +40,12 @@
 | 规划路径 | 内容 |
 | --- | --- |
 | `sending.md` | 消息创建、标识、序列化、加密与发送 |
-| `receiving.md` | 消息接收、解析、解密、存储与通知 |
+| `receiving.md` | 消息接收、解析、解密、[存储](local-storage.md#zh)与通知 |
 | `message-types/` | 文本、引用、回复、转发及表情回应 |
-| `receipts.md` | 服务端确认、送达回执与已读回执 |
+| `receipts.md` | [服务端确认](storage/msgstore.md#messages-zh)、[送达回执](storage/msgstore.md#receipts-zh)与[已读回执](storage/msgstore.md#receipts-zh) |
 | `reliability.md` | 超时、重试、顺序、去重与离线恢复 |
 | `groups/` | 群聊消息、成员变化与相关事件 |
-| `edits-and-deletion.md` | 消息编辑、撤回及状态更新 |
+| `edits-and-deletion.md` | 消息编辑、撤回及[状态更新](storage/msgstore.md#messages-zh) |
 
 <a id="相关主题--related-topics"></a>
 
@@ -59,24 +59,24 @@
 
 ### Overview
 
-This directory introduces WhatsApp message processing from creation to transmission and from reception to display. It organizes message structures, states, receipts, reliability, group events, and local-data consistency.
+This directory introduces WhatsApp message processing from creation to transmission and from reception to display. It organizes message structures, states, [receipts](storage/msgstore.md#receipts-en), reliability, group events, and local-data consistency.
 
 ### Scope
 
-- Outbound pipeline: creation, identifiers, serialization, encryption, transmission, and state updates.
-- Inbound pipeline: reception, parsing, decryption, storage, notifications, and receipts.
+- Outbound pipeline: creation, identifiers, serialization, encryption, transmission, and [state updates](storage/msgstore.md#messages-en).
+- Inbound pipeline: reception, parsing, decryption, [storage](local-storage.md#en), notifications, and [receipts](storage/msgstore.md#receipts-en).
 - Research on text messages, quotes, replies, forwarding, reactions, edits, and deletion events.
-- Server acknowledgments, delivery receipts, read receipts, and their distinct meanings.
+- [Server acknowledgments](storage/msgstore.md#messages-en), [delivery receipts](storage/msgstore.md#receipts-en), [read receipts](storage/msgstore.md#receipts-en), and their distinct meanings.
 - Timeouts, retries, duplicate handling, ordering, and offline-message recovery.
 - Group messaging, membership changes, and related events.
-- Consistency between local databases, outbound queues, and UI state.
+- Consistency between [local databases](local-storage.md#en), outbound queues, and [UI state](storage/msgstore.md#en).
 
 ### Available Articles
 
 | Article | Contents |
 | --- | --- |
-| [Local Databases and Storage](local-storage.md#en) | Database responsibilities, WAL, consistent snapshots, and connection keys |
-| [Database Storage](storage/README.md#en) | axolotl.db keys/sessions; msgstore.db messages, receipts, and media |
+| [Local Databases and Storage](local-storage.md#en) | [Database responsibilities](local-storage.md#en), [WAL](local-storage.md#en), [consistent snapshots](local-storage.md#en), and [connection keys](local-storage.md#keystore-en) |
+| [Database Storage](storage/README.md#en) | [axolotl.db](storage/axolotl.md#en) [keys/sessions](storage/axolotl.md#en); [msgstore.db](storage/msgstore.md#en) [messages, receipts, and media](storage/msgstore.md#en) |
 
 ### Documentation Organization and Expansion
 
@@ -89,12 +89,12 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | Proposed path | Scope |
 | --- | --- |
 | `sending.md` | Message creation, identifiers, serialization, encryption, and sending |
-| `receiving.md` | Reception, parsing, decryption, storage, and notifications |
+| `receiving.md` | Reception, parsing, decryption, [storage](local-storage.md#en), and notifications |
 | `message-types/` | Text, quotes, replies, forwarding, and reactions |
-| `receipts.md` | Server acknowledgments, delivery receipts, and read receipts |
+| `receipts.md` | [Server acknowledgments](storage/msgstore.md#messages-en), [delivery receipts](storage/msgstore.md#receipts-en), and [read receipts](storage/msgstore.md#receipts-en) |
 | `reliability.md` | Timeouts, retries, ordering, deduplication, and offline recovery |
 | `groups/` | Group messages, membership changes, and related events |
-| `edits-and-deletion.md` | Message edits, deletion events, and state updates |
+| `edits-and-deletion.md` | Message edits, deletion events, and [state updates](storage/msgstore.md#messages-en) |
 
 ### Related Topics
 

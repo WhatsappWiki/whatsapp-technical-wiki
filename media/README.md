@@ -12,11 +12,11 @@
 
 ### 介绍范围
 
-- 图片、视频、音频、文档、贴纸与语音消息的数据结构。
-- 媒体预处理、缩略图、类型识别和文件元数据。
+- 图片、视频、音频、文档、贴纸与语音消息的[数据结构](../messaging/storage/msgstore.md#media-zh)。
+- 媒体预处理、缩略图、类型识别和[文件元数据](../messaging/storage/msgstore.md#media-zh)。
 - 上传、下载、媒体引用与缓存生命周期。
-- 媒体密钥、加解密、摘要和完整性校验研究。
-- 语音消息录制、编码、时长、波形和播放状态。
+- [媒体密钥](../messaging/storage/msgstore.md#media-zh)、加解密、[摘要](../messaging/storage/msgstore.md#media-zh)和完整性校验研究。
+- 语音消息录制、编码、时长、波形和[播放状态](../messaging/storage/msgstore.md#receipts-zh)。
 - 下载失败、链接失效、缓存缺失和重新获取。
 
 语音消息是可发送和下载的音频消息；实时语音通话在下一章单独整理。
@@ -25,7 +25,7 @@
 
 | 文章 | 内容 |
 | --- | --- |
-| [msgstore.db：消息、回执与媒体](../messaging/storage/msgstore.md#zh) | message_media 的 55 列、消息关联、密钥/摘要列与播放回执 |
+| [msgstore.db：消息、回执与媒体](../messaging/storage/msgstore.md#zh) | [message_media 的 55 列](../messaging/storage/msgstore.md#media-zh)、[消息关联](../messaging/storage/msgstore.md#zh)、[密钥/摘要列](../messaging/storage/msgstore.md#media-zh)与[播放回执](../messaging/storage/msgstore.md#receipts-zh) |
 
 ### 文档组织与扩展方式
 
@@ -39,11 +39,11 @@
 
 | 规划路径 | 内容 |
 | --- | --- |
-| `media-types.md` | 媒体消息结构、类型与文件元数据 |
+| `media-types.md` | 媒体消息结构、类型与[文件元数据](../messaging/storage/msgstore.md#media-zh) |
 | `preprocessing.md` | 缩略图、类型识别与媒体预处理 |
 | `upload.md` | 上传流程、媒体引用与错误处理 |
 | `download.md` | 下载流程、缓存读取与文件恢复 |
-| `media-encryption.md` | 媒体密钥、加解密、摘要与完整性 |
+| `media-encryption.md` | [媒体密钥](../messaging/storage/msgstore.md#media-zh)、加解密、[摘要](../messaging/storage/msgstore.md#media-zh)与完整性 |
 | `voice-messages.md` | 语音录制、编码、时长、波形与播放 |
 | `cache-and-expiration.md` | 缓存生命周期、链接失效与重新获取 |
 
@@ -63,11 +63,11 @@ This directory introduces transferable content such as images, videos, documents
 
 ### Scope
 
-- Data structures for images, videos, audio, documents, stickers, and voice messages.
-- Media preparation, thumbnails, type detection, and file metadata.
+- [Data structures](../messaging/storage/msgstore.md#media-en) for images, videos, audio, documents, stickers, and voice messages.
+- Media preparation, thumbnails, type detection, and [file metadata](../messaging/storage/msgstore.md#media-en).
 - Uploads, downloads, media references, and cache lifecycles.
-- Media keys, encryption, decryption, hashes, and integrity verification.
-- Voice-message recording, encoding, duration, waveforms, and playback state.
+- [Media keys](../messaging/storage/msgstore.md#media-en), encryption, decryption, [hashes](../messaging/storage/msgstore.md#media-en), and integrity verification.
+- Voice-message recording, encoding, duration, waveforms, and [playback state](../messaging/storage/msgstore.md#receipts-en).
 - Download failures, expired references, missing cached files, and retrieval.
 
 Voice messages are audio messages that can be sent and downloaded. Real-time voice calls are covered separately below.
@@ -76,7 +76,7 @@ Voice messages are audio messages that can be sent and downloaded. Real-time voi
 
 | Article | Contents |
 | --- | --- |
-| [msgstore.db: Messages, Receipts, and Media](../messaging/storage/msgstore.md#en) | The 55 message_media columns, message relationships, key/digest columns, and playback receipts |
+| [msgstore.db: Messages, Receipts, and Media](../messaging/storage/msgstore.md#en) | The [55 message_media columns](../messaging/storage/msgstore.md#media-en), [message relationships](../messaging/storage/msgstore.md#en), [key/digest columns](../messaging/storage/msgstore.md#media-en), and [playback receipts](../messaging/storage/msgstore.md#receipts-en) |
 
 ### Documentation Organization and Expansion
 
@@ -88,11 +88,11 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 | Proposed path | Scope |
 | --- | --- |
-| `media-types.md` | Media message structures, types, and file metadata |
+| `media-types.md` | Media message structures, types, and [file metadata](../messaging/storage/msgstore.md#media-en) |
 | `preprocessing.md` | Thumbnails, type detection, and media preparation |
 | `upload.md` | Upload flows, media references, and error handling |
 | `download.md` | Download flows, cached files, and retrieval |
-| `media-encryption.md` | Media keys, encryption, decryption, hashes, and integrity |
+| `media-encryption.md` | [Media keys](../messaging/storage/msgstore.md#media-en), encryption, decryption, [hashes](../messaging/storage/msgstore.md#media-en), and integrity |
 | `voice-messages.md` | Voice recording, encoding, duration, waveforms, and playback |
 | `cache-and-expiration.md` | Cache lifecycles, expired references, and retrieval |
 
