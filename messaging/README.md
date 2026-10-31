@@ -20,9 +20,16 @@
 - 群聊消息的发送、接收、成员变化与相关事件。
 - 本地数据库、发送队列和 UI 显示之间的一致性。
 
+### 已有文章
+
+| 文章 | 内容 |
+| --- | --- |
+| [本地数据库与存储](local-storage.md#zh) | 数据库职责、WAL、一致快照与连接密钥 |
+| [数据库专题](storage/README.md#zh) | axolotl.db 密钥与会话；msgstore.db 消息、回执及媒体 |
+
 ### 文档组织与扩展方式
 
-本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
+已有文章从上表进入；下方规划表仅列尚未创建的文章或子目录。各文章直接说明相应功能、字段和条件行为。
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
@@ -39,7 +46,6 @@
 | `reliability.md` | 超时、重试、顺序、去重与离线恢复 |
 | `groups/` | 群聊消息、成员变化与相关事件 |
 | `edits-and-deletion.md` | 消息编辑、撤回及状态更新 |
-| `local-storage.md` | 本地数据库、发送队列与 UI 一致性 |
 
 <a id="相关主题--related-topics"></a>
 
@@ -65,9 +71,16 @@ This directory introduces WhatsApp message processing from creation to transmiss
 - Group messaging, membership changes, and related events.
 - Consistency between local databases, outbound queues, and UI state.
 
+### Available Articles
+
+| Article | Contents |
+| --- | --- |
+| [Local Databases and Storage](local-storage.md#en) | Database responsibilities, WAL, consistent snapshots, and connection keys |
+| [Database Storage](storage/README.md#en) | axolotl.db keys/sessions; msgstore.db messages, receipts, and media |
+
 ### Documentation Organization and Expansion
 
-This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
+Use the table above for available articles. The planning table below lists articles or subdirectories that do not yet exist. Each article explains its functions, fields, and conditional behavior directly.
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
@@ -82,7 +95,6 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | `reliability.md` | Timeouts, retries, ordering, deduplication, and offline recovery |
 | `groups/` | Group messages, membership changes, and related events |
 | `edits-and-deletion.md` | Message edits, deletion events, and state updates |
-| `local-storage.md` | Local databases, outbound queues, and UI consistency |
 
 ### Related Topics
 

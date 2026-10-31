@@ -16,12 +16,19 @@
 - 身份材料、设备标识、认证密钥和会话状态的读取与存储。
 - 二维码或配对码关联流程、设备确认与授权状态研究。
 - 会话恢复、断线重连、失效、退出和重新登录。
-- 两步验证、PIN 与 Passkey 等相关流程的版本化记录。
+- 两步验证、PIN 与 Passkey 等相关流程。
 - 账号切换、设备移除和凭据生命周期。
+
+### 已有文章
+
+| 文章 | 内容 |
+| --- | --- |
+| [本地数据库与连接密钥](../messaging/local-storage.md#keystore-zh) | keystore 偏好存储中的连接密钥密文与 AndroidKeyStore 中的 AES 密钥 |
+| [Signal 身份与加密会话](../messaging/storage/axolotl.md#zh) | identities、本机注册 ID 与按账户/设备/scope/type 定位的会话 |
 
 ### 文档组织与扩展方式
 
-本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
+已有文章从上表进入；下方规划表仅列尚未创建的文章或子目录。各文章直接说明相应功能、字段和条件行为。
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
@@ -36,7 +43,7 @@
 | `device-linking/` | 二维码与配对码关联、设备确认和授权 |
 | `session-lifecycle.md` | 会话持久化、恢复、失效、退出与重连 |
 | `two-step-verification.md` | 两步验证、PIN 与相关状态 |
-| `passkeys.md` | Passkey 相关流程、平台与版本差异 |
+| `passkeys.md` | Passkey 相关流程与平台条件 |
 | `account-switching.md` | 账户切换、设备移除与凭据失效 |
 
 <a id="相关主题--related-topics"></a>
@@ -59,12 +66,19 @@ This directory introduces how WhatsApp accounts and devices enter, maintain, and
 - Reading and storing identity material, device identifiers, authentication keys, and session state.
 - QR-code and pairing-code flows, device confirmation, and authorization state.
 - Session restoration, reconnection, expiration, logout, and reauthentication.
-- Version-specific research on two-step verification, PINs, and passkeys.
+- Two-step verification, PINs, and passkey flows.
 - Account switching, device removal, and credential lifecycles.
+
+### Available Articles
+
+| Article | Contents |
+| --- | --- |
+| [Local Databases and Connection Keys](../messaging/local-storage.md#keystore-en) | Connection-key ciphertext in keystore preferences and the AES key in AndroidKeyStore |
+| [Signal Identities and Cryptographic Sessions](../messaging/storage/axolotl.md#en) | identities, local registration ID, and account/device/scope/type session addressing |
 
 ### Documentation Organization and Expansion
 
-This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
+Use the table above for available articles. The planning table below lists articles or subdirectories that do not yet exist. Each article explains its functions, fields, and conditional behavior directly.
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
@@ -77,7 +91,7 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | `device-linking/` | QR-code and pairing-code linking, device confirmation, and authorization |
 | `session-lifecycle.md` | Session persistence, restoration, expiration, logout, and reconnection |
 | `two-step-verification.md` | Two-step verification, PINs, and related states |
-| `passkeys.md` | Passkey-related flows and platform/version differences |
+| `passkeys.md` | Passkey-related flows and platform conditions |
 | `account-switching.md` | Account switching, device removal, and credential invalidation |
 
 ### Related Topics

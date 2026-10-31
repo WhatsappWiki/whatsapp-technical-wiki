@@ -21,9 +21,15 @@
 
 语音消息是可发送和下载的音频消息；实时语音通话在下一章单独整理。
 
+### 已有文章
+
+| 文章 | 内容 |
+| --- | --- |
+| [msgstore.db：消息、回执与媒体](../messaging/storage/msgstore.md#zh) | message_media 的 55 列、消息关联、密钥/摘要列与播放回执 |
+
 ### 文档组织与扩展方式
 
-本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
+已有文章从上表进入；下方规划表仅列尚未创建的文章或子目录。各文章直接说明相应功能、字段和条件行为。
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
@@ -66,9 +72,15 @@ This directory introduces transferable content such as images, videos, documents
 
 Voice messages are audio messages that can be sent and downloaded. Real-time voice calls are covered separately below.
 
+### Available Articles
+
+| Article | Contents |
+| --- | --- |
+| [msgstore.db: Messages, Receipts, and Media](../messaging/storage/msgstore.md#en) | The 55 message_media columns, message relationships, key/digest columns, and playback receipts |
+
 ### Documentation Organization and Expansion
 
-This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
+Use the table above for available articles. The planning table below lists articles or subdirectories that do not yet exist. Each article explains its functions, fields, and conditional behavior directly.
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
