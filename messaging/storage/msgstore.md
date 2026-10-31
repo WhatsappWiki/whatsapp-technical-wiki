@@ -48,6 +48,8 @@ message._id <- message_media.message_row_id
 
 建表约束只对 `unseen_important_message_count`、`group_type`、`has_new_community_admin_dialog_been_acknowledged` 指定 `NOT NULL DEFAULT 0`；其他可空列不能批量假定有同样默认值。完整 53 列及类型见下方 DDL。
 
+<a id="messages-zh"></a>
+
 ### message：标识、状态与时间
 
 `message._id` 是本地行号，`key_id` 是非空协议消息标识。唯一索引按 `(chat_row_id, from_me, key_id, sender_jid_row_id)` 定位；`key_id` 本身不是全库唯一索引。`from_me` 区分方向，不能通过 status 推断消息必为入站或出站。
@@ -65,6 +67,8 @@ message._id <- message_media.message_row_id
 
 `timestamp`、`received_timestamp`、`receipt_server_timestamp` 和 `server_sts` 是独立列，`sort_id` 是独立排序字段。不能从一列、字段名或网络 `t` 的单位推导全部时间列的单位；也不能把本地接收时间冒充对方实际阅读时间。正文相关列有 `text_data`、`translated_text`，媒体说明文字则另在 `message_media.media_caption`。
 
+<a id="receipts-zh"></a>
+
 ### 用户回执与设备回执
 
 `receipt_user` 按 `(message_row_id, receipt_user_jid_row_id)` 唯一定位用户，分别保存 `receipt_timestamp`、`read_timestamp`、`played_timestamp`。对应回执状态为 `5/13/8` 时写各自的列；这三个时间不能互相替代。
@@ -74,6 +78,8 @@ message._id <- message_media.message_row_id
 用户回执写入将其收到的时间值写入选定列；要解释为秒或毫秒，需要结合具体上游回执路径。仅凭该写入动作不能建立所有原生回执字段的统一单位。记录历史数据时，缺失的回执时间应保留为空，避免用本地处理时间替代对方的事件时间。
 
 本机收到消息后的阅读动作和向对方发送的已读回执，与对方发送来的用户回执不同。查询“对方何时已读我发的消息”应查对应出站消息的用户回执；查询“本机是否读过入站消息”则需要本机阅读游标及对应状态。
+
+<a id="media-zh"></a>
 
 ### message_media：媒体密钥与文件元数据
 
@@ -406,6 +412,8 @@ message._id <- message_media.message_row_id
 
 Creation constraints specify `NOT NULL DEFAULT 0` for `unseen_important_message_count`, `group_type`, and `has_new_community_admin_dialog_been_acknowledged`. Other nullable columns must not be assigned the same default by assumption. The DDL below lists all 53 columns and their types.
 
+<a id="messages-en"></a>
+
 ### message: Identifiers, Status, and Time
 
 `message._id` is a local row ID; `key_id` is a non-null protocol message identifier. The unique index uses `(chat_row_id, from_me, key_id, sender_jid_row_id)`; `key_id` alone has no database-wide unique index. `from_me` indicates direction; status alone does not establish inbound versus outbound direction.
@@ -423,6 +431,8 @@ These numbers are not an ordered rank; `MAX(status)` does not implement every st
 
 `timestamp`, `received_timestamp`, `receipt_server_timestamp`, and `server_sts` are separate columns; `sort_id` is an independent ordering field. Neither one column, its name, nor the unit of network `t` establishes the unit of every time column. Local receipt time also does not establish the peer's actual reading time. Body-related columns include `text_data` and `translated_text`, while media captions are in `message_media.media_caption`.
 
+<a id="receipts-en"></a>
+
 ### User and Device Receipts
 
 `receipt_user` uniquely addresses a user by `(message_row_id, receipt_user_jid_row_id)`, with separate `receipt_timestamp`, `read_timestamp`, and `played_timestamp` columns. Receipt statuses `5/13/8` write the corresponding columns. These three times are not interchangeable.
@@ -432,6 +442,8 @@ These numbers are not an ordered rank; `MAX(status)` does not implement every st
 The user-receipt writer puts its received time value into the selected column. Interpreting that value as seconds or milliseconds requires its particular upstream receipt path; this write alone does not define one unit for all native receipt fields. When recording historical data, missing receipt times should remain empty rather than be replaced with local processing times for the peer’s events.
 
 Local reading of an incoming message and sending a read receipt to the peer differ from receiving the peer's user receipt. To ask when the peer read an outbound message, query that message's user receipts. To ask whether the local device read an incoming message, use local read cursors and the corresponding state.
+
+<a id="media-en"></a>
 
 ### message_media: Media Keys and File Metadata
 

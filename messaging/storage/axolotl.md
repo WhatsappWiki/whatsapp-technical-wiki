@@ -30,6 +30,8 @@
 
 BLOB、record、raw32/typed33、scope 和 bucket 的定义见[存储术语](../local-storage.md#terms-zh)。
 
+<a id="identities-zh"></a>
+
 ### identities：本机身份与远端身份
 
 本机行固定按 `(recipient_id, recipient_type, device_id) = (-1, 0, 0)` 选择。正常生成的 `public_key` 是 `0x05 || raw32`，即 typed33；`private_key` 是 raw32。`registration_id` 独立持久化，初始化范围为 `1..2147483646`，不会在每次发送或读取时重新随机，也不能额外压到 14 bit。
@@ -50,6 +52,8 @@ SELECT recipient_id, recipient_type, device_id, registration_id,
 FROM identities
 WHERE recipient_id = -1 AND recipient_type = 0 AND device_id = 0;
 ```
+
+<a id="prekeys-zh"></a>
 
 ### 预密钥 record 的编码
 
@@ -78,6 +82,8 @@ signed 与 KEM 使用相同的五字段外层结构，但公私钥内容不同�
 Signed prekey 对外协议 ID 来自 record 的 `id`，SQL ID 用于选择，不能强行用 SQL 列替换。Signed ID 独立随机生成，不使用 `identities.next_prekey_id` 作为游标。
 
 上传成功会写入 `sent_to_server` 和秒级 `upload_timestamp`，并记录 `prekey_uploads`。该历史表的经典上传路径使用默认 `key_type=0`，KEM 路径显式写 `1`；这个局部区分不能直接变成所有表的同名 `key_type` 的完整枚举。KEM 的 `last_resort_key` 位于 SQL 列，不在五字段 record 内。
+
+<a id="sessions-zh"></a>
 
 ### sessions：五维地址
 
@@ -477,6 +483,8 @@ CREATE TABLE stanza_sts (
 
 For BLOB, record, raw32/typed33, scope, and bucket definitions, see the [storage terminology](../local-storage.md#terms-en).
 
+<a id="identities-en"></a>
+
 ### identities: Local and Remote Identities
 
 The local row is selected by `(recipient_id, recipient_type, device_id) = (-1, 0, 0)`. Normally generated `public_key` is `0x05 || raw32`, or typed33; `private_key` is raw32. `registration_id` is persisted independently and initialized in `1..2147483646`. It is neither regenerated for each send/read nor additionally clamped to 14 bits.
@@ -497,6 +505,8 @@ SELECT recipient_id, recipient_type, device_id, registration_id,
 FROM identities
 WHERE recipient_id = -1 AND recipient_type = 0 AND device_id = 0;
 ```
+
+<a id="prekeys-en"></a>
 
 ### Prekey Record Encoding
 
@@ -525,6 +535,8 @@ The SQL `signed_prekeys.timestamp` is the write-time application-adjusted clock 
 The signed prekey's protocol ID comes from record `id`; the SQL ID selects the row and must not replace it. Signed IDs are generated independently rather than using `identities.next_prekey_id` as a cursor.
 
 Successful upload writes `sent_to_server`, a second-based `upload_timestamp`, and `prekey_uploads` history. The classical upload path uses that history table's default `key_type=0`; the KEM path explicitly writes `1`. This local distinction is not a complete enum for every column named `key_type`. The KEM `last_resort_key` flag is a SQL column, outside the five-field record.
+
+<a id="sessions-en"></a>
 
 ### sessions: Five-Dimensional Addressing
 

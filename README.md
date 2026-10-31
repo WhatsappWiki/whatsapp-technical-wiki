@@ -29,7 +29,7 @@
 - **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
 - **解析 Argo 业务载荷**：阅读 [Argo](protocol/argo.md#zh)，了解 schema 选择、Header、类型、Python 读写与精确回写。
 - **理解本地数据库**：阅读[存储总览](messaging/local-storage.md#zh)，再查 [axolotl.db](messaging/storage/axolotl.md#zh) 的密钥会话与 [msgstore.db](messaging/storage/msgstore.md#zh) 的消息、回执和媒体。
-- **浏览其他主题**：下方技术目录链接各主题简介与文章规划。
+- **浏览其他主题**：下方[技术目录](#technical-index)链接各主题简介与文章规划。
 
 <a id="搜索主题--search-topics"></a>
 <a id="搜索主题"></a>
@@ -39,14 +39,16 @@
 
 | 章节 | 内容范围 |
 | --- | --- |
-| <a id="zh-registration"></a>[01 · 账号注册与验证码](registration/README.md#zh) | exist/code参数、Android输入、安全字段、封装和发送 |
-| <a id="zh-authentication"></a>[02 · 登录认证与会话](authentication/README.md#zh) | 身份材料、会话持久化、设备关联与重新登录 |
-| <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/README.md#zh) | 连接建立、[Noise 握手](protocol/noise.md#zh)、帧结构、[二进制节点](protocol/protocol-tree-node.md#zh)、[Argo 载荷](protocol/argo.md#zh)和请求封装 |
-| <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | 身份密钥、会话密钥、预密钥、[密钥数据库](messaging/storage/axolotl.md#zh)与加密边界 |
-| <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | 消息构建、接收、回执、重试、去重、群聊与[本地数据库](messaging/local-storage.md#zh) |
-| <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | 媒体上传下载、加解密、文件元数据与语音消息 |
-| <a id="zh-calls"></a>[07 · 语音与视频通话](calls/README.md#zh) | 呼入呼出、通话信令、媒体传输与网络质量 |
-| <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | 设备关联、消息分发、历史同步与离线恢复 |
+| <a id="zh-registration"></a>[01 · 账号注册与验证码](registration/README.md#zh) | [exist 参数](registration/exist.md#zh)、[code 参数](registration/code.md#zh)、[Android 输入](registration/android-inputs.md#zh)、[安全字段](registration/security-fields/README.md#zh)、[封装](registration/request-encryption.md#zh)和[发送](registration/sending-requests.md#zh) |
+| <a id="zh-authentication"></a>[02 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[设备关联](multi-device/README.md#zh)与[重新登录](authentication/README.md#zh) |
+| <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/README.md#zh) | [连接建立](protocol/noise.md#zh-state)、[Noise 握手](protocol/noise.md#zh)、[帧结构](protocol/tcp-framing.md#zh)、[二进制节点](protocol/protocol-tree-node.md#zh)、[Argo 载荷](protocol/argo.md#zh)和[请求封装](registration/request-encryption.md#zh) |
+| <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | [身份密钥](messaging/storage/axolotl.md#identities-zh)、[会话密钥](messaging/storage/axolotl.md#sessions-zh)、[预密钥](messaging/storage/axolotl.md#prekeys-zh)、[密钥数据库](messaging/storage/axolotl.md#zh)与[加密边界](protocol/noise.md#zh-layers) |
+| <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
+| <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
+| <a id="zh-calls"></a>[07 · 语音与视频通话](calls/README.md#zh) | [呼入呼出](calls/README.md#zh)、[通话信令](calls/README.md#zh)、[媒体传输](calls/README.md#zh)与[网络质量](calls/README.md#zh) |
+| <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/README.md#zh)、[历史同步](multi-device/README.md#zh)与[离线处理](multi-device/README.md#zh) |
+
+内容范围中的链接优先指向现有文章或具体小节；未单独成篇的主题指向所属目录。
 
 <a id="registration-articles"></a>
 
@@ -87,7 +89,7 @@
 
 | 文章 | 内容 |
 | --- | --- |
-| [本地数据库与存储](messaging/local-storage.md#zh) | 密码状态与历史职责、连接密钥、WAL、一致快照及事务边界。 |
+| [本地数据库与存储](messaging/local-storage.md#zh) | 加密状态与消息历史、连接密钥、WAL、一致快照及事务边界。 |
 | [axolotl.db：密钥、会话与队列](messaging/storage/axolotl.md#zh) | 15 张应用表、20 个显式索引、预密钥消费、五维会话与群状态。 |
 | [msgstore.db：消息、回执与媒体](messaging/storage/msgstore.md#zh) | 6 张核心表、150 列、20 个无条件创建索引、状态、回执与媒体关联。 |
 
@@ -150,7 +152,7 @@ whatsapp-technical-wiki/
 
 ### 参与贡献
 
-可通过Issue提出问题或文义修正，通过Pull Request补充文章、参考代码和翻译。说明具体触发条件、API要求、字段转换、状态变化及错误分支；示例使用合成材料。
+可通过 [Issue](https://github.com/WhatsappWiki/whatsapp-technical-wiki/issues) 提出问题或文义修正，通过 [Pull Request](https://github.com/WhatsappWiki/whatsapp-technical-wiki/pulls) 补充文章、参考代码和翻译。说明具体触发条件、API要求、字段转换、状态变化及错误分支；示例使用合成材料。
 
 每篇文章先完整中文区，再完整英文区；目录、正文、示例说明和相关链接保持对应。字段名、类名、接口名和协议标识保留原文。增加或调整文章时，同步首页、所属主题导航和两种语言的链接。
 
@@ -181,7 +183,7 @@ For developers and protocol researchers, with topics organized around registrati
 - **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
 - **Parse Argo business payloads**: read [Argo](protocol/argo.md#en) for schema selection, headers, types, Python read/write and exact rewriting.
 - **Understand local databases**: Read the [storage overview](messaging/local-storage.md#en), then [axolotl.db](messaging/storage/axolotl.md#en) for keys/sessions and [msgstore.db](messaging/storage/msgstore.md#en) for messages, receipts, and media.
-- **Explore other topics**: The index below links to topic introductions and planned articles.
+- **Explore other topics**: The [index below](#technical-index-english) links to topic introductions and planned articles.
 
 <a id="search-topics"></a>
 <a id="technical-index-english"></a>
@@ -190,14 +192,16 @@ For developers and protocol researchers, with topics organized around registrati
 
 | Chapter | Scope |
 | --- | --- |
-| <a id="en-registration"></a>[01 · Registration and Verification](registration/README.md#en) | exist/code parameters, Android inputs, security fields, packaging, and sending |
-| <a id="en-authentication"></a>[02 · Login, Authentication, and Sessions](authentication/README.md#en) | Identity material, session persistence, device linking, and login recovery |
-| <a id="en-protocol"></a>[03 · Communication Protocols and Data Formats](protocol/README.md#en) | Connections, [Noise handshakes](protocol/noise.md#en), framing, [binary nodes](protocol/protocol-tree-node.md#en), [Argo payloads](protocol/argo.md#en), and request packaging |
-| <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | Identity keys, session keys, prekeys, the [key database](messaging/storage/axolotl.md#en), and encryption boundaries |
-| <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | Message construction, reception, receipts, retries, deduplication, groups, and [local databases](messaging/local-storage.md#en) |
-| <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | Media upload/download, encryption, file metadata, and voice messages |
-| <a id="en-calls"></a>[07 · Voice and Video Calls](calls/README.md#en) | Incoming/outgoing calls, signaling, media transport, and network quality |
-| <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | Device linking, message distribution, history synchronization, and offline recovery |
+| <a id="en-registration"></a>[01 · Registration and Verification](registration/README.md#en) | [exist parameters](registration/exist.md#en), [code parameters](registration/code.md#en), [Android inputs](registration/android-inputs.md#en), [security fields](registration/security-fields/README.md#en), [packaging](registration/request-encryption.md#en), and [sending](registration/sending-requests.md#en) |
+| <a id="en-authentication"></a>[02 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [device linking](multi-device/README.md#en), and [reauthentication](authentication/README.md#en) |
+| <a id="en-protocol"></a>[03 · Communication Protocols and Data Formats](protocol/README.md#en) | [Connections](protocol/noise.md#en-state), [Noise handshakes](protocol/noise.md#en), [framing](protocol/tcp-framing.md#en), [binary nodes](protocol/protocol-tree-node.md#en), [Argo payloads](protocol/argo.md#en), and [request packaging](registration/request-encryption.md#en) |
+| <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | [Identity keys](messaging/storage/axolotl.md#identities-en), [session keys](messaging/storage/axolotl.md#sessions-en), [prekeys](messaging/storage/axolotl.md#prekeys-en), the [key database](messaging/storage/axolotl.md#en), and [encryption boundaries](protocol/noise.md#en-layers) |
+| <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
+| <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
+| <a id="en-calls"></a>[07 · Voice and Video Calls](calls/README.md#en) | [Incoming/outgoing calls](calls/README.md#en), [signaling](calls/README.md#en), [media transport](calls/README.md#en), and [network quality](calls/README.md#en) |
+| <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/README.md#en), [history synchronization](multi-device/README.md#en), and [offline handling](multi-device/README.md#en) |
+
+Scope links point to existing articles or specific sections where available; topics without a dedicated article link to their topic directory.
 
 <a id="registration-articles-en"></a>
 
@@ -297,7 +301,7 @@ Public documentation excludes real verification codes, access tokens, private ke
 
 ### Contribution Guide
 
-Use Issues for questions/corrections and Pull Requests for articles, reference code, and translations. Describe concrete triggers, API requirements, field transformations, state changes, and error branches; use synthetic example material.
+Use [Issues](https://github.com/WhatsappWiki/whatsapp-technical-wiki/issues) for questions/corrections and [Pull Requests](https://github.com/WhatsappWiki/whatsapp-technical-wiki/pulls) for articles, reference code, and translations. Describe concrete triggers, API requirements, field transformations, state changes, and error branches; use synthetic example material.
 
 Place a complete Chinese section before a complete English section, keeping indexes, prose, example explanations, and related links aligned. Preserve field/class/interface names and protocol identifiers. When adding or changing articles, update homepage/topic navigation and links in both languages.
 
