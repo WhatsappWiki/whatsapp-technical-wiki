@@ -18,11 +18,18 @@
 - 一对一消息、群聊与关联设备场景的密钥分发研究。
 - 消息加密、解密、签名与完整性验证的输入输出。
 - 应用层字段加密、请求签名和消息端到端加密的区别。
-- 原始输入复算、字节比较和参考实现的验证范围。
+- 密钥记录的二进制表示、地址维度与持久化行为。
+
+### 已有文章
+
+| 文章 | 内容 |
+| --- | --- |
+| [axolotl.db：密钥、会话与队列](../messaging/storage/axolotl.md#zh) | 身份、OPK、signed/KEM 预密钥、五维会话地址与群状态 |
+| [本地存储与连接密钥](../messaging/local-storage.md#keystore-zh) | Signal 身份密钥、连接密钥密文及 AndroidKeyStore AES 密钥的存储职责 |
 
 ### 文档组织与扩展方式
 
-本页是本主题的功能简介与导航入口。下方路径为后续文章规划，目前尚未创建；具体实现与结论以实际文章和验证记录为准。
+已有文章从上表进入；下方规划表仅列尚未创建的文章或子目录。各文章直接说明相应功能、字段和条件行为。
 
 单篇内容可直接放在本目录的英文命名 Markdown 文件中；需要多篇文章的专题可新建英文子目录，并用其 `README.md` 介绍专题范围、链接具体文章。文章完成后，将下表对应路径改为可点击链接，并更新所属目录的导航。
 
@@ -37,7 +44,7 @@
 | `sessions/` | 会话建立、密钥状态及状态持久化 |
 | `key-lifecycle.md` | 密钥生成、存储、选择、轮换与失效 |
 | `group-and-device-keys.md` | 群聊及关联设备的密钥分发研究 |
-| `verification.md` | 原始输入复算、签名验证与字节比较 |
+| `verification.md` | 签名验证与记录一致性 |
 
 <a id="相关主题--related-topics"></a>
 
@@ -61,11 +68,18 @@ This directory introduces message encryption and key-management concepts. It org
 - Key distribution research for one-to-one conversations, groups, and companion devices.
 - Inputs and outputs of message encryption, decryption, signing, and integrity verification.
 - Differences between field encryption, request signatures, and message E2EE.
-- Verification limits of raw-input recomputation, byte comparisons, and reference implementations.
+- Binary key-record representations, address dimensions, and persistence behavior.
+
+### Available Articles
+
+| Article | Contents |
+| --- | --- |
+| [axolotl.db: Keys, Sessions, and Queues](../messaging/storage/axolotl.md#en) | Identities, OPKs, signed/KEM prekeys, five-dimensional sessions, and group state |
+| [Local Storage and Connection Keys](../messaging/local-storage.md#keystore-en) | Storage responsibilities for Signal identity keys, connection-key ciphertext, and AndroidKeyStore AES keys |
 
 ### Documentation Organization and Expansion
 
-This page provides the topic overview and navigation entry point. The paths below are planned articles or subdirectories and have not been created yet. Implementations and findings are defined by the actual articles and their verification records.
+Use the table above for available articles. The planning table below lists articles or subdirectories that do not yet exist. Each article explains its functions, fields, and conditional behavior directly.
 
 Place a standalone article in an English-named Markdown file in this directory. For a topic requiring several articles, create an English-named subdirectory with its own `README.md` describing the scope and linking the articles. Replace the planned path with a working link and update the parent topic navigation when the article is available.
 
@@ -78,7 +92,7 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | `sessions/` | Session establishment, key state, and persistence |
 | `key-lifecycle.md` | Key generation, storage, selection, rotation, and expiration |
 | `group-and-device-keys.md` | Key-distribution research for groups and companion devices |
-| `verification.md` | Raw-input recomputation, signature verification, and byte comparisons |
+| `verification.md` | Signature verification and record consistency |
 
 ### Related Topics
 

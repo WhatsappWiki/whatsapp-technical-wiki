@@ -28,6 +28,7 @@
 - **理解连接与握手**：阅读 [Noise 握手与加密传输](protocol/noise.md#zh)，了解 XX、IK、fallback、后量子分支与登录结果。
 - **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
 - **解析 Argo 业务载荷**：阅读 [Argo](protocol/argo.md#zh)，了解 schema 选择、Header、类型、Python 读写与精确回写。
+- **理解本地数据库**：阅读[存储总览](messaging/local-storage.md#zh)，再查 [axolotl.db](messaging/storage/axolotl.md#zh) 的密钥会话与 [msgstore.db](messaging/storage/msgstore.md#zh) 的消息、回执和媒体。
 - **浏览其他主题**：下方技术目录链接各主题简介与文章规划。
 
 <a id="搜索主题--search-topics"></a>
@@ -41,8 +42,8 @@
 | <a id="zh-registration"></a>[01 · 账号注册与验证码](registration/README.md#zh) | exist/code参数、Android输入、安全字段、封装和发送 |
 | <a id="zh-authentication"></a>[02 · 登录认证与会话](authentication/README.md#zh) | 身份材料、会话持久化、设备关联与重新登录 |
 | <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/README.md#zh) | 连接建立、[Noise 握手](protocol/noise.md#zh)、帧结构、[二进制节点](protocol/protocol-tree-node.md#zh)、[Argo 载荷](protocol/argo.md#zh)和请求封装 |
-| <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | 身份密钥、会话密钥、预密钥与加密边界 |
-| <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | 消息构建、接收、回执、重试、去重与群聊 |
+| <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | 身份密钥、会话密钥、预密钥、[密钥数据库](messaging/storage/axolotl.md#zh)与加密边界 |
+| <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | 消息构建、接收、回执、重试、去重、群聊与[本地数据库](messaging/local-storage.md#zh) |
 | <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | 媒体上传下载、加解密、文件元数据与语音消息 |
 | <a id="zh-calls"></a>[07 · 语音与视频通话](calls/README.md#zh) | 呼入呼出、通话信令、媒体传输与网络质量 |
 | <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | 设备关联、消息分发、历史同步与离线恢复 |
@@ -80,6 +81,16 @@
 | [Protocol Tree Node · 二进制节点与编解码](protocol/protocol-tree-node.md#zh) · [Python 代码](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node) | 树结构、token 字典、长度与字符串打包、JID、zlib、Python read/write 与逐字节回写。 |
 | [Argo · 二进制格式与编解码](protocol/argo.md#zh) · [Python 代码](https://github.com/WhatsappWiki/whatsapp-argo) | 节点业务载荷、schema 与 doc ID、Header、类型与错误、Python 读写和精确回写。 |
 
+<a id="storage-articles"></a>
+
+### 数据库文章直达
+
+| 文章 | 内容 |
+| --- | --- |
+| [本地数据库与存储](messaging/local-storage.md#zh) | 密码状态与历史职责、连接密钥、WAL、一致快照及事务边界。 |
+| [axolotl.db：密钥、会话与队列](messaging/storage/axolotl.md#zh) | 15 张应用表、20 个显式索引、预密钥消费、五维会话与群状态。 |
+| [msgstore.db：消息、回执与媒体](messaging/storage/msgstore.md#zh) | 6 张核心表、150 列、20 个无条件创建索引、状态、回执与媒体关联。 |
+
 <a id="目录结构--directory-structure"></a>
 
 ### 目录结构
@@ -111,13 +122,19 @@ whatsapp-technical-wiki/
 │   ├── protocol-tree-node.md
 │   └── argo.md
 ├── encryption/README.md
-├── messaging/README.md
+├── messaging/
+│   ├── README.md
+│   ├── local-storage.md
+│   └── storage/
+│       ├── README.md
+│       ├── axolotl.md
+│       └── msgstore.md
 ├── media/README.md
 ├── calls/README.md
 └── multi-device/README.md
 ```
 
-顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章和通信协议文章的直接入口。
+顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章、通信协议文章与数据库3篇文章的直接入口。
 
 ### 阅读方式与文档约定
 
@@ -163,6 +180,7 @@ For developers and protocol researchers, with topics organized around registrati
 - **Understand connections and handshakes**: Read [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) for XX, IK, fallback, post-quantum branches, and login outcomes.
 - **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
 - **Parse Argo business payloads**: read [Argo](protocol/argo.md#en) for schema selection, headers, types, Python read/write and exact rewriting.
+- **Understand local databases**: Read the [storage overview](messaging/local-storage.md#en), then [axolotl.db](messaging/storage/axolotl.md#en) for keys/sessions and [msgstore.db](messaging/storage/msgstore.md#en) for messages, receipts, and media.
 - **Explore other topics**: The index below links to topic introductions and planned articles.
 
 <a id="search-topics"></a>
@@ -175,8 +193,8 @@ For developers and protocol researchers, with topics organized around registrati
 | <a id="en-registration"></a>[01 · Registration and Verification](registration/README.md#en) | exist/code parameters, Android inputs, security fields, packaging, and sending |
 | <a id="en-authentication"></a>[02 · Login, Authentication, and Sessions](authentication/README.md#en) | Identity material, session persistence, device linking, and login recovery |
 | <a id="en-protocol"></a>[03 · Communication Protocols and Data Formats](protocol/README.md#en) | Connections, [Noise handshakes](protocol/noise.md#en), framing, [binary nodes](protocol/protocol-tree-node.md#en), [Argo payloads](protocol/argo.md#en), and request packaging |
-| <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | Identity keys, session keys, prekeys, and encryption boundaries |
-| <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | Message construction, reception, receipts, retries, deduplication, and groups |
+| <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | Identity keys, session keys, prekeys, the [key database](messaging/storage/axolotl.md#en), and encryption boundaries |
+| <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | Message construction, reception, receipts, retries, deduplication, groups, and [local databases](messaging/local-storage.md#en) |
 | <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | Media upload/download, encryption, file metadata, and voice messages |
 | <a id="en-calls"></a>[07 · Voice and Video Calls](calls/README.md#en) | Incoming/outgoing calls, signaling, media transport, and network quality |
 | <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | Device linking, message distribution, history synchronization, and offline recovery |
@@ -214,6 +232,16 @@ See the [registration directory](registration/README.md#en) for reading order, r
 | [Protocol Tree Node and Binary Encoding](protocol/protocol-tree-node.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-protocol-tree-node) | Tree structure, token dictionaries, lengths and packed strings, JIDs, zlib, Python read/write, and exact rewriting. |
 | [Argo · Binary Format and Encoding](protocol/argo.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-argo) | Node business payloads, schemas and doc IDs, headers, types/errors, Python read/write and exact rewriting. |
 
+<a id="storage-articles-en"></a>
+
+### Direct Database Articles
+
+| Article | Scope |
+| --- | --- |
+| [Local Databases and Storage](messaging/local-storage.md#en) | Cryptographic state versus history, connection keys, WAL, consistent snapshots, and transaction boundaries. |
+| [axolotl.db: Keys, Sessions, and Queues](messaging/storage/axolotl.md#en) | 15 application tables, 20 explicit indexes, prekey consumption, five-dimensional sessions, and group state. |
+| [msgstore.db: Messages, Receipts, and Media](messaging/storage/msgstore.md#en) | 6 core tables, 150 columns, 20 unconditionally created indexes, statuses, receipts, and media relationships. |
+
 ### Directory Structure
 
 ```text
@@ -243,13 +271,19 @@ whatsapp-technical-wiki/
 │   ├── protocol-tree-node.md
 │   └── argo.md
 ├── encryption/README.md
-├── messaging/README.md
+├── messaging/
+│   ├── README.md
+│   ├── local-storage.md
+│   └── storage/
+│       ├── README.md
+│       ├── axolotl.md
+│       └── msgstore.md
 ├── media/README.md
 ├── calls/README.md
 └── multi-device/README.md
 ```
 
-Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles and the communication protocol articles.
+Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles, the communication protocol articles, and 3 database articles.
 
 ### Reading Guide and Documentation Conventions
 
