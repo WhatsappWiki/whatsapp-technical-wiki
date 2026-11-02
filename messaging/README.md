@@ -26,6 +26,7 @@
 | --- | --- |
 | [本地数据库与存储](local-storage.md#zh) | [数据库职责](local-storage.md#zh)、[WAL](local-storage.md#zh)、[一致快照](local-storage.md#zh)与[连接密钥](local-storage.md#keystore-zh) |
 | [数据库专题](storage/README.md#zh) | [axolotl.db](storage/axolotl.md#zh) [密钥与会话](storage/axolotl.md#zh)；[msgstore.db](storage/msgstore.md#zh) [消息、回执及媒体](storage/msgstore.md#zh) |
+| [多设备消息分发与状态同步](../multi-device/message-distribution.md#zh) | [目标与加密](../multi-device/message-distribution.md#targets-zh)、[任务重试](../multi-device/message-distribution.md#queue-zh)、[同 ID 去重](../multi-device/message-distribution.md#deduplication-zh)、[回执合并](../multi-device/message-distribution.md#receipts-zh)与[历史迁移](../multi-device/message-distribution.md#history-zh) |
 
 ### 文档组织与扩展方式
 
@@ -77,6 +78,7 @@ This directory introduces WhatsApp message processing from creation to transmiss
 | --- | --- |
 | [Local Databases and Storage](local-storage.md#en) | [Database responsibilities](local-storage.md#en), [WAL](local-storage.md#en), [consistent snapshots](local-storage.md#en), and [connection keys](local-storage.md#keystore-en) |
 | [Database Storage](storage/README.md#en) | [axolotl.db](storage/axolotl.md#en) [keys/sessions](storage/axolotl.md#en); [msgstore.db](storage/msgstore.md#en) [messages, receipts, and media](storage/msgstore.md#en) |
+| [Multi-Device Message Distribution and State Synchronization](../multi-device/message-distribution.md#en) | [Targets/encryption](../multi-device/message-distribution.md#targets-en), [job retries](../multi-device/message-distribution.md#queue-en), [same-ID deduplication](../multi-device/message-distribution.md#deduplication-en), [receipt aggregation](../multi-device/message-distribution.md#receipts-en), and [history transfer](../multi-device/message-distribution.md#history-en) |
 
 ### Documentation Organization and Expansion
 

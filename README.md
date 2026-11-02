@@ -28,6 +28,7 @@
 - **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
 - **解析 Argo 业务载荷**：阅读 [Argo](protocol/argo.md#zh)，了解 schema 选择、Header、类型、Python 读写与精确回写。
 - **理解本地数据库**：阅读[存储总览](messaging/local-storage.md#zh)，再查 [axolotl.db](messaging/storage/axolotl.md#zh) 的密钥会话与 [msgstore.db](messaging/storage/msgstore.md#zh) 的消息、回执和媒体。
+- **理解多设备消息**：阅读[多设备消息分发与状态同步](multi-device/message-distribution.md#zh)，了解目标筛选、逐设备加密、重试、回执合并及历史迁移。
 - **浏览其他主题**：下方[技术目录](#technical-index)链接各主题简介与文章规划。
 
 <a id="搜索主题--search-topics"></a>
@@ -44,7 +45,7 @@
 | <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
 | <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
 | <a id="zh-calls"></a>[07 · 语音与视频通话](calls/README.md#zh) | [呼入呼出](calls/README.md#zh)、[通话信令](calls/README.md#zh)、[媒体传输](calls/README.md#zh)与[网络质量](calls/README.md#zh) |
-| <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/README.md#zh)、[历史同步](multi-device/README.md#zh)与[离线处理](multi-device/README.md#zh) |
+| <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
 
 内容范围中的链接优先指向现有文章或具体小节；未单独成篇的主题指向所属目录。
 
@@ -68,6 +69,16 @@
 | [本地数据库与存储](messaging/local-storage.md#zh) | 加密状态与消息历史、连接密钥、WAL、一致快照及事务边界。 |
 | [axolotl.db：密钥、会话与队列](messaging/storage/axolotl.md#zh) | 15 张应用表、20 个显式索引、预密钥消费、五维会话与群状态。 |
 | [msgstore.db：消息、回执与媒体](messaging/storage/msgstore.md#zh) | 6 张核心表、150 列、20 个无条件创建索引、状态、回执与媒体关联。 |
+
+<a id="multi-device-articles-zh"></a>
+
+### 多设备文章直达
+
+| 文章 | 内容 |
+| --- | --- |
+| [多设备消息分发与状态同步](multi-device/message-distribution.md#zh) | 设备目录、本机排除、逐设备与群加密、设备增删、重试与密文复用、ACK 去重、回执合并及 ChatTransfer。 |
+| [回执计数与状态回退](multi-device/message-distribution.md#regression-zh) | recipient_count、PN/LID、乱序条件与普通气泡状态。 |
+| [历史迁移与回执一致性](multi-device/message-distribution.md#history-zh) | 90 天回执窗口、导入计数、明细写入与孤立回执回放。 |
 
 <a id="目录结构--directory-structure"></a>
 
@@ -100,10 +111,12 @@ whatsapp-technical-wiki/
 │       └── msgstore.md
 ├── media/README.md
 ├── calls/README.md
-└── multi-device/README.md
+└── multi-device/
+    ├── README.md
+    └── message-distribution.md
 ```
 
-顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章、通信协议文章与数据库3篇文章的直接入口。
+顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章、通信协议文章、数据库3篇文章及多设备消息分发文章与章节的直接入口。
 
 ### 阅读方式与文档约定
 
@@ -149,6 +162,7 @@ For developers and protocol researchers, with topics organized around registrati
 - **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
 - **Parse Argo business payloads**: read [Argo](protocol/argo.md#en) for schema selection, headers, types, Python read/write and exact rewriting.
 - **Understand local databases**: Read the [storage overview](messaging/local-storage.md#en), then [axolotl.db](messaging/storage/axolotl.md#en) for keys/sessions and [msgstore.db](messaging/storage/msgstore.md#en) for messages, receipts, and media.
+- **Understand multi-device messages**: Read [Multi-Device Message Distribution and State Synchronization](multi-device/message-distribution.md#en) for target selection, per-device encryption, retries, receipt aggregation, and history transfer.
 - **Explore other topics**: The [index below](#technical-index-english) links to topic introductions and planned articles.
 
 <a id="search-topics"></a>
@@ -164,7 +178,7 @@ For developers and protocol researchers, with topics organized around registrati
 | <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
 | <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
 | <a id="en-calls"></a>[07 · Voice and Video Calls](calls/README.md#en) | [Incoming/outgoing calls](calls/README.md#en), [signaling](calls/README.md#en), [media transport](calls/README.md#en), and [network quality](calls/README.md#en) |
-| <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/README.md#en), [history synchronization](multi-device/README.md#en), and [offline handling](multi-device/README.md#en) |
+| <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
 
 Scope links point to existing articles or specific sections where available; topics without a dedicated article link to their topic directory.
 
@@ -188,6 +202,16 @@ Scope links point to existing articles or specific sections where available; top
 | [Local Databases and Storage](messaging/local-storage.md#en) | Cryptographic state versus history, connection keys, WAL, consistent snapshots, and transaction boundaries. |
 | [axolotl.db: Keys, Sessions, and Queues](messaging/storage/axolotl.md#en) | 15 application tables, 20 explicit indexes, prekey consumption, five-dimensional sessions, and group state. |
 | [msgstore.db: Messages, Receipts, and Media](messaging/storage/msgstore.md#en) | 6 core tables, 150 columns, 20 unconditionally created indexes, statuses, receipts, and media relationships. |
+
+<a id="multi-device-articles-en"></a>
+
+### Direct Multi-Device Articles
+
+| Article | Scope |
+| --- | --- |
+| [Multi-Device Message Distribution and State Synchronization](multi-device/message-distribution.md#en) | Directories, sender exclusion, pairwise/group encryption, device changes, retries/ciphertext reuse, ACK deduplication, receipt aggregation, and ChatTransfer. |
+| [Receipt Counts and State Regression](multi-device/message-distribution.md#regression-en) | recipient_count, PN/LID, reordering conditions, and ordinary bubble state. |
+| [History Transfer and Receipt Consistency](multi-device/message-distribution.md#history-en) | The 90-day receipt window, imported counts, detail writes, and orphan replay. |
 
 ### Directory Structure
 
@@ -218,10 +242,12 @@ whatsapp-technical-wiki/
 │       └── msgstore.md
 ├── media/README.md
 ├── calls/README.md
-└── multi-device/README.md
+└── multi-device/
+    ├── README.md
+    └── message-distribution.md
 ```
 
-Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles, the communication protocol articles, and 3 database articles.
+Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles, the communication protocol articles, 3 database articles, and the multi-device distribution article and sections.
 
 ### Reading Guide and Documentation Conventions
 

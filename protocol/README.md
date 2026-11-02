@@ -38,6 +38,8 @@
 
 理解完整接收链路时，可依次阅读 [TCP 帧协议](tcp-framing.md#zh)、[Noise 握手与加密传输](noise.md#zh)、[Protocol Tree Node](protocol-tree-node.md#zh)：先确定帧边界，再认证解密，最后处理明文封装并恢复节点。业务结果声明 [Argo](argo.md#zh) 时，再阅读 [Argo](argo.md#zh) 解析节点内的字节载荷。
 
+[多设备消息分发](../multi-device/message-distribution.md#pairwise-zh)说明 `message/participants/enc` 如何承载逐设备密文；[ACK 与去重](../multi-device/message-distribution.md#deduplication-zh)和[回执合并](../multi-device/message-distribution.md#receipts-zh)说明节点进入业务层后的状态处理。
+
 <a id="后续文章规划--planned-articles"></a>
 
 ### 后续文章规划
@@ -93,6 +95,8 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | [Argo · Binary Format and Encoding](argo.md#en) · [Python code](https://github.com/WhatsappWiki/whatsapp-argo) | Node [business payloads](argo.md#en), [headers](argo.md#en-header), [scalar blocks and Core](argo.md#en-header), [schema selection](argo.md#en-schema), [types/errors](argo.md#en-types), [Python read/write](argo.md#en-python) and [exact rewriting](argo.md#en-rewrite). |
 
 To follow the receiving pipeline, read [TCP Framing](tcp-framing.md#en), [Noise Handshakes and Encrypted Transport](noise.md#en), then [Protocol Tree Node](protocol-tree-node.md#en): establish frame boundaries, authenticate and decrypt, then process the plaintext envelope and reconstruct nodes. When the business result declares [Argo](argo.md#en), continue with [Argo](argo.md#en) to parse its node payload.
+
+[Multi-Device Distribution](../multi-device/message-distribution.md#pairwise-en) explains how `message/participants/enc` carries per-device ciphertexts. [ACK matching/deduplication](../multi-device/message-distribution.md#deduplication-en) and [receipt aggregation](../multi-device/message-distribution.md#receipts-en) cover the resulting business-state processing.
 
 ### Planned Articles
 

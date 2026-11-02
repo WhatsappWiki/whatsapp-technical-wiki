@@ -22,6 +22,8 @@
 
 ### 相关主题
 
+[多设备消息分发与回执合并](../../multi-device/message-distribution.md#receipts-zh)介绍这些记录如何参与发送、去重、[群状态计算](../../multi-device/message-distribution.md#regression-zh)和[历史迁移](../../multi-device/message-distribution.md#history-zh)。
+
 [端到端加密与密钥管理](../../encryption/README.md#zh) · [登录认证与会话](../../authentication/README.md#zh) · [图片、文件与语音消息](../../media/README.md#zh) · [多设备与数据同步](../../multi-device/README.md#zh)
 
 <a id="en"></a>
@@ -43,5 +45,7 @@ This topic explains storage of cryptographic state and message history separatel
 Both database articles explain fields and lifecycles by function and include complete DDL for the covered tables and indexes. The [6 message tables](msgstore.md#en) are not the entire message database; indexes created conditionally by configuration are listed separately. The key database's application tables likewise exclude database-management metadata.
 
 ### Related Topics
+
+[Multi-Device Distribution and Receipt Aggregation](../../multi-device/message-distribution.md#receipts-en) explains how these records participate in sending, deduplication, [group-state calculation](../../multi-device/message-distribution.md#regression-en), and [history transfer](../../multi-device/message-distribution.md#history-en).
 
 [End-to-End Encryption and Key Management](../../encryption/README.md#en) · [Login, Authentication, and Sessions](../../authentication/README.md#en) · [Media Transfer and Voice Messages](../../media/README.md#en) · [Multi-Device and Data Synchronization](../../multi-device/README.md#en)

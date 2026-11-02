@@ -25,6 +25,7 @@
 | --- | --- |
 | [axolotl.db：密钥、会话与队列](../messaging/storage/axolotl.md#zh) | [身份](../messaging/storage/axolotl.md#identities-zh)、[OPK](../messaging/storage/axolotl.md#prekeys-zh)、[signed/KEM 预密钥](../messaging/storage/axolotl.md#prekeys-zh)、[五维会话地址](../messaging/storage/axolotl.md#sessions-zh)与[群状态](../messaging/storage/axolotl.md#zh) |
 | [本地存储与连接密钥](../messaging/local-storage.md#keystore-zh) | [Signal 身份密钥](../messaging/storage/axolotl.md#identities-zh)、[连接密钥密文](../messaging/local-storage.md#keystore-zh)及 [AndroidKeyStore AES 密钥](../messaging/local-storage.md#keystore-zh)的存储职责 |
+| [多设备消息加密与会话更新](../multi-device/message-distribution.md#pairwise-zh) | 逐设备 msg/pkmsg、[群 Sender Key 与 SKDM](../multi-device/message-distribution.md#groups-zh)、[设备变更](../multi-device/message-distribution.md#device-changes-zh)及[重加密/复用边界](../multi-device/message-distribution.md#ciphertext-zh) |
 
 ### 文档组织与扩展方式
 
@@ -73,6 +74,7 @@ This directory introduces message encryption and key-management concepts. It org
 | --- | --- |
 | [axolotl.db: Keys, Sessions, and Queues](../messaging/storage/axolotl.md#en) | [Identities](../messaging/storage/axolotl.md#identities-en), [OPKs](../messaging/storage/axolotl.md#prekeys-en), [signed/KEM prekeys](../messaging/storage/axolotl.md#prekeys-en), [five-dimensional sessions](../messaging/storage/axolotl.md#sessions-en), and [group state](../messaging/storage/axolotl.md#en) |
 | [Local Storage and Connection Keys](../messaging/local-storage.md#keystore-en) | Storage responsibilities for [Signal identity keys](../messaging/storage/axolotl.md#identities-en), [connection-key ciphertext](../messaging/local-storage.md#keystore-en), and [AndroidKeyStore AES keys](../messaging/local-storage.md#keystore-en) |
+| [Multi-Device Encryption and Session Updates](../multi-device/message-distribution.md#pairwise-en) | Per-device msg/pkmsg, [group Sender Keys/SKDM](../multi-device/message-distribution.md#groups-en), [device changes](../multi-device/message-distribution.md#device-changes-en), and [reencryption/reuse boundaries](../multi-device/message-distribution.md#ciphertext-en) |
 
 ### Documentation Organization and Expansion
 
