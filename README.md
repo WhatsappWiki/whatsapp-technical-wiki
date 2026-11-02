@@ -44,7 +44,7 @@
 | <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | [身份密钥](messaging/storage/axolotl.md#identities-zh)、[会话密钥](messaging/storage/axolotl.md#sessions-zh)、[预密钥](messaging/storage/axolotl.md#prekeys-zh)、[密钥数据库](messaging/storage/axolotl.md#zh)与[加密边界](protocol/noise.md#zh-layers) |
 | <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
 | <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
-| <a id="zh-calls"></a>[07 · 语音与视频通话](calls/README.md#zh) | [呼入呼出](calls/README.md#zh)、[通话信令](calls/README.md#zh)、[媒体传输](calls/README.md#zh)与[网络质量](calls/README.md#zh) |
+| <a id="zh-calls"></a>[07 · 语音通话能力](calls/README.md#zh) | 已实现能力、[一对一语音](calls/voice-calls.md#zh)、[群组语音](calls/group-calls.md#zh)与演示范围 |
 | <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
 
 内容范围中的链接优先指向现有文章或具体小节；未单独成篇的主题指向所属目录。
@@ -126,6 +126,8 @@ whatsapp-technical-wiki/
 
 公开文档不包含真实验证码、访问令牌、私钥、完整认证材料或可识别个人身份的原始记录。
 
+通话专题结合能力说明与独立的技术侧写，介绍已实现功能、交互表现、声音体验和演示范围。
+
 <a id="参与贡献--contributing"></a>
 
 <a id="contributing"></a>
@@ -177,7 +179,7 @@ For developers and protocol researchers, with topics organized around registrati
 | <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | [Identity keys](messaging/storage/axolotl.md#identities-en), [session keys](messaging/storage/axolotl.md#sessions-en), [prekeys](messaging/storage/axolotl.md#prekeys-en), the [key database](messaging/storage/axolotl.md#en), and [encryption boundaries](protocol/noise.md#en-layers) |
 | <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
 | <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
-| <a id="en-calls"></a>[07 · Voice and Video Calls](calls/README.md#en) | [Incoming/outgoing calls](calls/README.md#en), [signaling](calls/README.md#en), [media transport](calls/README.md#en), and [network quality](calls/README.md#en) |
+| <a id="en-calls"></a>[07 · Voice Calling Capabilities](calls/README.md#en) | Implemented capabilities, [one-to-one voice](calls/voice-calls.md#en), [group voice](calls/group-calls.md#en) and demonstration scope |
 | <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
 
 Scope links point to existing articles or specific sections where available; topics without a dedicated article link to their topic directory.
@@ -254,6 +256,8 @@ Top-level directories use lowercase English names and hyphens. Topic READMEs int
 Articles explain behavior under concrete calling conditions and distinguish raw API values, derived fields, caches, and final HTTP bodies.
 
 Public documentation excludes real verification codes, access tokens, private keys, complete authentication material, and identifiable personal records.
+
+The calling topic combines capability descriptions with independent technical perspectives on implemented features, interactions, audio experience and demonstration scope.
 
 <a id="en-contributing"></a>
 

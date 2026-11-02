@@ -58,7 +58,7 @@
 
 ### 相关主题
 
-[账号注册与验证码](../registration/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [消息发送与接收](../messaging/#zh) · [语音与视频通话](../calls/#zh)
+[账号注册与验证码](../registration/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [消息发送与接收](../messaging/#zh) · [语音通话能力](../calls/#zh)
 
 <a id="en"></a>
 
@@ -112,4 +112,4 @@ To follow the receiving pipeline, read [TCP Framing](tcp-framing.md#en), [Noise 
 
 ### Related Topics
 
-[Account Registration and Verification](../registration/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Sending and Receiving Messages](../messaging/#en) · [Voice and Video Calls](../calls/#en)
+[Account Registration and Verification](../registration/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Sending and Receiving Messages](../messaging/#en) · [Voice Calling Capabilities](../calls/#en)

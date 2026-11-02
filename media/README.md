@@ -51,7 +51,7 @@
 
 ### 相关主题
 
-[消息发送与接收](../messaging/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [语音与视频通话](../calls/#zh)
+[消息发送与接收](../messaging/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [语音通话能力](../calls/#zh)
 
 <a id="en"></a>
 
@@ -98,4 +98,4 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 ### Related Topics
 
-[Sending and Receiving Messages](../messaging/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Voice and Video Calls](../calls/#en)
+[Sending and Receiving Messages](../messaging/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Voice Calling Capabilities](../calls/#en)

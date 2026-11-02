@@ -1,1 +1,6 @@
-calls/
+# Keep calling implementation details out of the public documentation.
+/calls/*
+!/calls/README.md
+!/calls/voice-calls.md
+!/calls/group-calls.md
+!/calls/security-whitepaper.md

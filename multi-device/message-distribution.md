@@ -647,7 +647,7 @@ Job 重执行、差集补发和回执分别维护键、计数与条件；同 ID 
 - [axolotl.db](../messaging/storage/axolotl.md#zh)：会话地址、预密钥、Sender Key 与处理队列。
 - [msgstore.db](../messaging/storage/msgstore.md#receipts-zh)：消息身份、主状态和用户/设备回执表。
 - [本地数据库与存储](../messaging/local-storage.md#zh)：缓存、事务、WAL 与一致性。
-- [语音与视频通话目录](../calls/README.md#zh)：通话信令、设备接听与媒体链路，与消息分发分别处理。
+- [语音通话能力](../calls/README.md#zh)：一对一与群组语音的功能表现及演示范围。
 
 [返回多设备目录](README.md#zh) · [English](#en)
 
@@ -1296,6 +1296,6 @@ Job reexecution, difference resends, and receipts maintain separate keys, counte
 - [axolotl.db](../messaging/storage/axolotl.md#en): session addresses, prekeys, Sender Keys, and processing queues.
 - [msgstore.db](../messaging/storage/msgstore.md#receipts-en): message identity, main state, and user/device receipt tables.
 - [Local Databases and Storage](../messaging/local-storage.md#en): caches, transactions, WAL, and consistency.
-- [Voice and Video Calls](../calls/README.md#en): call signaling, answering-device selection, and media paths, handled separately from message distribution.
+- [Voice Calling Capabilities](../calls/README.md#en): one-to-one and group-voice behavior and demonstration scope.
 
 [Back to Multi-Device Topics](README.md#en) · [中文](#zh)
