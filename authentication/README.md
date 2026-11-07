@@ -12,8 +12,8 @@
 
 ### 介绍范围
 
-- [首次注册](../registration/README.md#zh)、已注册账号启动、[连接认证](../protocol/noise.md#zh)与关联设备登录的流程区别。
-- [身份材料](../messaging/local-storage.md#zh)、[设备标识](../registration/android-inputs.md#persistent-identifiers)、[认证密钥](../messaging/local-storage.md#keystore-zh)和[会话状态](../messaging/local-storage.md#zh)的读取与存储。
+- 首次注册、已注册账号启动、[连接认证](../protocol/noise.md#zh)与关联设备登录的流程区别。
+- [身份材料](../messaging/local-storage.md#zh)、设备标识、[认证密钥](../messaging/local-storage.md#keystore-zh)和[会话状态](../messaging/local-storage.md#zh)的读取与存储。
 - 二维码或配对码关联流程、设备确认与授权状态研究。
 - 会话恢复、[断线重连](../protocol/noise.md#zh-fallback)、失效、退出和重新登录。
 - 两步验证、PIN 与 Passkey 等相关流程。
@@ -39,8 +39,8 @@
 
 | 规划路径 | 内容 |
 | --- | --- |
-| `authentication-flow.md` | [首次注册](../registration/README.md#zh)、账号启动与[连接认证](../protocol/noise.md#zh)的流程区别 |
-| `credentials.md` | [身份材料](../messaging/local-storage.md#zh)、[认证密钥](../messaging/local-storage.md#keystore-zh)、[设备标识](../registration/android-inputs.md#persistent-identifiers)与存储 |
+| `authentication-flow.md` | 首次注册、账号启动与[连接认证](../protocol/noise.md#zh)的流程区别 |
+| `credentials.md` | [身份材料](../messaging/local-storage.md#zh)、[认证密钥](../messaging/local-storage.md#keystore-zh)、设备标识与存储 |
 | `device-linking/` | 二维码与配对码关联、设备确认和授权 |
 | `session-lifecycle.md` | [会话持久化](../messaging/storage/axolotl.md#sessions-zh)、恢复、失效、退出与[重连](../protocol/noise.md#zh-fallback) |
 | `two-step-verification.md` | 两步验证、PIN 与相关状态 |
@@ -51,7 +51,7 @@
 
 ### 相关主题
 
-[账号注册与验证码](../registration/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [多设备与数据同步](../multi-device/#zh)
+[端到端加密与密钥管理](../encryption/#zh) · [多设备与数据同步](../multi-device/#zh)
 
 <a id="en"></a>
 
@@ -63,8 +63,8 @@ This directory introduces how WhatsApp accounts and devices enter, maintain, and
 
 ### Scope
 
-- Differences between [initial registration](../registration/README.md#en), registered-account startup, [connection authentication](../protocol/noise.md#en), and companion-device login.
-- Reading and storing [identity material](../messaging/local-storage.md#en), [device identifiers](../registration/android-inputs.md#en-persistent-identifiers), [authentication keys](../messaging/local-storage.md#keystore-en), and [session state](../messaging/local-storage.md#en).
+- Differences between initial registration, registered-account startup, [connection authentication](../protocol/noise.md#en), and companion-device login.
+- Reading and storing [identity material](../messaging/local-storage.md#en), device identifiers, [authentication keys](../messaging/local-storage.md#keystore-en), and [session state](../messaging/local-storage.md#en).
 - QR-code and pairing-code flows, device confirmation, and authorization state.
 - Session restoration, [reconnection](../protocol/noise.md#en-fallback), expiration, logout, and reauthentication.
 - Two-step verification, PINs, and passkey flows.
@@ -88,8 +88,8 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 | Proposed path | Scope |
 | --- | --- |
-| `authentication-flow.md` | [Initial registration](../registration/README.md#en), account startup, and [connection-authentication](../protocol/noise.md#en) flows |
-| `credentials.md` | [Identity material](../messaging/local-storage.md#en), [authentication keys](../messaging/local-storage.md#keystore-en), [device identifiers](../registration/android-inputs.md#en-persistent-identifiers), and storage |
+| `authentication-flow.md` | Initial registration, account startup, and [connection-authentication](../protocol/noise.md#en) flows |
+| `credentials.md` | [Identity material](../messaging/local-storage.md#en), [authentication keys](../messaging/local-storage.md#keystore-en), device identifiers, and storage |
 | `device-linking/` | QR-code and pairing-code linking, device confirmation, and authorization |
 | `session-lifecycle.md` | [Session persistence](../messaging/storage/axolotl.md#sessions-en), restoration, expiration, logout, and [reconnection](../protocol/noise.md#en-fallback) |
 | `two-step-verification.md` | Two-step verification, PINs, and related states |
@@ -98,4 +98,4 @@ Place a standalone article in an English-named Markdown file in this directory. 
 
 ### Related Topics
 
-[Account Registration and Verification](../registration/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Multi-Device and Data Synchronization](../multi-device/#en)
+[End-to-End Encryption and Key Management](../encryption/#en) · [Multi-Device and Data Synchronization](../multi-device/#en)

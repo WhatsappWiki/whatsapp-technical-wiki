@@ -12,13 +12,13 @@
 
 ### 介绍范围
 
-- [注册请求](../registration/README.md#zh)、长连接消息协议和通话信令的边界。
+- 注册请求、长连接消息协议和通话信令的边界。
 - [连接建立](noise.md#zh)、[握手](noise.md#zh)、[身份认证](noise.md#zh)、心跳及[断线重连](noise.md#zh-fallback)。
 - [二进制帧](tcp-framing.md#zh)、[节点与属性](protocol-tree-node.md#zh-model)、消息封装和序列化格式研究。
 - [Argo](argo.md#zh) [业务载荷](argo.md#zh)、[Header](argo.md#zh-header)、[Wire Schema](argo.md#zh-schema)、类型与[精确回写](argo.md#zh-rewrite)。
 - Protobuf 等结构化数据的 schema、字段类型和版本变化。
-- [请求标识](../registration/sending-requests.md#zh)、序列号、时间戳、[回执](../messaging/storage/msgstore.md#receipts-zh)和错误表示。
-- UTF-8、字节序、[URL 编码](../registration/request-encryption.md#zh)、[Base64](../registration/android-inputs.md#zh) 与 [Base64url](../registration/android-inputs.md#zh) 的具体使用位置。
+- 请求标识、序列号、时间戳、[回执](../messaging/storage/msgstore.md#receipts-zh)和错误表示。
+- UTF-8、字节序、URL 编码、Base64 与 Base64url 的具体使用位置。
 - 原始字节、解码结果、运行时观测和协议推断之间的对应关系。
 
 ### 文档组织与扩展方式
@@ -46,19 +46,19 @@
 
 | 规划路径 | 内容 |
 | --- | --- |
-| `protocol-boundaries.md` | [注册请求](../registration/README.md#zh)、消息连接与通话信令的范围 |
+| `protocol-boundaries.md` | 注册请求、消息连接与通话信令的范围 |
 | `connection-lifecycle.md` | [建立连接](noise.md#zh)、心跳、断开与[重连](noise.md#zh-fallback) |
 | `handshake.md` | [握手](noise.md#zh)、连接认证及状态变化 |
 | `binary-format/` | 复合消息封装与其他二进制格式专题 |
 | `protobuf/` | 结构化消息、schema 与字段版本 |
-| `encoding.md` | UTF-8、字节序、[URL 编码](../registration/request-encryption.md#zh)及 [Base64](../registration/android-inputs.md#zh) 系列 |
-| `identifiers-and-errors.md` | [请求标识](../registration/sending-requests.md#zh)、序列号、时间戳、[回执](../messaging/storage/msgstore.md#receipts-zh)与错误 |
+| `encoding.md` | UTF-8、字节序、URL 编码及 Base64 系列 |
+| `identifiers-and-errors.md` | 请求标识、序列号、时间戳、[回执](../messaging/storage/msgstore.md#receipts-zh)与错误 |
 
 <a id="相关主题--related-topics"></a>
 
 ### 相关主题
 
-[账号注册与验证码](../registration/#zh) · [端到端加密与密钥管理](../encryption/#zh) · [消息发送与接收](../messaging/#zh) · [语音通话能力](../calls/#zh)
+[端到端加密与密钥管理](../encryption/#zh) · [消息发送与接收](../messaging/#zh) · [语音通话能力](../calls/#zh)
 
 <a id="en"></a>
 
@@ -70,13 +70,13 @@ This directory introduces the organization of WhatsApp requests and connection d
 
 ### Scope
 
-- Boundaries between [registration requests](../registration/README.md#en), persistent messaging connections, and call signaling.
+- Boundaries between registration requests, persistent messaging connections, and call signaling.
 - [Connection establishment](noise.md#en), [handshakes](noise.md#en), [authentication](noise.md#en), heartbeats, and [reconnection](noise.md#en-fallback).
 - [Binary frames](tcp-framing.md#en), [nodes and attributes](protocol-tree-node.md#en-model), message envelopes, and serialization formats.
 - [Argo](argo.md#en) [business payloads](argo.md#en), [headers](argo.md#en-header), [Wire Schemas](argo.md#en-schema), types and [exact rewriting](argo.md#en-rewrite).
 - Structured formats such as Protobuf: schemas, field types, and version changes.
-- [Request identifiers](../registration/sending-requests.md#en), sequence numbers, timestamps, [acknowledgments](../messaging/storage/msgstore.md#receipts-en), and errors.
-- Specific uses of UTF-8, byte order, [URL encoding](../registration/request-encryption.md#en), [Base64](../registration/android-inputs.md#en), and [Base64url](../registration/android-inputs.md#en).
+- Request identifiers, sequence numbers, timestamps, [acknowledgments](../messaging/storage/msgstore.md#receipts-en), and errors.
+- Specific uses of UTF-8, byte order, URL encoding, Base64, and Base64url.
 - Mapping raw bytes to decoded data, runtime observations, and protocol hypotheses.
 
 ### Documentation Organization and Expansion
@@ -102,14 +102,14 @@ To follow the receiving pipeline, read [TCP Framing](tcp-framing.md#en), [Noise 
 
 | Proposed path | Scope |
 | --- | --- |
-| `protocol-boundaries.md` | Boundaries between [registration](../registration/README.md#en), messaging connections, and call signaling |
+| `protocol-boundaries.md` | Boundaries between registration, messaging connections, and call signaling |
 | `connection-lifecycle.md` | [Connection establishment](noise.md#en), heartbeats, disconnection, and [reconnection](noise.md#en-fallback) |
 | `handshake.md` | Handshakes, connection [authentication](noise.md#en), and state transitions |
 | `binary-format/` | Compound message envelopes and other binary formats |
 | `protobuf/` | Structured messages, schemas, and field versions |
-| `encoding.md` | UTF-8, byte order, [URL encoding](../registration/request-encryption.md#en), [Base64](../registration/android-inputs.md#en), and [Base64url](../registration/android-inputs.md#en) |
-| `identifiers-and-errors.md` | [Request IDs](../registration/sending-requests.md#en), sequence numbers, timestamps, [receipts](../messaging/storage/msgstore.md#receipts-en), and errors |
+| `encoding.md` | UTF-8, byte order, URL encoding, Base64, and Base64url |
+| `identifiers-and-errors.md` | Request IDs, sequence numbers, timestamps, [receipts](../messaging/storage/msgstore.md#receipts-en), and errors |
 
 ### Related Topics
 
-[Account Registration and Verification](../registration/#en) · [End-to-End Encryption and Key Management](../encryption/#en) · [Sending and Receiving Messages](../messaging/#en) · [Voice Calling Capabilities](../calls/#en)
+[End-to-End Encryption and Key Management](../encryption/#en) · [Sending and Receiving Messages](../messaging/#en) · [Voice Calling Capabilities](../calls/#en)

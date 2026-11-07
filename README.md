@@ -14,7 +14,7 @@
 
 **中英双语的非官方 WhatsApp 技术文档。**
 
-面向开发者与协议研究者，围绕账号注册、登录认证、通信协议、消息、媒体、通话、端到端加密和多设备同步组织内容。文章说明字段来源、编码与加密、缓存生命周期、调用条件及错误处理。
+面向开发者与协议研究者，围绕登录认证、通信协议、消息、媒体、通话、端到端加密和多设备同步组织内容。文章说明字段来源、编码与加密、缓存生命周期、调用条件及错误处理。
 
 <a id="start-here"></a>
 <a id="项目介绍"></a>
@@ -22,8 +22,6 @@
 
 ### 从这里开始
 
-- **理解注册流程**：从[账号注册与验证码](registration/README.md#zh)开始，再读[exist 参数](registration/exist.md#zh)、[code 参数](registration/code.md#zh)和[register 参数](registration/register.md#zh)。
-- **理解请求如何发出**：接着读[参数序列化与加密封装](registration/request-encryption.md#zh)和[发送流程与响应处理](registration/sending-requests.md#zh)。
 - **理解连接与握手**：阅读 [Noise 握手与加密传输](protocol/noise.md#zh)，了解 XX、IK、fallback、后量子分支与登录结果。
 - **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
 - **解析 Argo 业务载荷**：阅读 [Argo](protocol/argo.md#zh)，了解 schema 选择、Header、类型、Python 读写与精确回写。
@@ -39,13 +37,13 @@
 
 | 章节 | 内容范围 |
 | --- | --- |
-| <a id="zh-authentication"></a>[02 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[设备关联](multi-device/README.md#zh)与[重新登录](authentication/README.md#zh) |
-| <a id="zh-protocol"></a>[03 · 通信协议与数据格式](protocol/README.md#zh) | [连接建立](protocol/noise.md#zh-state)、[Noise 握手](protocol/noise.md#zh)、[帧结构](protocol/tcp-framing.md#zh)、[二进制节点](protocol/protocol-tree-node.md#zh)、[Argo 载荷](protocol/argo.md#zh)和[请求封装](registration/request-encryption.md#zh) |
-| <a id="zh-encryption"></a>[04 · 加密与密钥管理](encryption/README.md#zh) | [身份密钥](messaging/storage/axolotl.md#identities-zh)、[会话密钥](messaging/storage/axolotl.md#sessions-zh)、[预密钥](messaging/storage/axolotl.md#prekeys-zh)、[密钥数据库](messaging/storage/axolotl.md#zh)与[加密边界](protocol/noise.md#zh-layers) |
-| <a id="zh-messaging"></a>[05 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
-| <a id="zh-media"></a>[06 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
-| <a id="zh-calls"></a>[07 · 语音通话能力](calls/README.md#zh) | 已实现能力、[一对一语音](calls/voice-calls.md#zh)、[群组语音](calls/group-calls.md#zh)与演示范围 |
-| <a id="zh-multi-device"></a>[08 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
+| <a id="zh-authentication"></a>[01 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[设备关联](multi-device/README.md#zh)与[重新登录](authentication/README.md#zh) |
+| <a id="zh-protocol"></a>[02 · 通信协议与数据格式](protocol/README.md#zh) | [连接建立](protocol/noise.md#zh-state)、[Noise 握手](protocol/noise.md#zh)、[帧结构](protocol/tcp-framing.md#zh)、[二进制节点](protocol/protocol-tree-node.md#zh)和[Argo 载荷](protocol/argo.md#zh) |
+| <a id="zh-encryption"></a>[03 · 加密与密钥管理](encryption/README.md#zh) | [身份密钥](messaging/storage/axolotl.md#identities-zh)、[会话密钥](messaging/storage/axolotl.md#sessions-zh)、[预密钥](messaging/storage/axolotl.md#prekeys-zh)、[密钥数据库](messaging/storage/axolotl.md#zh)与[加密边界](protocol/noise.md#zh-layers) |
+| <a id="zh-messaging"></a>[04 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
+| <a id="zh-media"></a>[05 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
+| <a id="zh-calls"></a>[06 · 语音通话能力](calls/README.md#zh) | 已实现能力、[一对一语音](calls/voice-calls.md#zh)、[群组语音](calls/group-calls.md#zh)与演示范围 |
+| <a id="zh-multi-device"></a>[07 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
 
 内容范围中的链接优先指向现有文章或具体小节；未单独成篇的主题指向所属目录。
 
@@ -87,13 +85,6 @@
 ```text
 whatsapp-technical-wiki/
 ├── README.md
-├── registration/
-│   ├── README.md
-│   ├── exist.md
-│   ├── code.md
-│   ├── android-inputs.md
-│   ├── request-encryption.md
-│   └── sending-requests.md
 ├── authentication/README.md
 ├── protocol/
 │   ├── README.md
@@ -116,7 +107,7 @@ whatsapp-technical-wiki/
     └── message-distribution.md
 ```
 
-顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册14篇文章、通信协议文章、数据库3篇文章及多设备消息分发文章与章节的直接入口。
+顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供通信协议、数据库及多设备消息分发文章与章节的直接入口。
 
 ### 阅读方式与文档约定
 
@@ -150,7 +141,7 @@ whatsapp-technical-wiki/
 
 **Unofficial WhatsApp technical documentation in Chinese and English.**
 
-For developers and protocol researchers, with topics organized around registration, authentication, protocols, messaging, media, calls, end-to-end encryption, and multi-device synchronization. Articles explain field sources, encoding and encryption, cache lifetimes, calling conditions, and error handling.
+For developers and protocol researchers, with topics organized around authentication, protocols, messaging, media, calls, end-to-end encryption, and multi-device synchronization. Articles explain field sources, encoding and encryption, cache lifetimes, calling conditions, and error handling.
 
 <a id="start-here-en"></a>
 <a id="about"></a>
@@ -158,8 +149,6 @@ For developers and protocol researchers, with topics organized around registrati
 
 ### Start Here
 
-- **Understand registration**: Begin with [Registration and Verification](registration/README.md#en), then read [exist parameters](registration/exist.md#en), [code parameters](registration/code.md#en), and [register parameters](registration/register.md#en).
-- **Follow a request to transmission**: Continue with [Serialization and request encryption](registration/request-encryption.md#en) and [Sending and response handling](registration/sending-requests.md#en).
 - **Understand connections and handshakes**: Read [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) for XX, IK, fallback, post-quantum branches, and login outcomes.
 - **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
 - **Parse Argo business payloads**: read [Argo](protocol/argo.md#en) for schema selection, headers, types, Python read/write and exact rewriting.
@@ -174,13 +163,13 @@ For developers and protocol researchers, with topics organized around registrati
 
 | Chapter | Scope |
 | --- | --- |
-| <a id="en-authentication"></a>[02 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [device linking](multi-device/README.md#en), and [reauthentication](authentication/README.md#en) |
-| <a id="en-protocol"></a>[03 · Communication Protocols and Data Formats](protocol/README.md#en) | [Connections](protocol/noise.md#en-state), [Noise handshakes](protocol/noise.md#en), [framing](protocol/tcp-framing.md#en), [binary nodes](protocol/protocol-tree-node.md#en), [Argo payloads](protocol/argo.md#en), and [request packaging](registration/request-encryption.md#en) |
-| <a id="en-encryption"></a>[04 · Encryption and Key Management](encryption/README.md#en) | [Identity keys](messaging/storage/axolotl.md#identities-en), [session keys](messaging/storage/axolotl.md#sessions-en), [prekeys](messaging/storage/axolotl.md#prekeys-en), the [key database](messaging/storage/axolotl.md#en), and [encryption boundaries](protocol/noise.md#en-layers) |
-| <a id="en-messaging"></a>[05 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
-| <a id="en-media"></a>[06 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
-| <a id="en-calls"></a>[07 · Voice Calling Capabilities](calls/README.md#en) | Implemented capabilities, [one-to-one voice](calls/voice-calls.md#en), [group voice](calls/group-calls.md#en) and demonstration scope |
-| <a id="en-multi-device"></a>[08 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
+| <a id="en-authentication"></a>[01 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [device linking](multi-device/README.md#en), and [reauthentication](authentication/README.md#en) |
+| <a id="en-protocol"></a>[02 · Communication Protocols and Data Formats](protocol/README.md#en) | [Connections](protocol/noise.md#en-state), [Noise handshakes](protocol/noise.md#en), [framing](protocol/tcp-framing.md#en), [binary nodes](protocol/protocol-tree-node.md#en), and [Argo payloads](protocol/argo.md#en) |
+| <a id="en-encryption"></a>[03 · Encryption and Key Management](encryption/README.md#en) | [Identity keys](messaging/storage/axolotl.md#identities-en), [session keys](messaging/storage/axolotl.md#sessions-en), [prekeys](messaging/storage/axolotl.md#prekeys-en), the [key database](messaging/storage/axolotl.md#en), and [encryption boundaries](protocol/noise.md#en-layers) |
+| <a id="en-messaging"></a>[04 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
+| <a id="en-media"></a>[05 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
+| <a id="en-calls"></a>[06 · Voice Calling Capabilities](calls/README.md#en) | Implemented capabilities, [one-to-one voice](calls/voice-calls.md#en), [group voice](calls/group-calls.md#en) and demonstration scope |
+| <a id="en-multi-device"></a>[07 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
 
 Scope links point to existing articles or specific sections where available; topics without a dedicated article link to their topic directory.
 
@@ -220,13 +209,6 @@ Scope links point to existing articles or specific sections where available; top
 ```text
 whatsapp-technical-wiki/
 ├── README.md
-├── registration/
-│   ├── README.md
-│   ├── exist.md
-│   ├── code.md
-│   ├── android-inputs.md
-│   ├── request-encryption.md
-│   └── sending-requests.md
 ├── authentication/README.md
 ├── protocol/
 │   ├── README.md
@@ -249,7 +231,7 @@ whatsapp-technical-wiki/
     └── message-distribution.md
 ```
 
-Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 14 registration articles, the communication protocol articles, 3 database articles, and the multi-device distribution article and sections.
+Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above link directly to the protocol, database, and multi-device distribution articles and sections.
 
 ### Reading Guide and Documentation Conventions
 
