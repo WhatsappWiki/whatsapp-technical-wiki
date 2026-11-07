@@ -22,7 +22,7 @@
 
 ### 从这里开始
 
-- **理解注册流程**：从[账号注册与验证码](registration/README.md#zh)开始，再读[exist 参数](registration/exist.md#zh)与[code 参数](registration/code.md#zh)。
+- **理解注册流程**：从[账号注册与验证码](registration/README.md#zh)开始，再读[exist 参数](registration/exist.md#zh)、[code 参数](registration/code.md#zh)和[register 参数](registration/register.md#zh)。
 - **理解请求如何发出**：接着读[参数序列化与加密封装](registration/request-encryption.md#zh)和[发送流程与响应处理](registration/sending-requests.md#zh)。
 - **理解连接与握手**：阅读 [Noise 握手与加密传输](protocol/noise.md#zh)，了解 XX、IK、fallback、后量子分支与登录结果。
 - **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
@@ -116,7 +116,7 @@ whatsapp-technical-wiki/
     └── message-distribution.md
 ```
 
-顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册13篇文章、通信协议文章、数据库3篇文章及多设备消息分发文章与章节的直接入口。
+顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供注册14篇文章、通信协议文章、数据库3篇文章及多设备消息分发文章与章节的直接入口。
 
 ### 阅读方式与文档约定
 
@@ -158,7 +158,7 @@ For developers and protocol researchers, with topics organized around registrati
 
 ### Start Here
 
-- **Understand registration**: Begin with [Registration and Verification](registration/README.md#en), then read [exist parameters](registration/exist.md#en) and [code parameters](registration/code.md#en).
+- **Understand registration**: Begin with [Registration and Verification](registration/README.md#en), then read [exist parameters](registration/exist.md#en), [code parameters](registration/code.md#en), and [register parameters](registration/register.md#en).
 - **Follow a request to transmission**: Continue with [Serialization and request encryption](registration/request-encryption.md#en) and [Sending and response handling](registration/sending-requests.md#en).
 - **Understand connections and handshakes**: Read [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) for XX, IK, fallback, post-quantum branches, and login outcomes.
 - **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
@@ -249,7 +249,7 @@ whatsapp-technical-wiki/
     └── message-distribution.md
 ```
 
-Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 13 registration articles, the communication protocol articles, 3 database articles, and the multi-device distribution article and sections.
+Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above directly open all 14 registration articles, the communication protocol articles, 3 database articles, and the multi-device distribution article and sections.
 
 ### Reading Guide and Documentation Conventions
 
