@@ -14,7 +14,7 @@
 
 **中英双语的非官方 WhatsApp 技术文档。**
 
-面向开发者与协议研究者，围绕登录认证、通信协议、消息、媒体、通话、端到端加密和多设备同步组织内容。文章说明字段来源、编码与加密、缓存生命周期、调用条件及错误处理。
+面向开发者与协议研究者，围绕账号注册、登录认证、通信协议、消息、媒体、通话、端到端加密和多设备同步组织内容。文章说明字段来源、编码与加密、缓存生命周期、调用条件及错误处理。
 
 <a id="start-here"></a>
 <a id="项目介绍"></a>
@@ -22,6 +22,7 @@
 
 ### 从这里开始
 
+- **了解账号注册**。阅读[账号注册与验证码](registration/README.md#zh)，了解号码检查、申请验证码与提交验证。
 - **理解连接与握手**：阅读 [Noise 握手与加密传输](protocol/noise.md#zh)，了解 XX、IK、fallback、后量子分支与登录结果。
 - **理解二进制节点**：阅读 [Protocol Tree Node](protocol/protocol-tree-node.md#zh)，了解树结构、token 字典、JID、Python 编解码与精确回写。
 - **解析 Argo 业务载荷**：阅读 [Argo](protocol/argo.md#zh)，了解 schema 选择、Header、类型、Python 读写与精确回写。
@@ -44,6 +45,7 @@
 | <a id="zh-media"></a>[05 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
 | <a id="zh-calls"></a>[06 · 语音通话能力](calls/README.md#zh) | 已实现能力、[一对一语音](calls/voice-calls.md#zh)、[群组语音](calls/group-calls.md#zh)与演示范围 |
 | <a id="zh-multi-device"></a>[07 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
+| <a id="zh-registration"></a>[08 · 账号注册与验证码](registration/README.md#zh) | [号码检查](registration/exist.md#zh)、[申请验证](registration/code.md#zh)、[提交验证](registration/register.md#zh)与[发送流程](registration/sending-requests.md#zh) |
 
 内容范围中的链接优先指向现有文章或具体小节；未单独成篇的主题指向所属目录。
 
@@ -85,6 +87,7 @@
 ```text
 whatsapp-technical-wiki/
 ├── README.md
+├── registration/
 ├── authentication/README.md
 ├── protocol/
 │   ├── README.md
@@ -113,7 +116,7 @@ whatsapp-technical-wiki/
 
 具体文章按调用条件说明技术行为；API原始值、派生字段、缓存结果与最终HTTP正文分别介绍。
 
-标识、号码、令牌和密码学载荷使用同格式合成示例；普通状态提供具体示例值。条件字段、空串、null、缺键、0和false分别处理。字段内部包装、ENC、H与Authorization保持各自职责，通道差异不由一个请求模板覆盖。
+标识、号码、令牌和密码学载荷使用同格式合成示例；普通状态提供具体示例值。条件字段、空串、null、缺键、0和false分别处理。注册请求按所选通道序列化与封装。
 
 公开文档不包含真实验证码、访问令牌、私钥、完整认证材料或可识别个人身份的原始记录。
 
@@ -141,7 +144,7 @@ whatsapp-technical-wiki/
 
 **Unofficial WhatsApp technical documentation in Chinese and English.**
 
-For developers and protocol researchers, with topics organized around authentication, protocols, messaging, media, calls, end-to-end encryption, and multi-device synchronization. Articles explain field sources, encoding and encryption, cache lifetimes, calling conditions, and error handling.
+For developers and protocol researchers, with topics organized around registration, authentication, protocols, messaging, media, calls, end-to-end encryption, and multi-device synchronization. Articles explain field sources, encoding and encryption, cache lifetimes, calling conditions, and error handling.
 
 <a id="start-here-en"></a>
 <a id="about"></a>
@@ -149,6 +152,7 @@ For developers and protocol researchers, with topics organized around authentica
 
 ### Start Here
 
+- **Explore account registration**. Read [Account Registration and Verification](registration/README.md#en) for number checks, code requests, and verification.
 - **Understand connections and handshakes**: Read [Noise Handshakes and Encrypted Transport](protocol/noise.md#en) for XX, IK, fallback, post-quantum branches, and login outcomes.
 - **Understand binary nodes**: Read [Protocol Tree Node](protocol/protocol-tree-node.md#en) for tree structure, token dictionaries, JIDs, Python encoding/decoding, and exact rewriting.
 - **Parse Argo business payloads**: read [Argo](protocol/argo.md#en) for schema selection, headers, types, Python read/write and exact rewriting.
@@ -170,6 +174,7 @@ For developers and protocol researchers, with topics organized around authentica
 | <a id="en-media"></a>[05 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
 | <a id="en-calls"></a>[06 · Voice Calling Capabilities](calls/README.md#en) | Implemented capabilities, [one-to-one voice](calls/voice-calls.md#en), [group voice](calls/group-calls.md#en) and demonstration scope |
 | <a id="en-multi-device"></a>[07 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
+| <a id="en-registration"></a>[08 · Account Registration and Verification](registration/README.md#en) | [Number checks](registration/exist.md#en), [code requests](registration/code.md#en), [verification](registration/register.md#en), and [sending](registration/sending-requests.md#en) |
 
 Scope links point to existing articles or specific sections where available; topics without a dedicated article link to their topic directory.
 
@@ -209,6 +214,7 @@ Scope links point to existing articles or specific sections where available; top
 ```text
 whatsapp-technical-wiki/
 ├── README.md
+├── registration/
 ├── authentication/README.md
 ├── protocol/
 │   ├── README.md
@@ -236,6 +242,8 @@ Top-level directories use lowercase English names and hyphens. Topic READMEs int
 ### Reading Guide and Documentation Conventions
 
 Articles explain behavior under concrete calling conditions and distinguish raw API values, derived fields, caches, and final HTTP bodies.
+
+Identifiers, numbers, tokens, and cryptographic payloads use synthetic examples in the same representation; ordinary states have concrete example values. Distinguish conditional presence, empty text, null, omission, 0, and false. The selected transport determines how registration requests are serialized and packaged.
 
 Public documentation excludes real verification codes, access tokens, private keys, complete authentication material, and identifiable personal records.
 

@@ -32,7 +32,7 @@ flowchart LR
 | Noise | 客户端与聊天服务器之间的身份认证、密钥协商和传输保护 |
 | 登录 payload 与状态节点 | 账号身份、客户端能力、连接信息及登录结果 |
 | Signal 消息层 | 发送设备与接收设备之间的消息端到端加密；其密文可继续装入 Noise 通道 |
-| 注册 HTTP 封装 | 注册请求经表单序列化和加密封装 |
+| 注册 HTTP 封装 | [注册请求封装](../registration/request-encryption.md#zh)说明表单序列化和加密正文 |
 
 `g.whatsapp.net:443` 的这种连接可直接在 TCP 上发送移动端头和 Noise 帧；端口 443 本身不表示外面还有 TLS。Noise 连接静态密钥、Signal 身份密钥和 HTTP 签名密钥承担不同职责，不能互换。
 
@@ -432,7 +432,7 @@ During the handshake, the length-prefixed content is a Protobuf containing Clien
 | Noise | Client-to-chat-server authentication, key agreement, and transport protection |
 | Login payload and status nodes | Account identity, client capabilities, connection information, and login outcome |
 | Signal message layer | Device-to-device end-to-end message encryption; its ciphertext can travel inside Noise |
-| Registration HTTP envelope | Registration requests use form serialization and encrypted packaging |
+| Registration HTTP envelope | [Registration request packaging](../registration/request-encryption.md#en) covers form serialization and encrypted bodies |
 
 This connection to `g.whatsapp.net:443` can carry the mobile header and Noise frames directly over TCP. Port 443 alone does not imply an outer TLS layer. Noise connection static keys, Signal identity keys, and HTTP signing keys have separate roles.
 
