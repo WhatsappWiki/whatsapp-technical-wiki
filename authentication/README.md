@@ -18,6 +18,7 @@
 - 会话恢复、[断线重连](../protocol/noise.md#zh-fallback)、失效、退出和重新登录。
 - 两步验证、PIN 与 Passkey 等相关流程。
 - 账号切换、设备移除和凭据生命周期。
+- [账号申诉](account-appeal.md#zh)的提交、受理和复审结果。
 
 ### 已有文章
 
@@ -26,6 +27,7 @@
 | [本地数据库与连接密钥](../messaging/local-storage.md#keystore-zh) | [keystore 偏好存储中的连接密钥密文](../messaging/local-storage.md#keystore-zh)与 [AndroidKeyStore 中的 AES 密钥](../messaging/local-storage.md#keystore-zh) |
 | [Signal 身份与加密会话](../messaging/storage/axolotl.md#zh) | [identities](../messaging/storage/axolotl.md#identities-zh)、[本机注册 ID](../messaging/storage/axolotl.md#identities-zh) 与[按账户/设备/scope/type 定位的会话](../messaging/storage/axolotl.md#sessions-zh) |
 | [设备身份与会话更新](../multi-device/message-distribution.md#identities-zh) | PN/LID 与 DeviceJid、[设备目录](../multi-device/message-distribution.md#directory-zh)、[当前设备排除](../multi-device/message-distribution.md#targets-zh)和[增删后的会话处理](../multi-device/message-distribution.md#device-changes-zh) |
+| [WhatsApp 账号申诉](account-appeal.md#zh) | 申诉提交、受理状态查询与复审结果 |
 
 ### 文档组织与扩展方式
 
@@ -69,6 +71,7 @@ This directory introduces how WhatsApp accounts and devices enter, maintain, and
 - Session restoration, [reconnection](../protocol/noise.md#en-fallback), expiration, logout, and reauthentication.
 - Two-step verification, PINs, and passkey flows.
 - Account switching, device removal, and credential lifecycles.
+- [Account appeal](account-appeal.md#en) submission, acceptance, and review outcomes.
 
 ### Available Articles
 
@@ -77,6 +80,7 @@ This directory introduces how WhatsApp accounts and devices enter, maintain, and
 | [Local Databases and Connection Keys](../messaging/local-storage.md#keystore-en) | [Connection-key ciphertext](../messaging/local-storage.md#keystore-en) in [keystore preferences](../messaging/local-storage.md#keystore-en) and the [AES key in AndroidKeyStore](../messaging/local-storage.md#keystore-en) |
 | [Signal Identities and Cryptographic Sessions](../messaging/storage/axolotl.md#en) | [identities](../messaging/storage/axolotl.md#identities-en), [local registration ID](../messaging/storage/axolotl.md#identities-en), and [account/device/scope/type session addressing](../messaging/storage/axolotl.md#sessions-en) |
 | [Device Identities and Session Updates](../multi-device/message-distribution.md#identities-en) | PN/LID and DeviceJid, [device directories](../multi-device/message-distribution.md#directory-en), [sender exclusion](../multi-device/message-distribution.md#targets-en), and [sessions after device changes](../multi-device/message-distribution.md#device-changes-en) |
+| [WhatsApp Account Appeals](account-appeal.md#en) | Appeal submission, status checks, and review outcomes |
 
 ### Documentation Organization and Expansion
 

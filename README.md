@@ -38,7 +38,7 @@
 
 | 章节 | 内容范围 |
 | --- | --- |
-| <a id="zh-authentication"></a>[01 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[设备关联](multi-device/README.md#zh)与[重新登录](authentication/README.md#zh) |
+| <a id="zh-authentication"></a>[01 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[设备关联](multi-device/README.md#zh)、[重新登录](authentication/README.md#zh)与[账号申诉](authentication/account-appeal.md#zh) |
 | <a id="zh-protocol"></a>[02 · 通信协议与数据格式](protocol/README.md#zh) | [连接建立](protocol/noise.md#zh-state)、[Noise 握手](protocol/noise.md#zh)、[帧结构](protocol/tcp-framing.md#zh)、[二进制节点](protocol/protocol-tree-node.md#zh)和[Argo 载荷](protocol/argo.md#zh) |
 | <a id="zh-encryption"></a>[03 · 加密与密钥管理](encryption/README.md#zh) | [身份密钥](messaging/storage/axolotl.md#identities-zh)、[会话密钥](messaging/storage/axolotl.md#sessions-zh)、[预密钥](messaging/storage/axolotl.md#prekeys-zh)、[密钥数据库](messaging/storage/axolotl.md#zh)与[加密边界](protocol/noise.md#zh-layers) |
 | <a id="zh-messaging"></a>[04 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
@@ -88,7 +88,9 @@
 whatsapp-technical-wiki/
 ├── README.md
 ├── registration/
-├── authentication/README.md
+├── authentication/
+│   ├── README.md
+│   └── account-appeal.md
 ├── protocol/
 │   ├── README.md
 │   ├── noise.md
@@ -167,7 +169,7 @@ For developers and protocol researchers, with topics organized around registrati
 
 | Chapter | Scope |
 | --- | --- |
-| <a id="en-authentication"></a>[01 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [device linking](multi-device/README.md#en), and [reauthentication](authentication/README.md#en) |
+| <a id="en-authentication"></a>[01 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [device linking](multi-device/README.md#en), [reauthentication](authentication/README.md#en), and [account appeals](authentication/account-appeal.md#en) |
 | <a id="en-protocol"></a>[02 · Communication Protocols and Data Formats](protocol/README.md#en) | [Connections](protocol/noise.md#en-state), [Noise handshakes](protocol/noise.md#en), [framing](protocol/tcp-framing.md#en), [binary nodes](protocol/protocol-tree-node.md#en), and [Argo payloads](protocol/argo.md#en) |
 | <a id="en-encryption"></a>[03 · Encryption and Key Management](encryption/README.md#en) | [Identity keys](messaging/storage/axolotl.md#identities-en), [session keys](messaging/storage/axolotl.md#sessions-en), [prekeys](messaging/storage/axolotl.md#prekeys-en), the [key database](messaging/storage/axolotl.md#en), and [encryption boundaries](protocol/noise.md#en-layers) |
 | <a id="en-messaging"></a>[04 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
@@ -215,7 +217,9 @@ Scope links point to existing articles or specific sections where available; top
 whatsapp-technical-wiki/
 ├── README.md
 ├── registration/
-├── authentication/README.md
+├── authentication/
+│   ├── README.md
+│   └── account-appeal.md
 ├── protocol/
 │   ├── README.md
 │   ├── noise.md
