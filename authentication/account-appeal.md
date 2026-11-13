@@ -76,6 +76,43 @@ sequenceDiagram
 | 已解封 | WhatsApp 已解除账号封禁。 |
 | 维持封禁 | WhatsApp 审核后维持原决定。 |
 
+#### 复审中状态响应片段
+
+以下片段根据已保存的状态查询记录整理，保留其中确认的状态字段。该次查询的 HTTP 状态码为 `200`。
+
+```json
+{
+  "data": {
+    "whatsapp_support_ban_appeal_status": {
+      "status": "IN_REVIEW"
+    }
+  }
+}
+```
+
+`IN_REVIEW` 表示申诉已受理，正在等待复审结果。
+
+#### 解封状态响应示例
+
+以下是一次申诉状态查询的服务器响应，HTTP 状态码为 `200`。
+
+```json
+{
+  "data": {
+    "whatsapp_support_ban_appeal_status": {
+      "status": "UNBANNED",
+      "reason": null,
+      "reason_url": null
+    }
+  },
+  "extensions": {
+    "is_final": true
+  }
+}
+```
+
+该响应中的 `status` 为 `UNBANNED`，表示账号已解封。响应中的 `extensions.is_final` 为 `true`。
+
 ### 响应异常与重复提交
 
 是否可以重试取决于失败发生在哪一步。提交前的准备失败可以在排除原因后再尝试。请求发出后如果超时、断开连接或响应无法判读，服务端可能已经收到申请。此时将结果标为待确认，通过查询同一申诉核对进度，避免产生重复申请。
@@ -88,7 +125,7 @@ sequenceDiagram
 
 ### 验证结果与评估口径
 
-本地复现中，首次查询显示未开启复审，提交后页面显示复审中，再次查询确认了这一状态。这组观察用于检查客户端能否走完提交和查询流程。实际服务的受理依据则来自 WhatsApp 的回执。一次实际提交收到受理回执，后续独立查询确认同一申诉仍在复审中。
+本地复现中，首次查询显示未开启复审，提交后页面显示复审中，再次查询确认了这一状态。这组观察用于检查客户端能否走完提交和查询流程。实际服务的受理依据则来自 WhatsApp 的回执。一次实际申诉收到受理回执，后续查询先显示复审中，再返回上述解封状态。
 
 受理比例和解封比例需要分别评估。受理比例以实际提交的去重申诉为基础，结果待确认的请求单独记录。解封比例以已完成复审的申诉为基础，等待审核的请求仍计为复审中。
 
@@ -168,6 +205,43 @@ sequenceDiagram
 | Ban lifted | WhatsApp has lifted the account ban. |
 | Ban upheld | WhatsApp reviewed the appeal and kept its original decision. |
 
+#### In-review response fragment
+
+The following fragment is reconstructed from a saved status query and includes the confirmed status field. The query returned HTTP status `200`.
+
+```json
+{
+  "data": {
+    "whatsapp_support_ban_appeal_status": {
+      "status": "IN_REVIEW"
+    }
+  }
+}
+```
+
+`IN_REVIEW` indicates that the appeal was accepted and is awaiting a review decision.
+
+#### Example response for a lifted ban
+
+The following server response came from an appeal status query with HTTP status `200`.
+
+```json
+{
+  "data": {
+    "whatsapp_support_ban_appeal_status": {
+      "status": "UNBANNED",
+      "reason": null,
+      "reason_url": null
+    }
+  },
+  "extensions": {
+    "is_final": true
+  }
+}
+```
+
+The `UNBANNED` status indicates that the account ban was lifted. The response sets `extensions.is_final` to `true`.
+
 ### Response failures and duplicate submissions
 
 Whether another attempt is appropriate depends on when the failure happened. A preparation failure can be retried once its cause is resolved. If a request times out, the connection drops, or the response cannot be read after the request was sent, the server may already have received it. The implementation records the result as unconfirmed. A separate query for the same appeal can establish its status and help avoid a duplicate submission.
@@ -180,7 +254,7 @@ Whether another attempt is appropriate depends on when the failure happened. A p
 
 ### Validation and evaluation
 
-In the local reproduction, the first query showed no open review, the client displayed a review in progress after submission, and a later query confirmed that state. These observations check whether the client can complete submission and query the result. An acceptance response from WhatsApp establishes acceptance by the live service. One live submission received that response, and a separate query confirmed that the same appeal was still in review.
+In the local reproduction, the first query showed no open review, the client displayed a review in progress after submission, and a later query confirmed that state. These observations check whether the client can complete submission and query the result. An acceptance response from WhatsApp establishes acceptance by the live service. One live appeal received an acceptance response. Later queries showed it in review and then returned the lifted-ban status above.
 
 Evaluate submission acceptance and bans lifted separately. Base the acceptance rate on distinct appeals actually submitted, with unconfirmed results tracked separately. Base the rate of bans lifted on completed reviews and keep pending appeals in the in-review group.
 
