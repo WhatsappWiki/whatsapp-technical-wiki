@@ -26,6 +26,7 @@
 | --- | --- |
 | [本地数据库与连接密钥](../messaging/local-storage.md#keystore-zh) | [keystore 偏好存储中的连接密钥密文](../messaging/local-storage.md#keystore-zh)与 [AndroidKeyStore 中的 AES 密钥](../messaging/local-storage.md#keystore-zh) |
 | [Signal 身份与加密会话](../messaging/storage/axolotl.md#zh) | [identities](../messaging/storage/axolotl.md#identities-zh)、[本机注册 ID](../messaging/storage/axolotl.md#identities-zh) 与[按账户/设备/scope/type 定位的会话](../messaging/storage/axolotl.md#sessions-zh) |
+| [WhatsApp 手机扫码登录与设备解绑](../multi-device/linking-and-unlinking.md#zh) | 主手机授权、关联设备身份确认、连接认证与退出 |
 | [设备身份与会话更新](../multi-device/message-distribution.md#identities-zh) | PN/LID 与 DeviceJid、[设备目录](../multi-device/message-distribution.md#directory-zh)、[当前设备排除](../multi-device/message-distribution.md#targets-zh)和[增删后的会话处理](../multi-device/message-distribution.md#device-changes-zh) |
 | [WhatsApp 账号申诉](account-appeal.md#zh) | 申诉提交、受理状态查询与复审结果 |
 
@@ -43,7 +44,7 @@
 | --- | --- |
 | `authentication-flow.md` | 首次注册、账号启动与[连接认证](../protocol/noise.md#zh)的流程区别 |
 | `credentials.md` | [身份材料](../messaging/local-storage.md#zh)、[认证密钥](../messaging/local-storage.md#keystore-zh)、设备标识与存储 |
-| `device-linking/` | 二维码与配对码关联、设备确认和授权 |
+| `device-linking/` | 手机号与配对码关联、设备确认和授权 |
 | `session-lifecycle.md` | [会话持久化](../messaging/storage/axolotl.md#sessions-zh)、恢复、失效、退出与[重连](../protocol/noise.md#zh-fallback) |
 | `two-step-verification.md` | 两步验证、PIN 与相关状态 |
 | `passkeys.md` | Passkey 相关流程与平台条件 |
@@ -79,6 +80,7 @@ This directory introduces how WhatsApp accounts and devices enter, maintain, and
 | --- | --- |
 | [Local Databases and Connection Keys](../messaging/local-storage.md#keystore-en) | [Connection-key ciphertext](../messaging/local-storage.md#keystore-en) in [keystore preferences](../messaging/local-storage.md#keystore-en) and the [AES key in AndroidKeyStore](../messaging/local-storage.md#keystore-en) |
 | [Signal Identities and Cryptographic Sessions](../messaging/storage/axolotl.md#en) | [identities](../messaging/storage/axolotl.md#identities-en), [local registration ID](../messaging/storage/axolotl.md#identities-en), and [account/device/scope/type session addressing](../messaging/storage/axolotl.md#sessions-en) |
+| [WhatsApp QR Code Sign-In and Device Unlinking](../multi-device/linking-and-unlinking.md#en) | Primary phone authorization, linked-device identity confirmation, connection authentication, and logout |
 | [Device Identities and Session Updates](../multi-device/message-distribution.md#identities-en) | PN/LID and DeviceJid, [device directories](../multi-device/message-distribution.md#directory-en), [sender exclusion](../multi-device/message-distribution.md#targets-en), and [sessions after device changes](../multi-device/message-distribution.md#device-changes-en) |
 | [WhatsApp Account Appeals](account-appeal.md#en) | Appeal submission, status checks, and review outcomes |
 
@@ -94,7 +96,7 @@ Place a standalone article in an English-named Markdown file in this directory. 
 | --- | --- |
 | `authentication-flow.md` | Initial registration, account startup, and [connection-authentication](../protocol/noise.md#en) flows |
 | `credentials.md` | [Identity material](../messaging/local-storage.md#en), [authentication keys](../messaging/local-storage.md#keystore-en), device identifiers, and storage |
-| `device-linking/` | QR-code and pairing-code linking, device confirmation, and authorization |
+| `device-linking/` | Linking by phone number and pairing code, device confirmation, and authorization |
 | `session-lifecycle.md` | [Session persistence](../messaging/storage/axolotl.md#sessions-en), restoration, expiration, logout, and [reconnection](../protocol/noise.md#en-fallback) |
 | `two-step-verification.md` | Two-step verification, PINs, and related states |
 | `passkeys.md` | Passkey-related flows and platform conditions |

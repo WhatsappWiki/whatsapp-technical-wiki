@@ -38,13 +38,13 @@
 
 | 章节 | 内容范围 |
 | --- | --- |
-| <a id="zh-authentication"></a>[01 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[设备关联](multi-device/README.md#zh)、[重新登录](authentication/README.md#zh)与[账号申诉](authentication/account-appeal.md#zh) |
+| <a id="zh-authentication"></a>[01 · 登录认证与会话](authentication/README.md#zh) | [身份材料](messaging/local-storage.md#keystore-zh)、[会话持久化](messaging/storage/axolotl.md#sessions-zh)、[扫码登录](multi-device/linking-and-unlinking.md#zh)、[重新登录](authentication/README.md#zh)与[账号申诉](authentication/account-appeal.md#zh) |
 | <a id="zh-protocol"></a>[02 · 通信协议与数据格式](protocol/README.md#zh) | [连接建立](protocol/noise.md#zh-state)、[Noise 握手](protocol/noise.md#zh)、[帧结构](protocol/tcp-framing.md#zh)、[二进制节点](protocol/protocol-tree-node.md#zh)和[Argo 载荷](protocol/argo.md#zh) |
 | <a id="zh-encryption"></a>[03 · 加密与密钥管理](encryption/README.md#zh) | [身份密钥](messaging/storage/axolotl.md#identities-zh)、[会话密钥](messaging/storage/axolotl.md#sessions-zh)、[预密钥](messaging/storage/axolotl.md#prekeys-zh)、[密钥数据库](messaging/storage/axolotl.md#zh)与[加密边界](protocol/noise.md#zh-layers) |
 | <a id="zh-messaging"></a>[04 · 消息发送与接收](messaging/README.md#zh) | [消息构建](messaging/README.md#zh)、[接收](messaging/README.md#zh)、[回执](messaging/storage/msgstore.md#receipts-zh)、[重试](messaging/README.md#zh)、[去重](messaging/README.md#zh)、[群聊](messaging/README.md#zh)与[本地数据库](messaging/local-storage.md#zh) |
 | <a id="zh-media"></a>[05 · 图片、文件与语音消息](media/README.md#zh) | [媒体上传下载](media/README.md#zh)、[加解密](media/README.md#zh)、[文件元数据](messaging/storage/msgstore.md#media-zh)与[语音消息](media/README.md#zh) |
 | <a id="zh-calls"></a>[06 · 语音通话能力](calls/README.md#zh) | 已实现能力、[一对一语音](calls/voice-calls.md#zh)、[群组语音](calls/group-calls.md#zh)与演示范围 |
-| <a id="zh-multi-device"></a>[07 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联](multi-device/README.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
+| <a id="zh-multi-device"></a>[07 · 多设备与数据同步](multi-device/README.md#zh) | [设备关联与解绑](multi-device/linking-and-unlinking.md#zh)、[消息分发](multi-device/message-distribution.md#zh)、[历史同步](multi-device/message-distribution.md#history-zh)与[离线处理](multi-device/message-distribution.md#connection-zh) |
 | <a id="zh-registration"></a>[08 · 账号注册与验证码](registration/README.md#zh) | [号码检查](registration/exist.md#zh)、[申请验证](registration/code.md#zh)、[提交验证](registration/register.md#zh)与[发送流程](registration/sending-requests.md#zh) |
 
 内容范围中的链接优先指向现有文章或具体小节；未单独成篇的主题指向所属目录。
@@ -76,6 +76,7 @@
 
 | 文章 | 内容 |
 | --- | --- |
+| [WhatsApp 手机扫码登录与设备解绑](multi-device/linking-and-unlinking.md#zh) | 手机操作、二维码字段、设备签名、连接认证、初始同步与解绑。 |
 | [多设备消息分发与状态同步](multi-device/message-distribution.md#zh) | 设备目录、本机排除、逐设备与群加密、设备增删、重试与密文复用、ACK 去重、回执合并及 ChatTransfer。 |
 | [回执计数与状态回退](multi-device/message-distribution.md#regression-zh) | recipient_count、PN/LID、乱序条件与普通气泡状态。 |
 | [历史迁移与回执一致性](multi-device/message-distribution.md#history-zh) | 90 天回执窗口、导入计数、明细写入与孤立回执回放。 |
@@ -109,10 +110,11 @@ whatsapp-technical-wiki/
 ├── calls/README.md
 └── multi-device/
     ├── README.md
+    ├── linking-and-unlinking.md
     └── message-distribution.md
 ```
 
-顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章；上表提供通信协议、数据库及多设备消息分发文章与章节的直接入口。
+顶层目录使用小写英文与连字符命名。各目录README介绍主题并链接文章。上表提供通信协议、数据库及多设备文章与章节的直接入口。
 
 ### 阅读方式与文档约定
 
@@ -169,13 +171,13 @@ For developers and protocol researchers, with topics organized around registrati
 
 | Chapter | Scope |
 | --- | --- |
-| <a id="en-authentication"></a>[01 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [device linking](multi-device/README.md#en), [reauthentication](authentication/README.md#en), and [account appeals](authentication/account-appeal.md#en) |
+| <a id="en-authentication"></a>[01 · Login, Authentication, and Sessions](authentication/README.md#en) | [Identity material](messaging/local-storage.md#keystore-en), [session persistence](messaging/storage/axolotl.md#sessions-en), [QR code sign-in](multi-device/linking-and-unlinking.md#en), [reauthentication](authentication/README.md#en), and [account appeals](authentication/account-appeal.md#en) |
 | <a id="en-protocol"></a>[02 · Communication Protocols and Data Formats](protocol/README.md#en) | [Connections](protocol/noise.md#en-state), [Noise handshakes](protocol/noise.md#en), [framing](protocol/tcp-framing.md#en), [binary nodes](protocol/protocol-tree-node.md#en), and [Argo payloads](protocol/argo.md#en) |
 | <a id="en-encryption"></a>[03 · Encryption and Key Management](encryption/README.md#en) | [Identity keys](messaging/storage/axolotl.md#identities-en), [session keys](messaging/storage/axolotl.md#sessions-en), [prekeys](messaging/storage/axolotl.md#prekeys-en), the [key database](messaging/storage/axolotl.md#en), and [encryption boundaries](protocol/noise.md#en-layers) |
 | <a id="en-messaging"></a>[04 · Sending and Receiving Messages](messaging/README.md#en) | [Message construction](messaging/README.md#en), [reception](messaging/README.md#en), [receipts](messaging/storage/msgstore.md#receipts-en), [retries](messaging/README.md#en), [deduplication](messaging/README.md#en), [groups](messaging/README.md#en), and [local databases](messaging/local-storage.md#en) |
 | <a id="en-media"></a>[05 · Images, Files, and Voice Messages](media/README.md#en) | [Media upload/download](media/README.md#en), [encryption](media/README.md#en), [file metadata](messaging/storage/msgstore.md#media-en), and [voice messages](media/README.md#en) |
 | <a id="en-calls"></a>[06 · Voice Calling Capabilities](calls/README.md#en) | Implemented capabilities, [one-to-one voice](calls/voice-calls.md#en), [group voice](calls/group-calls.md#en) and demonstration scope |
-| <a id="en-multi-device"></a>[07 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking](multi-device/README.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
+| <a id="en-multi-device"></a>[07 · Multi-Device and Data Synchronization](multi-device/README.md#en) | [Device linking and unlinking](multi-device/linking-and-unlinking.md#en), [message distribution](multi-device/message-distribution.md#en), [history synchronization](multi-device/message-distribution.md#history-en), and [offline handling](multi-device/message-distribution.md#connection-en) |
 | <a id="en-registration"></a>[08 · Account Registration and Verification](registration/README.md#en) | [Number checks](registration/exist.md#en), [code requests](registration/code.md#en), [verification](registration/register.md#en), and [sending](registration/sending-requests.md#en) |
 
 Scope links point to existing articles or specific sections where available; topics without a dedicated article link to their topic directory.
@@ -207,6 +209,7 @@ Scope links point to existing articles or specific sections where available; top
 
 | Article | Scope |
 | --- | --- |
+| [WhatsApp QR Code Sign-In and Device Unlinking](multi-device/linking-and-unlinking.md#en) | Phone steps, QR code fields, device signatures, connection authentication, initial sync, and unlinking. |
 | [Multi-Device Message Distribution and State Synchronization](multi-device/message-distribution.md#en) | Directories, sender exclusion, pairwise/group encryption, device changes, retries/ciphertext reuse, ACK deduplication, receipt aggregation, and ChatTransfer. |
 | [Receipt Counts and State Regression](multi-device/message-distribution.md#regression-en) | recipient_count, PN/LID, reordering conditions, and ordinary bubble state. |
 | [History Transfer and Receipt Consistency](multi-device/message-distribution.md#history-en) | The 90-day receipt window, imported counts, detail writes, and orphan replay. |
@@ -238,10 +241,11 @@ whatsapp-technical-wiki/
 ├── calls/README.md
 └── multi-device/
     ├── README.md
+    ├── linking-and-unlinking.md
     └── message-distribution.md
 ```
 
-Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles; the tables above link directly to the protocol, database, and multi-device distribution articles and sections.
+Top-level directories use lowercase English names and hyphens. Topic READMEs introduce their scope and link articles. The tables above link directly to the protocol, database, and multi-device articles and sections.
 
 ### Reading Guide and Documentation Conventions
 
