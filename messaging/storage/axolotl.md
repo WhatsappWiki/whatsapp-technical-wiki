@@ -1,8 +1,8 @@
-<a href="https://t.me/whatsap_lab"><img src="../../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
-
 # axolotl.db · Keys, Sessions, and Queues · 密钥、会话与队列
 
-[数据库目录](README.md#zh) · [存储总览](../local-storage.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[数据库目录](README.md#zh) · [存储总览](../local-storage.md#zh) · [中文](#zh) · [English](#en)
+
+[Telegram: @ttjjda](https://t.me/ttjjda)&nbsp;<a href="https://t.me/whatsap_lab"><img src="../../assets/telegram-group-qr.png" width="66" height="66" align="middle" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
 
 <a id="zh"></a>
 

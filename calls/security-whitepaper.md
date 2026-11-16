@@ -1,8 +1,8 @@
-<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
-
 # 语音通话安全架构 · Voice Call Security Architecture
 
-[通话目录](README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)
+[通话目录](README.md#zh) · [中文](#zh) · [English](#en)
+
+[Telegram: @ttjjda](https://t.me/ttjjda)&nbsp;<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="66" height="66" align="middle" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
 
 <a id="zh"></a>
 

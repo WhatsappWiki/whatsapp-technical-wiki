@@ -1,12 +1,10 @@
-<a href="https://t.me/whatsap_lab"><img src="assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
-
 # WhatsApp Technical Wiki · WhatsApp 技术知识库
 
 <a id="whatsapp-wiki--whatsapp-技术知识库"></a>
 
 <a id="contact"></a>
 
-## Telegram Contact: [@ttjjda](https://t.me/ttjjda)
+## Telegram Contact: [@ttjjda](https://t.me/ttjjda)&nbsp;<a href="https://t.me/whatsap_lab"><img src="assets/telegram-group-qr.png" width="66" height="66" align="middle" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
 
 [中文](#zh) · [English](#en) · [从这里开始](#start-here) · [Start Here](#start-here-en) · [技术目录](#technical-index) · [Topic Index](#technical-index-english) · [Contact](#contact)
 
