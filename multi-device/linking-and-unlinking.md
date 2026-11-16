@@ -1,3 +1,5 @@
+<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
+
 # WhatsApp 手机扫码登录与设备解绑 · WhatsApp QR Code Sign-In and Device Unlinking
 
 [多设备目录](README.md#zh) · [首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)

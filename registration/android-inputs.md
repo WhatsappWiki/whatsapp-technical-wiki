@@ -1,3 +1,5 @@
+<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
+
 # Android 字段获取代码 · Android Input Examples
 
 [注册目录](README.md#zh) · [中文](#zh) · [English](#en) · [字段索引](#field-lookup) · [Field Lookup](#en-field-lookup) · [Telegram: @ttjjda](https://t.me/ttjjda)

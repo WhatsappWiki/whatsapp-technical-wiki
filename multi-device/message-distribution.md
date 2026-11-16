@@ -1,3 +1,5 @@
+<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
+
 # 多设备消息分发与状态同步 · Multi-Device Message Distribution and State Synchronization
 
 [多设备目录](README.md#zh) · [首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)

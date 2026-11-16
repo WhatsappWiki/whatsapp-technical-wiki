@@ -1,3 +1,5 @@
+<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
+
 # Account Registration and Verification · 账号注册与验证码
 
 [Wiki 首页](../README.md#zh) · [Wiki home](../README.md#en) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)

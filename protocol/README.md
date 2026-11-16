@@ -1,3 +1,5 @@
+<a href="https://t.me/whatsap_lab"><img src="../assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
+
 # Communication Protocols and Data Formats · 通信协议与数据格式
 
 [首页](../README.md#zh) · [中文](#zh) · [English](#en) · [Telegram: @ttjjda](https://t.me/ttjjda)

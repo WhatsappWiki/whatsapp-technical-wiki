@@ -1,3 +1,5 @@
+<a href="https://t.me/whatsap_lab"><img src="assets/telegram-group-qr.png" width="180" height="180" alt="Telegram 交流群二维码 · Telegram group QR code (@whatsap_lab)"></a>
+
 # WhatsApp Technical Wiki · WhatsApp 技术知识库
 
 <a id="whatsapp-wiki--whatsapp-技术知识库"></a>
